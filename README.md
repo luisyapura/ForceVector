@@ -2,7 +2,7 @@
   <img src="/img/portada.png" width="1200" height="600" alt="portada">
 </p>
 
-<h1 align="center">⚡ ForceVector</h1>
+<h1 align="center">⚡ForceVector</h1>
 <h3 align="center">IA para Pentesting Ético</h3>
 
 <p align="center">
