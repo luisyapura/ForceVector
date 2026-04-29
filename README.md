@@ -26,6 +26,7 @@ El sistema busca emular el razonamiento de un pentester humano, permitiendo toma
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge\&logo=python)
 ![Status](https://img.shields.io/badge/Status-En%20Desarrollo-orange?style=for-the-badge)
 ![AI](https://img.shields.io/badge/LLM-Local-green?style=for-the-badge)
+![Database](https://img.shields.io/badge/Database-PostgreSQL-blue?style=for-the-badge\&logo=postgresql)
 ![Security](https://img.shields.io/badge/Cybersecurity-Pentesting-critical?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Private-lightgrey?style=for-the-badge)
 
@@ -50,7 +51,7 @@ El sistema busca emular el razonamiento de un pentester humano, permitiendo toma
         ↓
       Parser
         ↓
-Base de Conocimiento
+Base de Conocimiento (PostgreSQL)
         ↓
      LLM (IA)
         ↓
@@ -76,14 +77,26 @@ Motor de Decisión
 * Python
 * Ollama (LLM local)
 * Mistral 7B Instruct
+* PostgreSQL
+* SQLAlchemy (ORM)
 * Nmap *(fase posterior)*
-* SQLite *(inicial)*
+
+---
+
+## 🗄️ Base de Datos
+
+El sistema utiliza **PostgreSQL** como motor de base de datos desde las fases iniciales, permitiendo:
+
+* Modelado relacional robusto
+* Consultas complejas y eficientes
+* Escalabilidad para futuras integraciones
+* Soporte para correlación avanzada de vulnerabilidades
 
 ---
 
 ## 🚧 Estado del Proyecto
 
-> 🔧 Fase inicial — diseño y validación del modelo
+> 🔧 Fase inicial — diseño de arquitectura y validación del modelo
 
 ---
 
@@ -110,7 +123,7 @@ El uso indebido es responsabilidad del usuario.
 * [x] Definición del concepto
 * [x] Selección del LLM
 * [ ] Integración de entradas reales
-* [ ] Base de conocimiento
+* [ ] Diseño e implementación del modelo de datos
 * [ ] Motor de priorización
 * [ ] Automatización completa
 
