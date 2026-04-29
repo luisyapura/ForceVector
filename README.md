@@ -2,124 +2,126 @@
   <img src="/img/portada.png" width="1200" height="600" alt="portada">
 </p>
 
-# ⚡ ForceVector
-### IA para Pentesting Ético
+<h1 align="center">⚡ ForceVector</h1>
+<h3 align="center">IA para Pentesting Ético</h3>
 
-> “Que la fuerza del conocimiento te guíe.”
+<p align="center">
+  <em>“Que la fuerza del conocimiento te guíe.”</em>
+</p>
 
 ---
 
 ## 🧠 Descripción
 
-**ForceVector** es un sistema autónomo basado en inteligencia artificial diseñado para asistir en procesos de **pentesting ético**, mediante la correlación de información, análisis de vulnerabilidades y priorización de vectores de ataque.
+**ForceVector** es un sistema autónomo basado en inteligencia artificial diseñado para asistir en procesos de **pentesting ético**, mediante el análisis, correlación y priorización de vectores de ataque.
 
-El objetivo del proyecto es emular el razonamiento de un pentester humano, permitiendo:
-- Interpretar resultados de reconocimiento
-- Identificar vulnerabilidades relevantes
-- Priorizar objetivos de forma inteligente
-- Recomendar acciones concretas
+El sistema busca emular el razonamiento de un pentester humano, permitiendo tomar decisiones informadas en tiempo real.
 
 ---
 
-## 🎯 Objetivos del proyecto
+## 🚀 Badges
 
-- Desarrollar un sistema de apoyo al pentesting basado en IA local
-- Automatizar la toma de decisiones en fases de reconocimiento y explotación
-- Integrar fuentes de inteligencia (CVE, exploits, etc.)
-- Reducir la dependencia de análisis manual
-- Mantener un enfoque **ético y controlado**
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge\&logo=python)
+![Status](https://img.shields.io/badge/Status-En%20Desarrollo-orange?style=for-the-badge)
+![AI](https://img.shields.io/badge/LLM-Local-green?style=for-the-badge)
+![Security](https://img.shields.io/badge/Cybersecurity-Pentesting-critical?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Private-lightgrey?style=for-the-badge)
+
+</p>
+
+---
+
+## 🎯 Objetivos
+
+* Automatizar el análisis de superficies de ataque
+* Priorizar vulnerabilidades según impacto real
+* Asistir en la toma de decisiones en pentesting
+* Integrar inteligencia de amenazas en tiempo real
+* Mantener un enfoque ético y controlado
 
 ---
 
 ## ⚙️ Arquitectura (visión inicial)
-[Escaneo / Entrada de datos]
-↓
-[Parser]
-↓
-[Base de conocimiento]
-↓
-[Motor IA (LLM)]
-↓
-[Motor de decisión]
-↓
-[Recomendaciones]
+
+```
+[Entrada / Escaneo]
+        ↓
+      Parser
+        ↓
+Base de Conocimiento
+        ↓
+     LLM (IA)
+        ↓
+Motor de Decisión
+        ↓
+ Recomendaciones
+```
 
 ---
 
-## 🔍 Funcionalidades previstas
+## 🔍 Funcionalidades
 
-- 🔎 Reconocimiento y enumeración (integración con herramientas como Nmap)
-- 🧠 Análisis mediante modelos LLM locales
-- 📊 Correlación de vulnerabilidades (CVE, exploits)
-- 🎯 Priorización de vectores de ataque
-- 📋 Generación de recomendaciones para pentesting
-- 📑 (Futuro) generación automática de informes
-
----
-
-## 🧪 Tecnologías utilizadas
-
-- Python
-- LLM local (Ollama + modelos como Mistral)
-- Nmap (fase posterior)
-- Base de datos de vulnerabilidades (NVD, ExploitDB)
-- SQLite / futuras alternativas
-- (Futuro) integración con frameworks de explotación
+* 🔎 Reconocimiento y enumeración
+* 🧠 Análisis con LLM local
+* 📊 Correlación de CVEs y exploits
+* 🎯 Priorización de vectores de ataque
+* 📋 Recomendaciones técnicas
 
 ---
 
-## 🚧 Estado del proyecto
+## 🧪 Tecnologías
 
-> 🔧 En desarrollo (fase inicial)
-
-Actualmente enfocado en:
-- Configuración del entorno IA local
-- Diseño de prompts y validación del modelo
-- Definición de arquitectura base
-
----
-
-## 📚 Contexto académico
-
-Este proyecto forma parte de una **Tesis de Máster en Ciberseguridad**, centrada en:
-
-> El uso de inteligencia artificial para la automatización y optimización de procesos de pentesting.
+* Python
+* Ollama (LLM local)
+* Mistral 7B Instruct
+* Nmap *(fase posterior)*
+* SQLite *(inicial)*
 
 ---
 
-## ⚠️ Uso ético
+## 🚧 Estado del Proyecto
 
-Este proyecto está diseñado exclusivamente para:
-
-- Entornos controlados
-- Laboratorios de pruebas
-- Pentesting autorizado
-
-**El uso indebido de esta herramienta es responsabilidad del usuario.**
+> 🔧 Fase inicial — diseño y validación del modelo
 
 ---
 
-## 📌 Roadmap (simplificado)
+## 📚 Contexto Académico
 
-- [x] Definición del concepto
-- [x] Selección del modelo LLM
-- [ ] Integración con entrada de datos (simulada)
-- [ ] Base de conocimiento (CVE + exploits)
-- [ ] Motor de priorización
-- [ ] Integración con herramientas reales
-- [ ] Automatización completa del ciclo de pentesting
+Proyecto desarrollado como parte de una **Tesis de Máster en Ciberseguridad**, enfocado en la automatización del pentesting mediante inteligencia artificial.
+
+---
+
+## ⚠️ Uso Ético
+
+Este proyecto está destinado exclusivamente a:
+
+* Laboratorios controlados
+* Entornos autorizados
+* Investigación en ciberseguridad
+
+El uso indebido es responsabilidad del usuario.
+
+---
+
+## 📌 Roadmap
+
+* [x] Definición del concepto
+* [x] Selección del LLM
+* [ ] Integración de entradas reales
+* [ ] Base de conocimiento
+* [ ] Motor de priorización
+* [ ] Automatización completa
 
 ---
 
 ## 👨‍💻 Autor
 
-Proyecto desarrollado como parte de una Tesis en Ciberseguridad.
+Desarrollado como parte de una Tesis en Ciberseguridad.
 
 ---
 
 ## 📄 Licencia
 
-Actualmente no se ha definido una licencia pública.  
-El proyecto se mantiene en desarrollo privado.
-
----
+Proyecto actualmente en desarrollo privado.
