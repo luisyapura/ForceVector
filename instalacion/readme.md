@@ -6,75 +6,40 @@
 
 ## 🧠 1. Objetivo
 
-Esta guía describe la instalación y configuración de un entorno local en Windows para ejecutar un sistema de pentesting asistido por múltiples modelos LLM utilizando **Ollama**, optimizado para hardware de alto rendimiento:
+Implementar un entorno reproducible para ejecutar un sistema de pentesting autónomo basado en **arquitectura multi-modelo**, optimizado para hardware local:
 
 * GPU: RTX 5080
 * CPU: Ryzen 9 9950X3D
 * RAM: 64 GB
 
+El sistema utiliza **orquestación secuencial de modelos LLM** para maximizar capacidad sin requerir paralelismo en VRAM.
+
 ---
 
 ## 🖥️ 2. Requisitos Previos
 
-### ✔️ Software necesario
-
-* Windows 10/11 (preferentemente Pro)
-* WSL2 habilitado (opcional pero recomendado)
+* Windows 10/11
 * Drivers NVIDIA actualizados
-* CUDA Toolkit (compatible con tu driver)
-* Git
+* CUDA Toolkit compatible
 * Python 3.11+
+* Git
 
----
-
-## 🔧 3. Instalación de Dependencias
-
-### 3.1 Instalar drivers NVIDIA + CUDA
-
-1. Instalar los últimos drivers desde NVIDIA
-2. Verificar instalación:
+Verificación:
 
 ```bash
 nvidia-smi
-```
-
-Debe mostrar la GPU correctamente.
-
----
-
-### 3.2 Instalar Python
-
-Descargar desde:
-https://www.python.org/downloads/
-
-Verificar:
-
-```bash
 python --version
-pip --version
-```
-
----
-
-### 3.3 Instalar Git
-
-```bash
 git --version
 ```
 
 ---
 
-## 🤖 4. Instalación de Ollama
+## 🤖 3. Instalación de Ollama
 
-### 4.1 Descargar Ollama
-
+Descargar:
 https://ollama.com/download
 
-Instalar normalmente en Windows.
-
----
-
-### 4.2 Verificar instalación
+Verificar:
 
 ```bash
 ollama --version
@@ -82,92 +47,165 @@ ollama --version
 
 ---
 
-### 4.3 Probar ejecución básica
+# 📦 4. Instalación de Modelos (Versionada y Reproducible)
+
+## 🔹 4.1 Modelo Ejecutor (Base del sistema)
 
 ```bash
-ollama run mistral
+ollama pull mistral:7b-instruct-q4_K_M
+```
+
+### ✔️ Justificación técnica
+
+* Baja latencia → ideal para loops iterativos
+* Buen instruction-following
+* Consumo reducido de VRAM
+* Estable para parsing de outputs
+
+👉 Rol:
+
+* ejecución de tareas
+* interpretación de resultados
+* control del flujo operativo
+
+---
+
+## 🔹 4.2 Modelo de Razonamiento
+
+```bash
+ollama pull mixtral:8x7b-instruct-q4_K_M
+```
+
+### ✔️ Justificación técnica
+
+* Arquitectura MoE (Mixture of Experts)
+* Mejor rendimiento en razonamiento multi-step
+* Capacidad de planificación compleja
+
+👉 Rol:
+
+* diseño de vectores de ataque
+* toma de decisiones
+* priorización
+
+---
+
+## 🔹 4.3 Modelo Especializado en Código
+
+```bash
+ollama pull deepseek-coder:6.7b-instruct-q4_K_M
+```
+
+### ✔️ Justificación técnica
+
+* Optimizado para generación de código
+* Mejor desempeño en scripting técnico
+* Alta precisión en sintaxis
+
+👉 Rol:
+
+* generación de exploits
+* creación de payloads
+* automatización técnica
+
+---
+
+## 🔍 Verificación
+
+```bash
+ollama list
 ```
 
 ---
 
-## 📦 5. Descarga de Modelos
-
-### 🔹 Modelo base (ejecutor)
+# ⚙️ 5. Configuración Crítica
 
 ```bash
-ollama pull mistral
-```
-
----
-
-### 🔹 Modelo de razonamiento
-
-```bash
-ollama pull mixtral
-```
-
----
-
-### 🔹 Modelo especializado en código
-
-```bash
-ollama pull deepseek-coder
-```
-
----
-
-## ⚙️ 6. Configuración Optimizada (IMPORTANTE)
-
-Dado tu hardware, se recomienda:
-
-### 🔹 Cuantización
-
-Ollama gestiona automáticamente, pero puedes ajustar:
-
-* Preferir variantes Q4_K_M o similares
-* Evitar modelos full precision (innecesario)
-
----
-
-### 🔹 Variables de entorno (opcional)
-
-```bash
-set OLLAMA_NUM_GPU=1
 set OLLAMA_MAX_LOADED_MODELS=1
+set OLLAMA_NUM_GPU=1
 ```
 
-👉 Esto fuerza el modelo único en VRAM (clave para tu arquitectura)
+### ✔️ Objetivo
+
+* Evitar múltiples modelos en VRAM
+* Prevenir crashes por memoria
+* Forzar ejecución secuencial
 
 ---
 
-## 🧩 7. Arquitectura del Proyecto
+# 🧠 6. ¿Por qué usar versiones *Instruct*?
 
-```
-project/
-│
-├── core/
-│   ├── orchestrator.py
-│   ├── scheduler.py
-│
-├── agents/
-│   ├── executor.py
-│   ├── planner.py
-│   ├── coder.py
-│
-├── memory/
-│   ├── store.py
-│
-├── tools/
-│   ├── nmap_wrapper.py
-│
-└── main.py
+## 🔹 Diferencia clave
+
+### Modelo base
+
+* Predicción de texto sin control
+* Salidas inconsistentes
+* Difícil de automatizar
+
+### Modelo Instruct
+
+* Fine-tuned para seguir instrucciones
+* Salidas estructuradas
+* Mayor consistencia
+
+---
+
+## ⚠️ Impacto en el sistema
+
+Tu arquitectura depende de:
+
+* prompts estructurados
+* outputs parseables
+* decisiones encadenadas
+
+👉 Sin *Instruct*:
+
+* respuestas caóticas
+* formato impredecible
+* fallos en automatización
+
+---
+
+## ✅ Ventajas en esta tesis
+
+* Mejor adherencia a formatos (JSON, listas, etc.)
+* Menor necesidad de prompt engineering complejo
+* Mayor estabilidad operativa
+
+---
+
+## 🧩 Justificación formal (defensa)
+
+> Se seleccionaron variantes *Instruct* debido a su alineación con tareas dirigidas, reducción de entropía en las salidas y mejor integración con sistemas automatizados de orquestación.
+
+---
+
+# 🏗️ 7. Arquitectura del Sistema
+
+```text
+Input
+  ↓
+Planner (Mixtral)
+  ↓
+Executor (Mistral)
+  ↓
+Coder (DeepSeek, opcional)
+  ↓
+Resultado
 ```
 
 ---
 
-## 🧠 8. Orquestador (Base del Sistema)
+## 🔄 Ejecución real (Single Model Strategy)
 
-### Ejemplo simplificado:
+* Un solo modelo activo a la vez
+* Carga bajo demanda
+* Descarga implícita al cambiar
+
+---
+
+# ⚙️ 8. Orquestador (Base del sistema)
 
 ```python
 import subprocess
@@ -184,48 +222,20 @@ def run_model(model, prompt):
 
 def route_task(task):
     if task["type"] == "planning":
-        return run_model("mixtral", task["input"])
+        return run_model("mixtral:8x7b-instruct-q4_K_M", task["input"])
 
     elif task["type"] == "code":
-        return run_model("deepseek-coder", task["input"])
+        return run_model("deepseek-coder:6.7b-instruct-q4_K_M", task["input"])
 
     else:
-        return run_model("mistral", task["input"])
+        return run_model("mistral:7b-instruct-q4_K_M", task["input"])
 ```
 
 ---
 
-## 🔄 9. Estrategia de Ejecución
+# 💾 9. Persistencia de Estado
 
-### ✔️ Modelo único en memoria
-
-* Nunca cargar más de un modelo simultáneamente
-* Cada llamada a `ollama run` hace load/unload automático
-
----
-
-### ✔️ Flujo operativo
-
-```
-Input → Planner (Mixtral)
-      → Executor (Mistral)
-      → Coder (DeepSeek, opcional)
-      → Resultado
-```
-
----
-
-## 💾 10. Persistencia de Estado
-
-NO depender del contexto del modelo.
-
-Opciones:
-
-* JSON (simple)
-* SQLite (recomendado)
-* Redis (avanzado)
-
-Ejemplo básico:
+Ejemplo:
 
 ```python
 import json
@@ -237,72 +247,50 @@ def save_log(data):
 
 ---
 
-## 🚀 11. Prueba Inicial
+# 🚀 10. Prueba Inicial
 
 ```bash
 python main.py
 ```
 
-Ejemplo de input:
-
-```json
-{
-  "type": "planning",
-  "input": "Analiza este objetivo y propone vectores de ataque"
-}
-```
-
 ---
 
-## ⚠️ 12. Problemas Comunes
+# ⚠️ 11. Problemas Comunes
 
-### ❌ Modelo no carga
+### Modelo no carga
 
-* Verificar VRAM disponible
+* Verificar VRAM
 * Reiniciar Ollama
 
----
+### Lentitud
 
-### ❌ Lentitud
+* Normal en modelos grandes
+* Reducir cambios de modelo
 
-* Normal en carga de modelos grandes
-* Solución: reducir swaps (batching)
+### CUDA no detectado
 
----
-
-### ❌ CUDA no detectado
-
-* Verificar drivers
-* Reinstalar CUDA
+* Revisar drivers
 
 ---
 
-## 📌 13. Mejores Prácticas
+# 📌 12. Buenas Prácticas
 
-* Mantener Mistral como modelo residente (si optimizas más adelante)
-* Minimizar cambios de modelo
-* Loggear TODO (clave para tesis)
-* Separar claramente roles de agentes
-
----
-
-## 🧭 14. Siguientes Pasos
-
-1. Implementar scheduler avanzado
-2. Añadir herramientas reales (nmap, ffuf, etc.)
-3. Integrar sistema de memoria
-4. Evaluación de resultados (métricas)
+* Evitar tags genéricos (usar versiones exactas)
+* Minimizar swaps de modelo
+* Loggear todas las decisiones
+* Separar roles claramente
 
 ---
 
-## 🧠 Conclusión
+# 🧭 13. Conclusión
 
-Este enfoque permite ejecutar un sistema multi-modelo en hardware local sin necesidad de paralelismo real, utilizando:
+El sistema implementado:
 
-* Orquestación inteligente
-* Carga secuencial de modelos
-* Persistencia externa de contexto
+* Utiliza múltiples LLMs especializados
+* Opera en hardware local limitado
+* Evita paralelismo mediante orquestación
+* Garantiza reproducibilidad
 
-👉 Base sólida para una tesis de nivel profesional.
+👉 Esto lo posiciona como una arquitectura sólida, defendible y alineada con sistemas reales de IA aplicada.
 
 ---
