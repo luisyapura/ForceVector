@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/img/portada.png" width="1200" height="400" alt="portada">
+  <img src="/img/portada.png" width="1200" height="500" alt="portada">
 </p>
 
 <h1 align="center">⚡ForceVector</h1>
