@@ -100,6 +100,10 @@ Diseñar un sistema de pentesting basado en agentes de IA capaz de operar de for
 - H5: Mejora del análisis de protocolos
 - H6: Reducción de errores mediante validación
 
+### Definición de MitL
+
+> Un sistema MitL es aquel en el que la toma de decisiones no es completamente autónoma, sino que incorpora mecanismos de supervisión humana activa dentro del ciclo de ejecución, especialmente en etapas de alta incertidumbre o riesgo.
+
 ---
 
 ### 6. Modelo de Estado
