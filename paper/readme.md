@@ -10,17 +10,57 @@ Módulo 11 – Trabajo Fin de Máster
 ---
 
 # 1. Introducción y Contexto 
+## Análisis Estructural de las Limitaciones del Pentesting Tradicional en Entornos Empresariales
 
-## 1.1 Contexto de la Ciberseguridad Ofensiva
+El estado actual de la ciberseguridad ofensiva empresarial presenta una divergencia crítica entre la velocidad de evolución de las infraestructuras tecnológicas y las metodologías de validación de seguridad. Aunque el penetration testing (pentesting) sigue siendo un control de cumplimiento y seguridad fundamental, su arquitectura operativa tradicional, basada en el esfuerzo manual, presenta fallos sistémicos.
 
-El pentesting empresarial es una actividad crítica para la validación de la postura de seguridad. Sin embargo, su ejecución adolece de limitaciones estructurales:
+A continuación, se desarrolla un análisis detallado de las tres limitaciones estructurales mencionadas, fundamentado en literatura técnica y reportes de la industria, con el rigor requerido para un marco de investigación de posgrado.
 
-- Dependencia de capital humano altamente cualificado: El proceso descansa sobre la heurística y la intuición del pentester.
+---
 
-- Escalabilidad limitada: La ejecución de pruebas sobre infraestructuras de red complejas requiere un tiempo de procesamiento humano no lineal.
+## 1.1.1. Dependencia de Capital Humano Altamente Cualificado (El Cuello de Botella Cognitivo)
 
-- Consistencia y reproducibilidad: Las auditorías manuales varían en función del auditor, dificultando la estandarización de resultados.
+El núcleo del pentesting tradicional es intrínsecamente dependiente del conocimiento heurístico del operador. A diferencia de un análisis de vulnerabilidades automatizado (vulnerability scanning), que es determinista y se basa en firmas, la explotación y el movimiento lateral requieren pensamiento lateral, encadenamiento de vulnerabilidades de severidad media y adaptación a controles evasivos.
 
+- **La Brecha de Talento y la Carga Cognitiva:** Según el Cybersecurity Workforce Study de (ISC)² (2023), existe una brecha global de aproximadamente 4 millones de profesionales en ciberseguridad. En el dominio ofensivo, esta escasez es más aguda. La dependencia operativa recae en una élite técnica que está sujeta a fatiga cognitiva.
+
+- **Heurística vs. Sistematización:** El éxito de un red team o de un pentesting avanzado depende de la "intuición" del atacante (por ejemplo, inferir la estructura de un Directorio Activo o predecir la reutilización de credenciales). Esta dependencia heurística significa que el proceso no puede ser parametrizado fácilmente a través de scripts estáticos. Como señalan investigaciones en automatización de la seguridad (ej. Automated Penetration Testing: A Systematic Review, IEEE), la toma de decisiones humana frente a un sistema complejo durante un ataque no estructurado es difícil de codificar mediante árboles de decisión convencionales.
+
+---
+
+## 1.1.2. Escalabilidad Limitada (Asimetría Temporal y Espacial)
+
+La relación entre el tiempo requerido para auditar un sistema y el tamaño del sistema en sí mismo no es lineal; es exponencial. Esto genera una asimetría técnica entre la capacidad defensiva/despliegue y la capacidad ofensiva.
+
+- **Superficies de Ataque Expansivas:** La adopción de arquitecturas basadas en microservicios, Infraestructura como Código (IaC), entornos híbridos y despliegues CI/CD (Integración y Despliegue Continuos) provoca que la topología de la red empresarial mute diariamente.
+
+- **La Falacia del Point-in-Time:** Un pentesting manual es una "fotografía" del estado de seguridad en un momento específico. Gartner, en su formulación del marco de Continuous Threat Exposure Management (CTEM), advierte que las auditorías manuales anuales o semestrales son insuficientes. Un auditor humano requiere semanas para mapear, enumerar y explotar vectores en una red corporativa; para cuando se entrega el reporte final, la infraestructura subyacente ya ha cambiado, invalidando parcial o totalmente las conclusiones sobre la postura de riesgo actual.
+
+---
+
+## 1.1.3. Consistencia y Reproducibilidad (Varianza Metodológica)
+
+En la investigación científica y en la auditoría técnica, la reproducibilidad es un pilar fundamental. Si dos auditores diferentes evalúan el mismo entorno con las mismas herramientas, deberían obtener resultados casi idénticos. En el pentesting manual, esto rara vez ocurre.
+
+- **Subjetividad en la Ejecución:** Aunque existen marcos metodológicos estandarizados como PTES (Penetration Testing Execution Standard) o OSSTMM (Open Source Security Testing Methodology Manual), estos definen el "qué" se debe probar, pero dejan gran parte del "cómo" a discreción del operador. Un auditor especializado en aplicaciones web puede pasar por alto una vulnerabilidad de Active Directory (como un ataque Kerberoasting o un DCSync) simplemente debido a su sesgo de formación.
+
+- **Evaluación y Contextualización del Riesgo:** La asignación de impacto a una vulnerabilidad varía significativamente entre operadores. Aunque métricas como CVSS (Common Vulnerability Scoring System) intentan objetivizar la gravedad técnica, el contexto de explotación en el pentesting manual depende del análisis humano. Esta varianza metodológica impide a las organizaciones establecer una línea base de seguridad (baseline) matemática y demostrable a lo largo del tiempo.
+
+---
+
+### Fuentes y Marcos de Referencia Sugeridos
+
+Para sostener este análisis en un marco de tesis, las referencias deben provenir de estándares de la industria e investigación aplicada:
+
+- (ISC)² (2023). Cybersecurity Workforce Study. Documenta la escasez de talento y justifica la necesidad de automatización para suplir la falta de operadores humanos.
+
+- Gartner (2022-presente). Implement a Continuous Threat Exposure Management (CTEM) Program. Define la obsolescencia de las pruebas point-in-time y la necesidad de una validación escalable y continua.
+
+- The Penetration Testing Execution Standard (PTES). Documentación fundamental para criticar cómo los estándares actuales no resuelven la subjetividad de la fase de explotación.
+
+- MITRE ATT&CK Framework. Útil para ilustrar cómo el comportamiento de un adversario requiere una matriz compleja de TTPs (Tácticas, Técnicas y Procedimientos) que, al ejecutarse manualmente, sufren de inconsistencia temporal.
+
+- Literatura Académica (IEEE Xplore / ACM Digital Library): Búsquedas enfocadas en "Automated Penetration Testing with Reinforcement Learning" o "Autonomous Security Agents". Estos papers (frecuentes a partir de 2021) inician invariablemente sus introducciones citando la falta de escalabilidad y la dependencia humana del pentesting tradicional como justificación para el uso de Inteligencia Artificial en el modelo ofensivo.
 ---
 
 ## 1.2 Declaración del Problema
