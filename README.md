@@ -76,10 +76,11 @@ Motor de Decisión
 
 * Python
 * Ollama (LLM local)
-* Mistral 7B Instruct
+* Mistral 7B Instruct (modelo de prueba)
 * PostgreSQL
 * SQLAlchemy (ORM)
 * Nmap *(fase posterior)*
+* Hashcat
 
 ---
 
@@ -96,7 +97,7 @@ El sistema utiliza **PostgreSQL** como motor de base de datos desde las fases in
 
 ## 🚧 Estado del Proyecto
 
-> 🔧 Fase inicial — diseño de arquitectura y validación del modelo
+> 🔧 Fase inicial — diseño de arquitectura, validación del modelo y pruebas de primeros agentes.
 
 ---
 
