@@ -1,8 +1,15 @@
 # ⚡ TFM – Diseño de un Sistema de Pentesting Basado en IA
+---
+
+## Autor
+Luis Yapura  
+
+## Máster en Ciberseguridad  
+Módulo 11 – Trabajo Fin de Máster  
 
 ---
 
-# 1. Introducción y Contexto Problemático
+# 1. Introducción y Contexto 
 
 ## 1.1 Contexto de la Ciberseguridad Ofensiva
 
@@ -13,8 +20,6 @@ El pentesting empresarial es una actividad crítica para la validación de la po
 - Escalabilidad limitada: La ejecución de pruebas sobre infraestructuras de red complejas requiere un tiempo de procesamiento humano no lineal.
 
 - Consistencia y reproducibilidad: Las auditorías manuales varían en función del auditor, dificultando la estandarización de resultados.
-
-> **Nota:** Podrías reforzar este punto incluyendo métricas reales (ej. tiempo medio de auditoría o variabilidad entre analistas) para aumentar el peso empírico.
 
 ---
 
@@ -28,15 +33,11 @@ Existe una brecha operativa y semántica entre:
 
 El uso directo de Modelos de Lenguaje (LLM) introduce el riesgo de alucinaciones. En pentesting, una alucinación (como la inferencia de un comando sintácticamente válido pero semánticamente destructivo o inexistente) compromete la integridad del entorno y la fiabilidad de la auditoría.
 
-> **Nota:** Aquí podrías añadir un ejemplo real de comando mal generado para reforzar la comprensión del tribunal.
-
 ---
 
 ## 1.3 Oportunidad de Investigación
 
 El uso de agentes de IA permite el razonamiento contextual, la planificación dinámica y la adaptación ante respuestas imprevistas del entorno, siempre y cuando se implemente un mecanismo de control estricto sobre las acciones.
-
-> **Nota:** Puedes mencionar explícitamente el paradigma “LLM as planner + tools executor” para alinearlo con literatura reciente.
 
 ---
 
@@ -48,8 +49,6 @@ El uso de agentes de IA permite el razonamiento contextual, la planificación di
 
 - reproducibilidad: La captura del estado del entorno de red no es persistente ni estructurada.
 
-> **Nota:** Corrige capitalización de “Reproducibilidad” y considera añadir “trazabilidad” como limitación adicional.
-
 ---
 
 ## 2.2 Limitaciones de los Modelos de Lenguaje
@@ -58,23 +57,17 @@ El uso de agentes de IA permite el razonamiento contextual, la planificación di
 
 - Sobreconfianza (Comprensión errónea): El modelo puede asumir que un servicio es vulnerable sin realizar una verificación empírica.
 
-> **Nota:** Podrías añadir el concepto de “lack of grounding” para mayor precisión académica.
-
 ---
 
 ## 2.3 Motivación Central
 
 Automatizar el proceso de toma de decisiones de forma fiable mediante la integración de agentes de IA, utilizando herramientas reales validadas de forma determinista antes de la ejecución.
 
-> **Nota:** Muy buen punto. Puedes reforzarlo indicando que el sistema desacopla “decision-making” y “execution”.
-
 ---
 
 # 3. Objetivo General
 
 Diseñar e implementar un sistema de pentesting basado en agentes de IA, capaz de operar en modo Human-in-the-Loop (MitL) o autónomo, manteniendo el control sobre la generación de alucinaciones y el impacto sobre la red objetivo.
-
-> **Nota:** Considera añadir “en entornos controlados” para evitar interpretaciones éticas o legales.
 
 ---
 
@@ -90,8 +83,6 @@ Diseñar e implementar un sistema de pentesting basado en agentes de IA, capaz d
 
 - O5: Implementar un mecanismo de control de alucinaciones basado en restricción de herramientas (tool grounding).
 
-> **Nota:** Podrías añadir un O6 relacionado con métricas o evaluación experimental.
-
 ---
 
 # 5. Marco de Hipótesis
@@ -99,8 +90,6 @@ Diseñar e implementar un sistema de pentesting basado en agentes de IA, capaz d
 ## 5.1 Hipótesis Principal
 
 Un sistema basado en agentes de IA, complementado con validación externa y restricción de herramientas, mejora la eficiencia operativa y la fiabilidad frente a los enfoques de escaneo tradicional.
-
-> **Nota:** Puedes formalizarla matemáticamente como en la sección 13 para mayor coherencia.
 
 ---
 
@@ -114,8 +103,7 @@ Un sistema basado en agentes de IA, complementado con validación externa y rest
 
 - H4: La validación de acciones previene la ejecución de comandos inválidos o perjudiciales.
 
-> **Nota:** Podrías añadir una hipótesis explícita sobre rendimiento computacional o coste.
-
+> **Nota:** INvestigar costo de Api y Tokens en la ejecucuion de tareas e implementacion local
 ---
 
 # 6. Modelo de Estado y Pipeline de Ejecución
@@ -123,8 +111,6 @@ Un sistema basado en agentes de IA, complementado con validación externa y rest
 ## 6.1 Definición Formal del Estado
 
 El entorno de red se modela como un grafo de ataque G=(V,E), donde los nodos V representan activos o servicios y las aristas E representan relaciones de acceso o vulnerabilidad.
-
-> **Nota:** Considera especificar tipo de grafo (dirigido, ponderado) para mayor precisión.
 
 ---
 
@@ -144,8 +130,6 @@ El ciclo de procesamiento del agente se formaliza en cinco fases secuenciales:
 
 El principio fundamental de esta arquitectura es que el LLM actúa únicamente como generador de hipótesis, no como fuente de verdad.
 
-> **Nota:** Excelente diseño. Puedes añadir logging estructurado para auditoría.
-
 ---
 
 # 7. Gestión de Alucinaciones y Diseño Defensivo
@@ -158,7 +142,7 @@ El principio fundamental de esta arquitectura es que el LLM actúa únicamente c
 
 - Validación externa: Capa determinista que analiza comandos antes de ejecución.
 
-> **Nota:** Podrías añadir “sandboxing” como capa adicional de seguridad.
+> **Nota:** Si se llega con el tiempo implementar sandboxig para evitar que la IA borre datos o comprometa el sistema como es de publico conocimiento
 
 ---
 
@@ -174,8 +158,6 @@ Se implementará un entorno de red virtualizado que incluye:
 
 - Servicios expuestos para auditoría.
 
-> **Nota:** Especificar herramientas de virtualización (ej. Proxmox, VMware) puede sumar puntos.
-
 ---
 
 ## 8.2 Herramientas de Integración
@@ -184,7 +166,7 @@ Se implementará un entorno de red virtualizado que incluye:
 - CrackMapExec  
 - BloodHound  
 
-> **Nota:** Considera añadir Wireshark o Responder para enriquecer escenarios.
+> **Nota:** Agregar tools a medida que se vayan creando los agentes y defina la arquitectura.
 
 ---
 
