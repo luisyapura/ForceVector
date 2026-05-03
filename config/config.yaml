@@ -1,0 +1,5 @@
+server:
+  host: "" # Nombre del Host
+  ip: "" # IP del Servidor
+  port: 11434 # Puerto del Servidor
+  protocol: "http" # Protocolo"
