@@ -50,7 +50,7 @@ En la investigación científica y en la auditoría técnica, la reproducibilida
 
 ### Fuentes y Marcos de Referencia Sugeridos
 
-Para sostener este análisis en un marco de tesis, las referencias deben provenir de estándares de la industria e investigación aplicada:
+Las referencias de estándares de la industria e investigación aplicada, para ello se eligieron los siguientes materiales:
 
 - (ISC)² (2023). Cybersecurity Workforce Study. Documenta la escasez de talento y justifica la necesidad de automatización para suplir la falta de operadores humanos.
 
