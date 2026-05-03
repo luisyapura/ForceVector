@@ -48,7 +48,7 @@ En la investigación científica y en la auditoría técnica, la reproducibilida
 
 ---
 
-### Fuentes y Marcos de Referencia Sugeridos
+### Fuentes y Marcos de Referencia
 
 Las referencias de estándares de la industria e investigación aplicada, para ello se eligieron los siguientes materiales:
 
