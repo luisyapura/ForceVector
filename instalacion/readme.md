@@ -73,7 +73,7 @@ ollama pull mistral:7b-instruct-q4_K_M
 ## 🔹 4.2 Modelo de Razonamiento
 
 ```bash
-ollama pull mixtral:8x7b-instruct-q4_K_M
+ollama pull ollama run mixtral:8x7b
 ```
 
 ### ✔️ Justificación técnica
