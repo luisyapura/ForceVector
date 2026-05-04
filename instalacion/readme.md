@@ -23,6 +23,7 @@ El sistema utiliza **orquestación secuencial de modelos LLM** para maximizar ca
 * CUDA Toolkit compatible
 * Python 3.11+
 * Git
+* PostgreSQL
 
 Verificación:
 
@@ -73,7 +74,7 @@ ollama pull mistral:7b-instruct-q4_K_M
 ## 🔹 4.2 Modelo de Razonamiento
 
 ```bash
-wget https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF/resolve/main/mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf?download=true -O mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf
+ollama pull mixtral:8x7b
 ```
 
 ### ✔️ Justificación técnica
