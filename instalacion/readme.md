@@ -1,42 +1,51 @@
-# ⚙️ Guía de Implementación — Entorno Local (Windows)
+# 📘 Guía de Implementación — Entorno Local
 
-## Proyecto de Tesis: Sistema de Pentesting Autónomo con LLMs (Ollama)
-
----
-
-## 🧠 1. Objetivo
-
-Implementar un entorno reproducible para ejecutar un sistema de pentesting autónomo basado en **arquitectura multi-modelo**, optimizado para hardware local.
-
-El sistema utiliza **orquestación secuencial de modelos LLM** para maximizar capacidad sin requerir paralelismo en VRAM.
+## 🧪 Proyecto de Tesis: Sistema de Pentesting Autónomo con LLMs (Ollama)
 
 ---
 
-## 🖥️ 2. Requisitos Previos
+## 🎯 1. Objetivo
 
-* Windows 10/11
-* Drivers NVIDIA actualizados
-* CUDA Toolkit compatible
-* Python 3.11+
-* Git
-* PostgreSQL
+Implementar un entorno reproducible para ejecutar un sistema de pentesting autónomo basado en una arquitectura multi-modelo, optimizado para ejecutarse en tu estación de trabajo (Ubuntu 24.04 LTS y RTX 5080 de 16GB VRAM).
 
-Verificación:
+El sistema utiliza orquestación secuencial para maximizar la precisión analítica y de programación, respetando los límites de memoria gráfica y evitando el offloading a CPU.
+
+---
+
+## ⚙️ 2. Requisitos Previos
+
+**Sistema Operativo:** Ubuntu 24.04 LTS./Kali Linux / Windows
+
+**Hardware:** Ryzen 9 9950X3D, 64 GB RAM, NVIDIA RTX 5080 (16 GB VRAM).
+
+**Software y Drivers:**
+
+* Drivers NVIDIA 550+ o superior.
+* CUDA Toolkit 12.4+ compatible.
+* Python 3.11+.
+* Git.
+* PostgreSQL (para el almacenamiento de logs de auditoría).
+
+**Verificación del entorno:**
 
 ```bash
 nvidia-smi
-python --version
+python3 --version
 git --version
+psql --version
 ```
 
 ---
 
-## 🤖 3. Instalación de Ollama
+## 🧠 3. Instalación de Ollama
 
-Descargar:
-https://ollama.com/download
+Instala la última versión de Ollama ejecutando el script oficial en la terminal:
 
-Verificar:
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Verifica el correcto funcionamiento del servicio:
 
 ```bash
 ollama --version
@@ -44,258 +53,128 @@ ollama --version
 
 ---
 
-# 📦 4. Instalación de Modelos (Versionada y Reproducible)
+## 📦 4. Instalación y Dimensionamiento de Modelos
 
-## 🔹 4.1 Modelo Ejecutor (Base del sistema)
+Para aprovechar la GPU sin exceder los 16 GB de VRAM, utilizaremos una estrategia de un solo modelo cargado a la vez, asegurando que cada nodo del pipeline tenga una latencia óptima y un ajuste de parámetros (quantization) adecuado.
 
-```bash
-ollama pull mistral:7b-instruct-q4_K_M
-```
+### 🔹 4.1 Modelo Orquestador / Planner
 
-### ✔️ Justificación técnica
+**Modelo:** qwen3-coder:14b
 
-* Baja latencia → ideal para loops iterativos
-* Buen instruction-following
-* Consumo reducido de VRAM
-* Estable para parsing de outputs
-
-👉 Rol:
-
-* ejecución de tareas
-* interpretación de resultados
-* control del flujo operativo
-
----
-
-## 🔹 4.2 Modelo de Razonamiento
+**Comando de descarga:**
 
 ```bash
-ollama pull mixtral:8x7b
+ollama pull qwen3-coder:14b
 ```
 
-### ✔️ Justificación técnica
+✔️ **Justificación técnica y hardware:**
 
-* Arquitectura MoE (Mixture of Experts)
-* Mejor rendimiento en razonamiento multi-step
-* Capacidad de planificación compleja
-
-👉 Rol:
-
-* diseño de vectores de ataque
-* toma de decisiones
-* priorización
+* **Razonamiento:** El tamaño de 14B ofrece el nivel de abstracción y estructura (JSON Schema) necesario para diseñar árboles de ataque lógicos.
+* **Memoria:** Ocupa aproximadamente 9.2 GB en VRAM (versión Q4_K_M), dejando espacio en memoria para el Executor.
 
 ---
 
-## 🔹 4.3 Modelo Especializado en Código
+### 🔹 4.2 Modelo Executor y Analista de Herramientas
+
+**Modelo:** mistral-nemo:12b-instruct
+
+**Comando de descarga:**
 
 ```bash
-ollama pull deepseek-coder:6.7b-instruct-q4_K_M
+ollama pull mistral-nemo:12b-instruct
 ```
 
-### ✔️ Justificación técnica
+✔️ **Justificación técnica y hardware:**
 
-* Optimizado para generación de código
-* Mejor desempeño en scripting técnico
-* Alta precisión en sintaxis
-
-👉 Rol:
-
-* generación de exploits
-* creación de payloads
-* automatización técnica
+* **Eficiencia:** Ocupa 7.8 GB en VRAM.
+* **Propósito:** Excelente manejo de I/O de terminal, parsing de comandos y ejecución de herramientas de seguridad ofensiva (como Nmap, SQLMap, etc.) de manera directa.
 
 ---
 
-## 🔍 Verificación
+### 🔹 4.3 Modelo Especializado en Código
+
+**Modelo:** deepseek-coder:6.7b
+
+**Comando de descarga:**
 
 ```bash
-ollama list
+ollama pull deepseek-coder:6.7b
 ```
+
+✔️ **Justificación técnica y hardware:**
+
+* **Precisión:** Ocupa 4.1 GB en VRAM.
+* **Propósito:** Generación, depuración e inserción de payloads y exploits sin contaminar el contexto del orquestador.
 
 ---
 
-# ⚙️ 5. Configuración Crítica
+## 🧩 5. Configuración del Servidor y Gestión de Memoria
+
+Para evitar la contención de memoria gráfica y garantizar que solo un modelo se cargue a la vez (evitando la saturación de los 16 GB), exporta estas variables de entorno en el sistema:
 
 ```bash
-set OLLAMA_MAX_LOADED_MODELS=1
-set OLLAMA_NUM_GPU=1
-```
-
-### ✔️ Objetivo
-
-* Evitar múltiples modelos en VRAM
-* Prevenir crashes por memoria
-* Forzar ejecución secuencial
-
----
-
-# 🧠 6. ¿Por qué usar versiones *Instruct*?
-
-## 🔹 Diferencia clave
-
-### Modelo base
-
-* Predicción de texto sin control
-* Salidas inconsistentes
-* Difícil de automatizar
-
-### Modelo Instruct
-
-* Fine-tuned para seguir instrucciones
-* Salidas estructuradas
-* Mayor consistencia
-
----
-
-## ⚠️ Impacto en el sistema
-
-Tu arquitectura depende de:
-
-* prompts estructurados
-* outputs parseables
-* decisiones encadenadas
-
-👉 Sin *Instruct*:
-
-* respuestas caóticas
-* formato impredecible
-* fallos en automatización
-
----
-
-## ✅ Ventajas en esta tesis
-
-* Mejor adherencia a formatos (JSON, listas, etc.)
-* Menor necesidad de prompt engineering complejo
-* Mayor estabilidad operativa
-
----
-
-## 🧩 Justificación formal (defensa)
-
-> Se seleccionaron variantes *Instruct* debido a su alineación con tareas dirigidas, reducción de entropía en las salidas y mejor integración con sistemas automatizados de orquestación.
-
----
-
-# 🏗️ 7. Arquitectura del Sistema
-
-```text
-Input
-  ↓
-Planner (Mixtral)
-  ↓
-Executor (Mistral)
-  ↓
-Coder (DeepSeek, opcional)
-  ↓
-Resultado
-```
-```
-├── ForceVector/
-│   ├── config/
-│   │   └── config.json       # Archivo de configuración
-│   ├── agents/
-│   │   ├── __init__.py
-│   │   └── ollama_client.py   # Módulo reutilizable de conexión
-│   └── main.py                # Script principal de ejecución
-```
----
-
-## 🔄 Ejecución real (Single Model Strategy)
-
-* Un solo modelo activo a la vez
-* Carga bajo demanda
-* Descarga implícita al cambiar
-
----
-
-# ⚙️ 8. Orquestador (Base del sistema)
-
-```python
-import subprocess
-
-def run_model(model, prompt):
-    result = subprocess.run(
-        ["ollama", "run", model],
-        input=prompt,
-        text=True,
-        capture_output=True
-    )
-    return result.stdout
-
-
-def route_task(task):
-    if task["type"] == "planning":
-        return run_model("mixtral:8x7b-instruct-q4_K_M", task["input"])
-
-    elif task["type"] == "code":
-        return run_model("deepseek-coder:6.7b-instruct-q4_K_M", task["input"])
-
-    else:
-        return run_model("mistral:7b-instruct-q4_K_M", task["input"])
+export OLLAMA_MAX_LOADED_MODELS=1
+export OLLAMA_NUM_GPU=1
 ```
 
 ---
 
-# 💾 9. Persistencia de Estado
+## 🧬 6. Diferenciación de Modelos Instruct vs. Base
 
-Ejemplo:
+Para tareas de automatización y orquestación de agentes, se deben utilizar únicamente variantes de tipo Instruct o Coder.
+
+* **Modelos Base:** Predicción de texto no determinista. Generan respuestas conversacionales impredecibles y no parseables.
+* **Modelos Instruct/Coder:** Optimizados para el seguimiento de esquemas (JSON, listas estructuradas, comandos de consola).
+
+**Justificación formal:** La reducción de la entropía en las salidas es fundamental para que el flujo de agentes no se interrumpa debido a respuestas caóticas o no estructuradas.
+
+---
+
+## 🏗️ 7. Arquitectura del Sistema
+
+El sistema procesa la información de forma secuencial, pasando el contexto paso a paso entre los agentes.
+
+**Estructura de Directorios**
+
+```plaintext
+ForceVector/
+├── config/
+│   └── config.json # Configuración y parámetros del sistema
+├── agents/
+│   ├── __init__.py
+│   └── ollama_client.py # Cliente de conexión reutilizable
+└── main.py # Orquestador principal
+```
+
+---
+
+## 🧠 8. Implementación del Orquestador [main.py](/main.py)
+
+
+---
+
+## 💾 9. Persistencia de Estado
+
+El sistema almacena todas las decisiones y respuestas en un archivo de logs (log.jsonl) para garantizar la trazabilidad de los datos.
 
 ```python
 import json
+from datetime import datetime
 
-def save_log(data):
-    with open("log.json", "a") as f:
+def save_log(data: dict, filename="log.jsonl"):
+    data["timestamp"] = datetime.now().isoformat()
+    with open(filename, "a") as f:
         f.write(json.dumps(data) + "\n")
 ```
 
 ---
 
-# 🚀 10. Prueba Inicial
+## ▶️ 10. Prueba Inicial del Sistema
+
+Para ejecutar el flujo completo por primera vez:
 
 ```bash
-python main.py
+python3 main.py
 ```
-
----
-
-# ⚠️ 11. Problemas Comunes
-
-### Modelo no carga
-
-* Verificar VRAM
-* Reiniciar Ollama
-
-### Lentitud
-
-* Normal en modelos grandes
-* Reducir cambios de modelo
-
-### CUDA no detectado
-
-* Revisar drivers
-
----
-
-# 📌 12. Buenas Prácticas
-
-* Evitar tags genéricos (usar versiones exactas)
-* Minimizar swaps de modelo
-* Loggear todas las decisiones
-* Separar roles claramente
-
----
-
-# 🧭 13. Conclusión
-
-El sistema implementado:
-
-* Utiliza múltiples LLMs especializados
-* Opera en hardware local limitado
-* Evita paralelismo mediante orquestación
-* Garantiza reproducibilidad
-
-👉 Esto lo posiciona como una arquitectura sólida, defendible y alineada con sistemas reales de IA aplicada.
 
 ---
