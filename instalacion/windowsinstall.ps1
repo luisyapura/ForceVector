@@ -3,7 +3,7 @@
 
 $Models = @(
     "mistral:7b-instruct-q4_K_M",
-    "mixtral:8x7b-instruct-q4_K_M",
+    "mixtral:8x7b",
     "deepseek-coder:6.7b-instruct-q4_K_M"
 )
 
