@@ -6,11 +6,7 @@
 
 ## 🧠 1. Objetivo
 
-Implementar un entorno reproducible para ejecutar un sistema de pentesting autónomo basado en **arquitectura multi-modelo**, optimizado para hardware local:
-
-* GPU: RTX 5080
-* CPU: Ryzen 9 9950X3D
-* RAM: 64 GB
+Implementar un entorno reproducible para ejecutar un sistema de pentesting autónomo basado en **arquitectura multi-modelo**, optimizado para hardware local.
 
 El sistema utiliza **orquestación secuencial de modelos LLM** para maximizar capacidad sin requerir paralelismo en VRAM.
 
