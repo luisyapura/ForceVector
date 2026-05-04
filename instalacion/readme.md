@@ -6,7 +6,7 @@
 
 ## 🎯 1. Objetivo
 
-Implementar un entorno reproducible para ejecutar un sistema de pentesting autónomo basado en una arquitectura multi-modelo, optimizado para ejecutarse en tu estación de trabajo (Ubuntu 24.04 LTS y RTX 5080 de 16GB VRAM).
+Implementar un entorno reproducible para ejecutar un sistema de pentesting autónomo basado en una arquitectura multi-modelo, optimizado para ejecutarse en tu estación de trabajo, este contara de un servidor local con 1 o mas clientes.
 
 El sistema utiliza orquestación secuencial para maximizar la precisión analítica y de programación, respetando los límites de memoria gráfica y evitando el offloading a CPU.
 
@@ -145,36 +145,3 @@ ForceVector/
 │   └── ollama_client.py # Cliente de conexión reutilizable
 └── main.py # Orquestador principal
 ```
-
----
-
-## 🧠 8. Implementación del Orquestador [main.py](/main.py)
-
-
----
-
-## 💾 9. Persistencia de Estado
-
-El sistema almacena todas las decisiones y respuestas en un archivo de logs (log.jsonl) para garantizar la trazabilidad de los datos.
-
-```python
-import json
-from datetime import datetime
-
-def save_log(data: dict, filename="log.jsonl"):
-    data["timestamp"] = datetime.now().isoformat()
-    with open(filename, "a") as f:
-        f.write(json.dumps(data) + "\n")
-```
-
----
-
-## ▶️ 10. Prueba Inicial del Sistema
-
-Para ejecutar el flujo completo por primera vez:
-
-```bash
-python3 main.py
-```
-
----
