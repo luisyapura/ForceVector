@@ -49,7 +49,7 @@ El sistema busca emular el razonamiento de un pentester humano, permitiendo toma
 ```
                   +-----------------------------------+
                   |         Agente Orquestador        |
-                  |         (Qwen2.5-Coder-7B)        |
+                  |         (Qwen3-Coder:14b)         |
                   +-----------------+-----------------+
                                     |
             +-----------------------+-----------------------+
