@@ -47,17 +47,24 @@ El sistema busca emular el razonamiento de un pentester humano, permitiendo toma
 ## ⚙️ Arquitectura (visión inicial)
 
 ```
-[Entrada / Escaneo]
-        ↓
-      Parser
-        ↓
-Base de Conocimiento (PostgreSQL)
-        ↓
-     LLM (IA)
-        ↓
-Motor de Decisión
-        ↓
- Recomendaciones
+                  +-----------------------------------+
+                  |         Agente Orquestador        |
+                  |         (Qwen2.5-Coder-7B)        |
+                  +-----------------+-----------------+
+                                    |
+            +-----------------------+-----------------------+
+            |                       |                       |
+  +---------v---------+   +---------v---------+   +---------v---------+
+  | Reconocimiento    |   |   Protocolos      |   |    Evaluación de  |
+  | (Scapy / nmap)    |   | (ARP/DNS/SMB)     |   |   Autenticación   |
+  +---------+---------+   +---------+---------+   +---------+---------+
+            |                       |                       |
+            +-----------------------+-----------------------+
+                                    |
+                          +---------v---------+
+                          |   Base de datos   |
+                          | (Vectorial / Logs)|
+                          +-------------------+
 ```
 
 ---
