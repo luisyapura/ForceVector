@@ -194,7 +194,15 @@ Coder (DeepSeek, opcional)
   ↓
 Resultado
 ```
-
+```
+├── ForceVector/
+│   ├── config/
+│   │   └── config.json       # Archivo de configuración
+│   ├── agents/
+│   │   ├── __init__.py
+│   │   └── ollama_client.py   # Módulo reutilizable de conexión
+│   └── main.py                # Script principal de ejecución
+```
 ---
 
 ## 🔄 Ejecución real (Single Model Strategy)
