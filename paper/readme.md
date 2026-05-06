@@ -144,7 +144,27 @@ El objetivo principal es resolver las limitaciones descritas mediante la impleme
 
 # 3. Objetivo General
 
-Diseñar e implementar un sistema de pentesting basado en agentes de IA, capaz de operar en modo Human-in-the-Loop (MitL) o autónomo, manteniendo el control sobre la generación de alucinaciones y el impacto sobre la red objetivo.
+Diseñar e implementar un sistema autónomo de pentesting basado en agentes de IA que integra el razonamiento lógico de modelos de lenguaje con la ejecución determinista de herramientas validadas. El sistema opera de manera bidireccional permitiendo la alternancia entre el modo Human-in-the-Loop (MitL) y el modo de ejecución autónoma.
+
+A continuación se detallan los subcomponentes y las bases técnicas que sustentan este objetivo:
+
+## 3.1 Arquitectura de Control de Alucinaciones
+
+- Mecanismo de validación sintáctica: El sistema incorpora una capa de validación previa a la ejecución (pre-execution verification) que analiza la salida generada por el agente de IA. Se evalúa la sintaxis de los comandos mediante expresiones regulares y validadores de esquema (JSON Schema) antes de interactuar con el entorno de red.
+
+- Reducción del espacio de estados inválidos: Al limitar el dominio de acción a una lista blanca de herramientas y argumentos permitidos, se elimina la posibilidad de que el modelo invoque comandos no soportados o flags inexistentes en el sistema host.
+
+## 3.2 Modos de Operación: MitL vs. Autónomo
+
+- Modo Human-in-the-Loop (MitL): El agente requiere la aprobación explícita de un operador humano antes de ejecutar acciones de red de alto impacto (por ejemplo, el lanzamiento de exploits, escaneos agresivos o modificaciones en el estado del objetivo). El ciclo de control se detiene en la fase de Planner para que el experto revise el vector de ataque propuesto.
+
+- Modo Autónomo: El sistema ejecuta el bucle de razonamiento y acción (ReAct o Plan-and-Solve) de forma continua. La seguridad del entorno se mantiene mediante umbrales de detección integrados y el análisis del impacto en la red objetivo, evitando la sobrecarga de los servicios mediante limitadores de tasa (rate limiters) y retardo en las peticiones.
+
+## 3.3 Aporte Científico y Técnico
+
+- Determinismo en la ejecución: A diferencia de los enfoques puramente generativos, este sistema garantiza que la cadena de herramientas (tools) se comporte de forma determinista y auditable.
+
+- Auditoría de decisiones: Cada iteración del agente genera un log estructurado (con metadatos, comandos emitidos, respuestas del servidor y estado del agente), lo que permite la trazabilidad completa de la evaluación de seguridad.
 
 ---
 
