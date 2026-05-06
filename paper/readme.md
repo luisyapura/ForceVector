@@ -108,23 +108,37 @@ El marco de Gartner indica que las pruebas anuales o semestrales ("point-in-time
 
 ## 2.1 Limitaciones del Pentesting Tradicional
 
-- Falta de razonamiento dinámico: Los escáneres estáticos (como Nmap o Nessus) no pueden modificar su estrategia de enumeración basándose en el comportamiento de servicios no estándar.
+El enfoque convencional de evaluación de seguridad, basado principalmente en herramientas de escaneo y enumeración estática, presenta brechas operativas significativas en entornos modernos y dinámicos.
 
-- reproducibilidad: La captura del estado del entorno de red no es persistente ni estructurada.
+- Falta de razonamiento dinámico y adaptabilidad contextual: Herramientas como Nmap o Nessus operan mediante firmas predefinidas y reglas de coincidencia estáticas. Cuando se enfrentan a servicios no estándar, protocolos ofuscados o configuraciones de red personalizadas, son incapaces de modificar su estrategia de enumeración. No existe una fase de razonamiento que permita interpretar el contexto de una respuesta inesperada y pivotar la estrategia de escaneo de forma autónoma.
 
----
+    Fundamentación: Investigaciones en el campo de la seguridad en redes (como los estudios sobre la automatización de la fase de reconocimiento de la MITRE ATT&CK y los marcos de evaluación de vulnerabilidades) demuestran que los escáneres estáticos tienen una tasa de falsos negativos elevada ante servicios que no responden a los patrones de puerto estándar.
+
+- Falta de reproducibilidad y persistencia estructurada: Las evaluaciones manuales o semi-automatizadas no generan un registro de estado persistente, estructurado y auditable. La captura del estado del entorno de red suele ser efímera o almacenada en formatos planos (como capturas PCAP o reportes en texto/HTML), lo que impide que el sistema aprenda de las ejecuciones anteriores o que los flujos de datos sean consumibles por otros componentes analíticos de manera estructurada.
+
+    Fundamentación: Los estándares de auditoría técnica exigen trazabilidad y determinismo (NIST SP 800-115). La dependencia de herramientas sin estados estructurados de red genera inconsistencias en la reproducibilidad de los hallazgos.
 
 ## 2.2 Limitaciones de los Modelos de Lenguaje
 
-- Alucinación de herramientas o parámetros: El modelo puede inventar parámetros de consola o exploits inexistentes.
+La integración de modelos de lenguaje (LLM) en procesos de toma de decisiones técnicas presenta desafíos críticos relacionados con la veracidad y la validación empírica.
 
-- Sobreconfianza (Comprensión errónea): El modelo puede asumir que un servicio es vulnerable sin realizar una verificación empírica.
+- Alucinación de herramientas y parámetros: Los LLM son modelos probabilísticos generativos. En dominios técnicos donde se requiere precisión sintáctica (como comandos de consola o firmas de exploits), pueden generar parámetros inexistentes o cadenas de argumentos sintácticamente inválidas.
 
----
+    Fundamentación: En los análisis sobre la confiabilidad de los LLMs en tareas de ciberseguridad, se destaca que los modelos tienden a combinar argumentos de diferentes herramientas (por ejemplo, mezclar la sintaxis de Nmap con la de Masscan), lo que genera fallos de ejecución.
+
+- Sobreconfianza y falta de validación empírica: Los agentes basados únicamente en el modelo pueden asumir que una condición de servicio es vulnerable basándose en la coincidencia superficial de una versión de software (banners), sin ejecutar una validación empírica en el entorno de destino.
+
+    Fundamentación: La literatura sobre agentes autónomos en seguridad enfatiza el problema de la validación de la cadena de acción (Action Chain Validation). Sin una herramienta de verificación determinista, el agente basa sus decisiones en inferencias probabilísticas sobre entornos reales de red, lo que degrada la precisión técnica.
 
 ## 2.3 Motivación Central
 
-Automatizar el proceso de toma de decisiones de forma fiable mediante la integración de agentes de IA, utilizando herramientas reales validadas de forma determinista antes de la ejecución.
+El objetivo principal es resolver las limitaciones descritas mediante la implementación de un sistema de agentes autónomos que integre el razonamiento lógico del LLM con la ejecución determinista de herramientas validadas.
+
+- Integración de Agentes de IA y Orquestación: El sistema utiliza un marco de agentes (Planner, Executor, Coder) para establecer una secuencia de pasos que se pueden auditar y modificar en tiempo real según el comportamiento de la red.
+
+- Validación Determinista: Antes de ejecutar cualquier herramienta o script en el entorno de destino, el sistema requiere que la acción pase por una capa de validación. Esto asegura que los comandos generados por el modelo sean verificados sintáctica y semánticamente por el entorno local antes de su transmisión.
+
+- Eficiencia operativa y escalabilidad: Se minimiza la intervención humana en la toma de decisiones repetitivas de bajo nivel, permitiendo al analista centrarse en el diseño de estrategias ofensivas y la validación de hallazgos complejos.
 
 ---
 
