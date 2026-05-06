@@ -62,22 +62,45 @@ Las referencias de estándares de la industria e investigación aplicada, para e
 
 - Literatura Académica (IEEE Xplore / ACM Digital Library): Búsquedas enfocadas en "Automated Penetration Testing with Reinforcement Learning" o "Autonomous Security Agents". Estos papers (frecuentes a partir de 2021) inician invariablemente sus introducciones citando la falta de escalabilidad y la dependencia humana del pentesting tradicional como justificación para el uso de Inteligencia Artificial en el modelo ofensivo.
 ---
+## 1.2. Declaración del Problema
 
-## 1.2 Declaración del Problema
+El entorno actual de ciberseguridad empresarial evidencia una brecha operativa y semántica crítica entre la automatización estática y el razonamiento humano:
 
-Existe una brecha operativa y semántica entre:
+### La Brecha Operativa (Bajo Nivel vs. Alto Nivel):
+Las herramientas de escaneo tradicionales operan de forma determinista mediante firmas estáticas o enumeración de puertos. Carecen de la capacidad de enlazar diferentes vectores de ataque. Por el contrario, los procesos de toma de decisiones de alto nivel requieren comprender el contexto del negocio, el valor de los activos y la correlación de vectores.
 
-- La automatización de bajo nivel: Herramientas de escaneo que operan mediante firmas o enumeración de puertos.
+### El Riesgo de Alucinación en Modelos de Lenguaje (LLMs):
+El uso directo e irrestricto de LLMs en tareas de pentesting introduce riesgos severos. Una alucinación (por ejemplo, la generación de un comando sintácticamente válido pero semánticamente destructivo, o bien una ruta de explotación inexistente) compromete la integridad del entorno auditado y resta fiabilidad al proceso de auditoría.
 
-- El razonamiento estratégico: Procesos de toma de decisiones de alto nivel que requieren contexto de negocio y correlación de vectores de ataque.
+## 1.3. Oportunidad de Investigación
 
-El uso directo de Modelos de Lenguaje (LLM) introduce el riesgo de alucinaciones. En pentesting, una alucinación (como la inferencia de un comando sintácticamente válido pero semánticamente destructivo o inexistente) compromete la integridad del entorno y la fiabilidad de la auditoría.
+La convergencia de los agentes autónomos de Inteligencia Artificial y las nuevas exigencias del mercado abre una oportunidad de investigación para solucionar las limitaciones expuestas:
 
----
+### Razonamiento Contextual y Adaptabilidad:
+Los agentes de IA permiten la planificación dinámica y la adaptación ante respuestas imprevistas del entorno, siempre y cuando se implemente un mecanismo de control estricto sobre las acciones.
 
-## 1.3 Oportunidad de Investigación
+### Análisis del Mercado y Tendencias 2025-2026:
+Según Gartner, el mercado de plataformas de exposición (CTEM) está creciendo a una tasa anual compuesta (CAGR) del $10.15\%$ entre 2025 y 2033. Además, se observa una transición hacia el uso de sistemas multiagente para automatizar procesos complejos, lo cual reduce la sobrecarga de los equipos de seguridad en un $40\%$.
 
-El uso de agentes de IA permite el razonamiento contextual, la planificación dinámica y la adaptación ante respuestas imprevistas del entorno, siempre y cuando se implemente un mecanismo de control estricto sobre las acciones.
+Investigaciones recientes publicadas en IEEE demuestran que el uso de enfoques como el Aprendizaje por Refuerzo (Reinforcement Learning, o RL) con bases de conocimiento basadas en MITRE ATT&CK reduce drásticamente el espacio de acción, optimizando la convergencia del agente hacia las rutas de ataque.
+
+## Arquitectura de Control y Agentes Autónomos
+
+Para comprender cómo se soluciona la brecha entre el razonamiento y la ejecución, el siguiente diagrama ilustra la separación de responsabilidades y las capas de control:
+
+- Capa de Razonamiento (Planning Loop): La IA evalúa la postura de seguridad y genera tácticas.
+- Capa de Verificación y Control: Filtra comandos sintácticamente peligrosos antes de interactuar con el entorno de red.
+- Capa de Ejecución: Interactúa con las interfaces y reporta los resultados de vuelta al bucle para la toma de decisiones.
+
+## Análisis de la Realidad del Mercado y Referencias (2025-2026)
+
+De acuerdo con estudios de la industria y la literatura académica más reciente:
+
+### Eficiencia en Escenarios Reales:
+Estudios recientes (como los publicados en IEEE a principios de 2024 y 2025 sobre marcos de aprendizaje por refuerzo jerárquico y algoritmos A2C) demuestran que la automatización de la ruta de ataque reduce de forma drástica el tiempo de descubrimiento y evaluación frente a la intervención humana.
+
+### El Paradigma CTEM (Continuous Threat Exposure Management):
+El marco de Gartner indica que las pruebas anuales o semestrales ("point-in-time") son obsoletas debido a la velocidad con la que mutan los entornos en la nube y la frecuencia de divulgación de nuevas vulnerabilidades. Los sistemas de validación continua se han convertido en un requisito obligatorio para las organizaciones.
 
 ---
 
