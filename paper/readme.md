@@ -154,17 +154,91 @@ A continuación se detallan los subcomponentes y las bases técnicas que sustent
 
 - Reducción del espacio de estados inválidos: Al limitar el dominio de acción a una lista blanca de herramientas y argumentos permitidos, se elimina la posibilidad de que el modelo invoque comandos no soportados o flags inexistentes en el sistema host.
 
+- Validación semántica contextual: Además de la validación sintáctica, se incorpora una capa de verificación semántica que contrasta la coherencia entre el comando generado, el estado actual del sistema y los objetivos definidos. Esto reduce la probabilidad de ejecuciones inconsistentes o destructivas.
+
 ## 3.2 Modos de Operación: MitL vs. Autónomo
 
-- Modo Human-in-the-Loop (MitL): El agente requiere la aprobación explícita de un operador humano antes de ejecutar acciones de red de alto impacto (por ejemplo, el lanzamiento de exploits, escaneos agresivos o modificaciones en el estado del objetivo). El ciclo de control se detiene en la fase de Planner para que el experto revise el vector de ataque propuesto.
+El diseño del sistema contempla un análisis comparativo entre dos paradigmas de operación: sistemas totalmente autónomos y esquemas Human-in-the-Loop (MitL), evaluados bajo criterios de precisión, riesgo operativo, escalabilidad y cumplimiento normativo.
 
-- Modo Autónomo: El sistema ejecuta el bucle de razonamiento y acción (ReAct o Plan-and-Solve) de forma continua. La seguridad del entorno se mantiene mediante umbrales de detección integrados y el análisis del impacto en la red objetivo, evitando la sobrecarga de los servicios mediante limitadores de tasa (rate limiters) y retardo en las peticiones.
+### Sistema Totalmente Autónomo (Agentes Independientes)
 
-## 3.3 Aporte Científico y Técnico
+Este modelo propone que los agentes de IA perciban el entorno, tomen decisiones y ejecuten acciones de explotación sin intervención humana.
 
-- Determinismo en la ejecución: A diferencia de los enfoques puramente generativos, este sistema garantiza que la cadena de herramientas (tools) se comporte de forma determinista y auditable.
+- Fundamentación Técnica: Los sistemas autónomos utilizan bucles de retroalimentación continua como PEAS (Performer, Environment, Actuators, Sensors) y OODA (Observe, Orient, Decide, Act), así como técnicas de aprendizaje por refuerzo para optimizar la toma de decisiones en entornos dinámicos.
 
-- Auditoría de decisiones: Cada iteración del agente genera un log estructurado (con metadatos, comandos emitidos, respuestas del servidor y estado del agente), lo que permite la trazabilidad completa de la evaluación de seguridad.
+- Ventajas:
+    - Velocidad de procesamiento: Capacidad de reacción inmediata ante la detección de vectores de ataque complejos.
+    - Escalabilidad: Permite auditar múltiples objetivos simultáneamente sin depender de la disponibilidad del operador.
+
+- Desventajas y Riesgos:
+    - Riesgo de daño colateral: La explotación autónoma en entornos de producción puede provocar indisponibilidad de servicios o corrupción de datos.
+    - Caja negra (Black Box): Dificultad para auditar la cadena de decisiones si no existen mecanismos estrictos de logging y control de políticas de recompensa.
+
+### Sistema "Man-in-the-Loop" (MitL) / Co-piloto Experto
+
+En este esquema, la IA actúa como un sistema de soporte a la decisión que propone acciones, pero requiere validación humana para su ejecución.
+
+- Fundamentación Técnica: Se basa en arquitecturas DSS (Decision Support Systems) y en técnicas de RAG (Retrieval-Augmented Generation), integrando bases de conocimiento actualizadas como CVE, NVD o MITRE ATT&CK para contextualizar decisiones.
+
+- Ventajas:
+    - Control del riesgo: Reduce el impacto de falsos positivos en entornos críticos.
+    - Trazabilidad: Cada acción ejecutada cuenta con validación humana explícita, facilitando auditorías y cumplimiento normativo (ej. NIST, ISO 27001).
+
+- Desventajas:
+    - Latencia operativa: La intervención humana introduce retrasos en la ejecución.
+    - Fatiga de alertas: Un alto volumen de recomendaciones puede degradar la capacidad de análisis del operador.
+
+## 3.3 Modelo de Autonomía Híbrida (Propuesta del TFM)
+
+Para el alcance del sistema propuesto (ForceVector), se adopta un modelo de autonomía híbrida, también conocido como Human-on-the-Loop o supervisión avanzada.
+
+- Justificación de la Arquitectura:
+    - Naturaleza del entorno: Los entornos empresariales presentan alta variabilidad, lo que impide confiar plenamente en decisiones autónomas sin validación contextual.
+    - Seguridad y fiabilidad: La ejecución autónoma de exploits sin supervisión contradice principios básicos de gestión de riesgos en ciberseguridad ofensiva.
+    - Rol de la IA: El agente actúa como generador, correlador y priorizador de vectores de ataque, pero no como ejecutor final de acciones críticas sin validación.
+
+## 3.4 Justificación de la Elección del Modelo MitL
+
+La adopción del modelo Man-in-the-Loop (MitL) como componente central del sistema se fundamenta en criterios técnicos, operativos y regulatorios que priorizan la fiabilidad sobre la automatización completa.
+
+- Control explícito del riesgo operativo: En entornos reales, especialmente productivos, el coste de un falso positivo ejecutado (por ejemplo, un exploit mal validado) es significativamente mayor que el coste de una oportunidad no explotada. El modelo MitL introduce un punto de control humano que actúa como mecanismo de contención.
+
+- Limitaciones actuales de los LLMs: A pesar de su capacidad de razonamiento contextual, los modelos de lenguaje siguen siendo sistemas probabilísticos sin garantías de veracidad absoluta. La supervisión humana compensa esta limitación estructural mediante validación empírica.
+
+- Cumplimiento normativo y responsabilidad legal: Marcos regulatorios y estándares de auditoría (como NIST SP 800-115 e ISO 27001) exigen trazabilidad, control y responsabilidad sobre las acciones ejecutadas en un entorno. El modelo MitL permite asignar responsabilidad explícita a decisiones críticas.
+
+- Reducción de superficie de fallo sistémico: En sistemas totalmente autónomos, un error en la lógica del agente puede propagarse de forma escalada. La intervención humana introduce un mecanismo de corte que evita la propagación de errores en cadena.
+
+- Alineación con prácticas reales de la industria: Las plataformas comerciales de seguridad ofensiva y validación continua (CTEM) no operan bajo autonomía total, sino bajo modelos asistidos donde el analista mantiene el control de ejecución.
+
+## 3.5 Propuesta de Implementación por Fases
+
+El flujo operativo del sistema se estructura en niveles de autonomía progresiva:
+
+- Recopilación y Análisis:
+    - Nivel de Autonomía: Totalmente autónomo
+    - Acción del Agente: Escaneo de puertos, identificación de servicios e inventario de vectores.
+    - Acción del Operador: Sin intervención (monitorización pasiva).
+
+- Generación de Vectores:
+    - Nivel de Autonomía: Asistida (Co-piloto)
+    - Acción del Agente: Evaluación de vulnerabilidades y generación de posibles cadenas de explotación.
+    - Acción del Operador: Revisión, validación y selección de vectores.
+
+- Ejecución y Post-explotación:
+    - Nivel de Autonomía: Supervisada (MitL)
+    - Acción del Agente: Preparación de payloads y planificación de ejecución.
+    - Acción del Operador: Autorización explícita antes de cualquier acción sobre el objetivo.
+
+## 3.6 Aporte Científico y Técnico
+
+- Determinismo en la ejecución: El sistema garantiza que las herramientas operen bajo condiciones controladas, eliminando comportamientos no deterministas propios de modelos generativos sin restricciones.
+
+- Auditoría de decisiones: Cada iteración del agente genera logs estructurados con metadatos, comandos ejecutados, respuestas del sistema y estado interno del agente.
+
+- Reducción de falsos positivos: La combinación de validación sintáctica, semántica y supervisión humana reduce significativamente la probabilidad de errores críticos.
+
+- Alineación con estándares: El diseño es consistente con marcos como NIST SP 800-115, MITRE ATT&CK y el paradigma CTEM (Continuous Threat Exposure Management).
 
 ---
 
