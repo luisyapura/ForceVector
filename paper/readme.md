@@ -215,20 +215,15 @@ La adopción del modelo Man-in-the-Loop (MitL) como componente central del siste
 
 El flujo operativo del sistema se estructura en niveles de autonomía progresiva:
 
-- Recopilación y Análisis:
-    - Nivel de Autonomía: Totalmente autónomo
-    - Acción del Agente: Escaneo de puertos, identificación de servicios e inventario de vectores.
-    - Acción del Operador: Sin intervención (monitorización pasiva).
-
-- Generación de Vectores:
-    - Nivel de Autonomía: Asistida (Co-piloto)
-    - Acción del Agente: Evaluación de vulnerabilidades y generación de posibles cadenas de explotación.
-    - Acción del Operador: Revisión, validación y selección de vectores.
-
-- Ejecución y Post-explotación:
-    - Nivel de Autonomía: Supervisada (MitL)
-    - Acción del Agente: Preparación de payloads y planificación de ejecución.
-    - Acción del Operador: Autorización explícita antes de cualquier acción sobre el objetivo.
+| Fase del Pentesting              | Nivel de Autonomía        | Acción del Agente                                              | Acción del Operador                 |
+|---------------------------------|---------------------------|-----------------------------------------------------------------|------------------------------------|
+| 1. Reconocimiento               | Autónomo                  | Ejecución de OSINT y escaneos de red.                          | Monitorización pasiva de logs.      |
+| 2. Modelado de Amenazas         | Autónomo                  | Análisis de vectores y mapeo de riesgos.                       | Validación del alcance.             |
+| 3. Análisis de Vulnerabilidades | Autónomo                  | Identificación de fallos y CVEs.                               | Sin intervención.                   |
+| 4. Explotación                  | Supervisada (MitL)        | Preparación de payloads y cadenas de ataque.                   | Autorización de ejecución.          |
+| 5. Post-explotación             | Supervisada (MitL)        | Extracción de información o escalada.                          | Autorización explícita.             |
+| 6. Análisis de Impacto          | Autónomo                  | Cuantificación del riesgo.                                     | Sin intervención.                   |
+| 7. Informe                      | Autónomo                  | Generación de resultados en formato técnico.                   | Revisión y exportación.             |
 
 ## 3.6 Aporte Científico y Técnico
 
