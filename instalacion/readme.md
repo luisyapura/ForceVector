@@ -59,7 +59,7 @@ Para aprovechar la GPU sin exceder los 16 GB de VRAM, utilizaremos una estrategi
 
 ### 🔹 4.1 Modelo Orquestador / Planner
 
-**Modelo:** qwen3-coder:14b
+**Modelo:** qwen2.5-coder:14b
 
 **Comando de descarga:**
 
@@ -71,40 +71,6 @@ ollama pull qwen3-coder:14b
 
 * **Razonamiento:** El tamaño de 14B ofrece el nivel de abstracción y estructura (JSON Schema) necesario para diseñar árboles de ataque lógicos.
 * **Memoria:** Ocupa aproximadamente 9.2 GB en VRAM (versión Q4_K_M), dejando espacio en memoria para el Executor.
-
----
-
-### 🔹 4.2 Modelo Executor y Analista de Herramientas
-
-**Modelo:** mistral-nemo:12b-instruct
-
-**Comando de descarga:**
-
-```bash
-ollama pull mistral-nemo:12b-instruct
-```
-
-✔️ **Justificación técnica y hardware:**
-
-* **Eficiencia:** Ocupa 7.8 GB en VRAM.
-* **Propósito:** Excelente manejo de I/O de terminal, parsing de comandos y ejecución de herramientas de seguridad ofensiva (como Nmap, SQLMap, etc.) de manera directa.
-
----
-
-### 🔹 4.3 Modelo Especializado en Código
-
-**Modelo:** deepseek-coder:6.7b
-
-**Comando de descarga:**
-
-```bash
-ollama pull deepseek-coder:6.7b
-```
-
-✔️ **Justificación técnica y hardware:**
-
-* **Precisión:** Ocupa 4.1 GB en VRAM.
-* **Propósito:** Generación, depuración e inserción de payloads y exploits sin contaminar el contexto del orquestador.
 
 ---
 
