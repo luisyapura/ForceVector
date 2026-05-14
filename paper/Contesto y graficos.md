@@ -177,25 +177,5 @@ Es imprescindible operar dentro de marcos legales y éticos. Consideraciones cla
 
 No se han encontrado fuentes específicas que detallen la intersección de GDPR con pentesting IA en la literatura pública disponible; sin embargo, la práctica sugiere aplicar políticas de datos estrictas durante la prueba. En el informe final se citará la legislación relevante (RGPD, ISO/IEC 27001, NIS2).
 
-## 11. Plan de Implementación  
-Para orientar el desarrollo, se propone el siguiente cronograma (meses desde inicio):
-
-| Mes | Hito                                      | Entregable                                |
-|-----|-------------------------------------------|-------------------------------------------|
-| 1   | Revisión bibliográfica y normas           | Informe Estado del Arte                  |
-| 2   | Diseño conceptual de arquitectura         | Documento de Arquitectura y Requisitos   |
-| 3   | Implementación prototipo inicial (Fase 1) | Agentes Reconocimiento/Escaneo básicos   |
-| 4   | Implementación prototipo (Fase 2)        | Agentes Explotación/Autenticación        |
-| 5   | Integración de herramientas y ajustes    | Sistema completo versión beta            |
-| 6   | Pruebas preliminares en laboratorio      | Informe de resultados parciales          |
-| 7   | Ajustes y corrección según pruebas       | Versión final del sistema en sandbox     |
-| 8   | Validación con benchmarks                | Informe comparativo (métricas)           |
-| 9   | Documentación final y presentación TFM   | TFM en formato Markdown / PDF preparado  |
-
-Cada fase incluye iteraciones de prueba y revisión con tutores o equipo de seguridad. Este plan es flexible; algunos entregables podrían solaparse según avances reales.
-
-## 12. Conclusiones  
-Este informe detalla un plan completo para diseñar un sistema de pentesting automatizado basado en IA, integrando lo último en investigación académica y normativa oficial. La combinación de múltiples agentes inteligentes con herramientas ya consolidadas promete mejorar la velocidad y cobertura de las pruebas de seguridad. Sin embargo, existen desafíos técnicos (escala de aprendizaje) y éticos-legales (control humano, protección de datos) que deben abordarse cuidadosamente. Las citas reunidas (académicas y estándares) proporcionan un marco sólido para la implementación propuesta【24†L87-L95】【17†L3115-L3120】. En definitiva, el trabajo puede servir de base para un TFM completo, ampliando cada sección con más detalle y resultados experimentales. 
-
 **Fuentes:** Documentos académicos recientes【43†L61-L69】【24†L98-L104】【35†L91-L100】, estándares de pentesting (PTES, NIST)【29†L61-L70】【30†L111-L118】 y artículos técnicos (Aikido, Synack, Astra)【20†L193-L202】【23†L250-L258】. Cada afirmación técnica está apoyada por referencias reales según lo solicitado.
 
