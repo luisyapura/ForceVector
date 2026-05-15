@@ -11,9 +11,7 @@
 - [7. Consideraciones de Red y Movimiento Lateral](#7-consideraciones-de-red-y-movimiento-lateral)  
 - [8. Autonomía vs *Man-in-the-Loop*](#8-autonomía-vs-man-in-the-loop)  
 - [9. Pruebas y Evaluación](#9-pruebas-y-evaluación)  
-- [10. Ética y Legalidad](#10-ética-y-legalidad)  
-- [11. Plan de Implementación](#11-plan-de-implementación)  
-- [12. Conclusiones](#12-conclusiones)  
+- [10. Ética y Legalidad](#10-ética-y-legalidad)
 
 ## Resumen Ejecutivo  
 En este trabajo se propone un sistema de pentesting automatizado basado en Inteligencia Artificial (IA) para evaluar la seguridad de redes empresariales. Se investigan antecedentes académicos y estándares (OWASP, PTES, NIST, ISO) relacionados con pentesting y IA, y se motiva la necesidad dada la escasez de expertos humanos y el volumen creciente de vulnerabilidades. La solución propuesta emplea un conjunto de agentes inteligentes (guiados por modelos de lenguaje grande o RL) que realizan tareas de *descubrimiento*, *escaneo de vulnerabilidades* y *explotación* de forma autónoma o semi-autónoma. Se detalla la **arquitectura** modular con diagramas mermaid, el **modelo de decisión** (usando MDP y planificación con LLM), y la integración con herramientas clásicas (Nmap, Metasploit, Nessus, etc.). Además, se abordan análisis de protocolos críticos (ARP, DHCP, DNS, SMB, Kerberos), estrategias de movimiento lateral en VLANs/DMZ, y se evalúan escenarios con métricas (p. ej. benchmarks AutoPenBench). También se discute la autonomía frente al control humano (*human-in-the-loop*), incluyendo medidas de seguridad (kill-switch, logs). Se provee un plan de implementación con cronograma y un estudio de los desafíos éticos/legales (RGPD, normas aplicables). Todos los puntos se sustentan en referencias reales (papers e instituciones oficiales) citadas en el texto, permitiendo ampliar este informe. 
