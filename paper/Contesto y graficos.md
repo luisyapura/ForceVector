@@ -6,7 +6,7 @@
 - [2. Motivación e Hipótesis](#2-motivación-e-hipótesis)  
 - [3. Metodología Propuesta](#3-metodología-propuesta)  
 - [4. Diseño Arquitectónico](#4-diseño-arquitectónico)  
-- [5. Modelo de Decisión (MDP/RL vs LLM)](#5-modelo-de-decisión-mdprl-vs-llm)  
+- [5. Modelo de Decisión (MDP/RL vs LLM)](#5-modelo-de-decisión)  
 - [6. Integración de Herramientas y Análisis de Protocolos](#6-integración-de-herramientas-y-análisis-de-protocolos)  
 - [7. Consideraciones de Red y Movimiento Lateral](#7-consideraciones-de-red-y-movimiento-lateral)  
 - [8. Autonomía vs *Man-in-the-Loop*](#8-autonomía-vs-man-in-the-loop)  
@@ -101,7 +101,7 @@ graph TD;
 
 Cada agente dispone de su propia **cola de tareas**; el orquestador decide el orden óptimo basándose en el modelo de IA (ver sección 5). El flujo típico: Reconocimiento → Escaneo → Explotación (→ Autenticación/Mov. Lateral) → Reporte. Los agentes se comunican mediante la memoria compartida, evitando repetir acciones. La memoria contextual mantiene datos como lista de IPs, servicios detectados y exploits probados, similar a la “memoria recursiva” de AutoSecAgent【11†L78-L84】.
 
-## 5. Modelo de Decisión (MDP/RL vs LLM+Planificador)  
+## 5. Modelo de Decisión 
 ### 5.1. Enfoque MDP/RL  
 Podemos formular el pentest como un MDP:  
 - **Estados:** Configuración actual de la red (hosts comprometidos, privilegios adquiridos, servicios descubiertos).  
