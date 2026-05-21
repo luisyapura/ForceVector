@@ -9,3 +9,9 @@
 ## Enlace oficial
 
 [MITRE ATT&CK](https://attack.mitre.org/)
+
+# A Graph-Theoretic Visualization Approach to Network Risk Analysis
+
+## Enlace oficial
+
+[A Graph-Theoretic Visualization Approach to Network Risk Analysis](https://www.researchgate.net/publication/221325939_A_Graph-Theoretic_Visualization_Approach_to_Network_Risk_Analysis)
