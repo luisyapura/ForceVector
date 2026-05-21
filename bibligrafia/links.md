@@ -15,3 +15,8 @@
 ## Enlace oficial
 
 [A Graph-Theoretic Visualization Approach to Network Risk Analysis](https://www.researchgate.net/publication/221325939_A_Graph-Theoretic_Visualization_Approach_to_Network_Risk_Analysis)
+
+# Unleashing Mayhem on Binary Code
+
+## Enlace oficial
+[Unleashing Mayhem on Binary Code](https://www.researchgate.net/publication/241633678_Unleashing_Mayhem_on_Binary_Code)
