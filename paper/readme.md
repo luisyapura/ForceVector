@@ -1,8 +1,7 @@
 # ⚡ TFM – Diseño de un Sistema de Pentesting Basado en IA
 ---
 
-## Autor
-Luis Yapura  
+
 
 ## Máster en Ciberseguridad  
 Módulo 11 – Trabajo Fin de Máster  
