@@ -1,4 +1,4 @@
-# `ForceVector` — Framework Inteligente de Pentesting Basado en IA
+# `ForceVector` — Framework Pentesting Basado en IA
 
 <p align="center">
   <img src="/img/portada.png" width="1200" height="500" alt="ForceVector Banner">
