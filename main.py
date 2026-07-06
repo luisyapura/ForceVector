@@ -13,17 +13,21 @@ except ImportError:
     print("\033[91m[!] Error: Librería psycopg2 no encontrada. Ejecuta: pip install psycopg2-binary\033[0m")
     sys.exit(1)
 
-# Importar agentes de reconocimiento y escaneo
+# Importar agentes de forma aislada respetando la estructura del paquete
 try:
-    from agents import recon_agent, scan_agent
-except ImportError:
-    try:
-        sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'agents'))
-        import recon_agent
-        import scan_agent
-    except Exception:
-        recon_agent = None
-        scan_agent = None
+    from agents import recon_agent
+except Exception:
+    recon_agent = None
+
+try:
+    from agents import scan_agent
+except Exception:
+    scan_agent = None
+
+try:
+    from agents import exploit_agent
+except Exception:
+    exploit_agent = None
 
 # Constantes de color ANSI
 COLOR_NEON_GREEN = "\033[38;5;82m"
@@ -56,7 +60,7 @@ def print_operational_flow():
     print(f"{'2. Escaneo (Superficie/Versiones)':<25} | {COLOR_NEON_GREEN}Autónoma{COLOR_RESET}")
     print(f"{'3. Modelado de amenazas':<25} | {COLOR_NEON_GREEN}Autónoma (Ciclo FOR){COLOR_RESET}")
     print(f"{'4. Enumeración':<25} | {COLOR_NEON_GREEN}Autónoma{COLOR_RESET}")
-    print(f"{'5. Explotación':<25} | {COLOR_YELLOW}Supervisada{COLOR_RESET}")
+    print(f"{'5. Explotación':<25} | {COLOR_YELLOW}Supervisada (HITL){COLOR_RESET}")
     print(f"{'6. Post-explotación':<25} | {COLOR_YELLOW}Supervisada{COLOR_RESET}")
     print(f"{'7. Reporte':<25} | {COLOR_NEON_GREEN}Autónoma{COLOR_RESET}")
     print("-" * 43)
@@ -89,7 +93,12 @@ def generate_config(config_path: Path):
 
     config_data = {
         "server": {"host": server_host, "port": int(server_port), "keep_alive_seconds": int(keep_alive)},
-        "models": {"orchestrator": model_orch, "analyzer": model_analy},
+        "models": {
+            "orchestrator": model_orch, 
+            "analyzer": model_analy,
+            "temperature_orch": 0.1,    # Para Fases 1 a 3
+            "temperature_exploit": 0.0  # Para Fases 4 y 5 (Determinista)
+        },
         "database": {"host": db_host, "port": int(db_port), "user": db_user, "password": db_pass, "dbname": db_name}
     }
     with open(config_path, 'w', encoding='utf-8') as f: json.dump(config_data, f, indent=2)
@@ -130,6 +139,12 @@ def verify_and_configure_models(config_data, config_path: Path):
                 config_data["models"][role] = input(f"  > Nombre del modelo: ").strip()
                 updated = True
     
+    # Asegurar que existan las temperaturas si es un config viejo
+    if "temperature_orch" not in config_data["models"]:
+        config_data["models"]["temperature_orch"] = 0.1
+        config_data["models"]["temperature_exploit"] = 0.0
+        updated = True
+
     if updated:
         with open(config_path, 'w', encoding='utf-8') as f: json.dump(config_data, f, indent=2)
     return config_data
@@ -177,6 +192,9 @@ def setup_vector_database(config_data):
 def direct_ollama_query(prompt: str, config_data: dict) -> str:
     host, port = config_data["server"]["host"], config_data["server"]["port"]
     model = config_data["models"].get("analyzer")
+    # Extracción dinámica de la temperatura
+    temp = config_data.get("models", {}).get("temperature_orch", 0.1)
+
     url = f"http://{host}:{port}/api/generate"
     
     payload = {
@@ -184,12 +202,12 @@ def direct_ollama_query(prompt: str, config_data: dict) -> str:
         "prompt": prompt,
         "system": "Eres un analista de ciberseguridad riguroso. Tu salida DEBE SER EXCLUSIVAMENTE un objeto JSON válido. No incluyas explicaciones en texto plano, saludos ni etiquetas markdown ajenas al JSON.",
         "stream": True,
-        "options": {"temperature": 0.1, "num_predict": 2048}
+        "options": {"temperature": temp, "num_predict": 2048}
     }
     
     full_response = ""
     try:
-        print(f"{COLOR_INFO}    └─ [Analista IA ({model})] procesando vector... {COLOR_RESET}", end="", flush=True)
+        print(f"{COLOR_INFO}    └─ [Analista IA] procesando vector... {COLOR_RESET}", end="", flush=True)
         response = requests.post(url, json=payload, stream=True, timeout=180)
         
         if response.status_code == 200:
@@ -210,8 +228,7 @@ def direct_ollama_query(prompt: str, config_data: dict) -> str:
 
 def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: Path, skip_recon: bool = False):
     """
-    Controlador del Flujo Operativo: Maneja tanto escaneos directos de IP (skip_recon=True)
-    como flujos completos de descubrimiento de subredes (skip_recon=False).
+    Controlador del Flujo Operativo Fases 1 a 3.
     """
     if not skip_recon and (not recon_agent or not hasattr(recon_agent, 'run_recon')):
         print(f"{COLOR_ERROR}[!] Error de Agente: El módulo 'recon_agent' no está cargado o le falta la función 'run_recon()'.{COLOR_RESET}")
@@ -242,7 +259,6 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
             
         print(f"{COLOR_SUCCESS}[+] Fase 1 completada. {len(hosts_activos)} hosts activos detectados. Estructura de logs base creada.{COLOR_RESET}")
     else:
-        # Configuración forzada para un escaneo individual sin descubrimiento previo
         print(f"\n{COLOR_INFO}[*] Omitiendo Fase 1 (Reconocimiento). Apuntando directamente al host: {target}{COLOR_RESET}")
         hosts_activos = [{"ip": target, "mac": "Desconocida (Escaneo Directo)"}]
     
@@ -255,14 +271,12 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
     if db_conn:
         try:
             with db_conn.cursor() as cur:
-                # Limpiar vectores anteriores
                 cur.execute("DELETE FROM agent_memory WHERE task_id = 'recon_port_vector'")
                 
                 for idx, host in enumerate(hosts_activos, 1):
                     ip = host.get("ip")
                     mac = host.get("mac")
                     
-                    # Cálculo de rutas de guardado para el JSON del scan_agent
                     if skip_recon:
                         host_dir = logs_path / "scans_directos" / target.replace('/', '_')
                     else:
@@ -270,7 +284,6 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
                         
                     print(f"\n{COLOR_INFO}[*] Lanzando escaneo profundo en objetivo [{idx}/{len(hosts_activos)}]: {ip}{COLOR_RESET}")
                     
-                    # Ejecutar escaneo inyectando el directorio correcto para persistir logs
                     scan_data = scan_agent.run_scan(ip, host_dir)
                     os_info = scan_data.get("os", "Desconocido")
                     ports = scan_data.get("ports", [])
@@ -283,7 +296,6 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
                             color_proto = COLOR_YELLOW if p.get('protocol') == 'udp' else COLOR_RESET
                             print(f"       - {p.get('portid'):>5}/{p.get('protocol'):<4} : {color_proto}{p.get('service'):<12}{COLOR_RESET} ({p.get('version')})")
                             
-                            # Estructuración y guardado en pgvector para Fase 3
                             content_vector = json.dumps({
                                 "ip": ip, "os": os_info,
                                 "puerto": p.get('portid'), "protocolo": p.get('protocol'),
@@ -328,7 +340,7 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
                     "REGLAS CRÍTICAS: Devuelve ÚNICA Y EXCLUSIVAMENTE formato JSON. "
                     "Correlaciona la versión con identificadores CVE reales.\n"
                     f"DATOS: {json.dumps(vec_data)}\n\n"
-                    "FORMATO JSON: {\"cve_identificados\": [\"CVE-XXXX\"], \"vectores_ataque\": \"Descripción...\", \"herramienta_sugerida\": \"comando\"}"
+                    "FORMATO JSON: {\"cve_identificados\": [\"CVE-XXXX\"], \"vectores_ataque\": \"Descripción...\", \"herramienta_sugerida\": \"comando\", \"categoria_vector\": \"rce/auth/web\"}"
                 )
                 
                 resultado_llm = direct_ollama_query(prompt_iterativo, config_data)
@@ -342,7 +354,6 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
                 except json.JSONDecodeError:
                     pass
             
-            # --- 1. PERSISTENCIA EN BASE DE DATOS ---
             with db_conn.cursor() as cur:
                 cur.execute("DELETE FROM agent_memory WHERE task_id = 'threat_model_results'")
                 cur.execute("INSERT INTO agent_memory (task_id, content) VALUES (%s, %s)", 
@@ -350,8 +361,6 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
             
             print(f"\n{COLOR_SUCCESS}[+] Fase 3: Análisis finalizado y persistido en la Base de Datos.{COLOR_RESET}")
 
-            # --- 2. PERSISTENCIA EN DISCO (JSON) POR CADA HOST ---
-            # Agrupar los vectores analizados por IP para guardar un reporte limpio por host
             modelos_por_ip = {}
             for obj in objetivos_analizados:
                 ip = obj['ip']
@@ -372,18 +381,48 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
                 try:
                     with open(output_file, 'w', encoding='utf-8') as f:
                         json.dump(modelos, f, indent=4)
-                    print(f"{COLOR_SUCCESS}    └─ Reporte de amenazas (Contexto) guardado: {output_file}{COLOR_RESET}")
+                    print(f"{COLOR_SUCCESS}    └─ Reporte de amenazas guardado: {output_file}{COLOR_RESET}")
                 except IOError as e:
                     print(f"{COLOR_ERROR}    └─ [!] Error guardando contexto para {ip}: {e}{COLOR_RESET}")
 
-            print(f"\n{COLOR_YELLOW}[*] Todo listo. El orquestador y los agentes de explotación disponen del contexto persistido.{COLOR_RESET}")
+            print(f"\n{COLOR_YELLOW}[*] Fases completadas. Ejecuta 'exploit <IP>' para iniciar la Fase 4 y 5.{COLOR_RESET}")
             
         except psycopg2.Error as e:
             print(f"{COLOR_ERROR}[!] Error en operaciones PostgreSQL Fase 3: {e}{COLOR_RESET}")
 
+def execute_exploitation_phase(target_ip: str, config_data: dict, logs_path: Path):
+    """
+    Fases 4 y 5: Carga el contexto del Threat Model de una IP específica, interactúa
+    con el Agente de Explotación (LLM) y presenta la validación humana (HITL).
+    """
+    print(f"\n{COLOR_INFO}=== INICIANDO FASES 4 Y 5: EXPLOTACIÓN SUPERVISADA (HITL) ==={COLOR_RESET}")
+    print(f"{COLOR_INFO}[*] Recuperando contexto persistente para {target_ip}...{COLOR_RESET}")
+    
+    # Buscar el JSON de forma recursiva en la carpeta de logs
+    target_filename = f"threat_model_{target_ip.replace('.', '_')}.json"
+    encontrados = list(logs_path.rglob(target_filename))
+    
+    if not encontrados:
+        print(f"{COLOR_ERROR}[-] Contexto no encontrado para {target_ip}. Debes ejecutar 'recon' o 'scan' primero.{COLOR_RESET}")
+        return
+        
+    threat_model_path = encontrados[0]
+    print(f"{COLOR_SUCCESS}[+] Contexto cargado exitosamente desde: {threat_model_path}{COLOR_RESET}")
+    
+    if not exploit_agent or not hasattr(exploit_agent, 'run_exploitation_plan'):
+        print(f"\n{COLOR_YELLOW}[!] El módulo 'agents/exploit_agent.py' no está implementado o no tiene 'run_exploitation_plan'.{COLOR_RESET}")
+        print(f"{COLOR_YELLOW}[!] Abortando ejecución de la Fase 4. Por favor crea el módulo de explotación.{COLOR_RESET}")
+        return
+        
+    # Enviar al agente especialista
+    exploit_agent.run_exploitation_plan(str(threat_model_path), config_data)
+
 def ask_ollama(prompt: str, config_data: dict, db_conn=None, follow_up_task=None):
     host, port = config_data["server"]["host"], config_data["server"]["port"]
     model = config_data["models"].get("orchestrator")
+    # Extracción dinámica de la temperatura
+    temp = config_data.get("models", {}).get("temperature_orch", 0.1)
+    
     if not model:
         print(f"{COLOR_ERROR}[!] Orquestador no configurado.{COLOR_RESET}")
         return ""
@@ -400,11 +439,11 @@ def ask_ollama(prompt: str, config_data: dict, db_conn=None, follow_up_task=None
 
     payload = {
         "model": model, "prompt": prompt, "system": system_prompt, "stream": True,
-        "options": {"num_ctx": 8192, "num_predict": 4096, "temperature": 0.1}
+        "options": {"num_ctx": 8192, "num_predict": 4096, "temperature": temp}
     }
 
     try:
-        print(f"{COLOR_INFO}[Orquestador ({model})] > {COLOR_RESET}", end="", flush=True)
+        print(f"{COLOR_INFO}[Orquestador] > {COLOR_RESET}", end="", flush=True)
         response = requests.post(url, json=payload, stream=True, timeout=300)
         
         full_response = ""
@@ -462,7 +501,7 @@ def ask_ollama(prompt: str, config_data: dict, db_conn=None, follow_up_task=None
             else:
                 payload["prompt"] = f"Petición original: '{prompt}'\nResultados BD:\n{res_str}\n\nInstrucción: Formula tu análisis y recomendaciones basadas estrictamente en estos datos."
                 
-            print(f"{COLOR_INFO}[Analista LLM ({model})] > {COLOR_RESET}", end="", flush=True)
+            print(f"{COLOR_INFO}[Analista LLM] > {COLOR_RESET}", end="", flush=True)
             
             response2 = requests.post(url, json=payload, stream=True, timeout=300)
             full_response2 = ""
@@ -511,6 +550,7 @@ def main():
     
     recon_ok = recon_agent is not None and hasattr(recon_agent, 'run_recon')
     scan_ok = scan_agent is not None and hasattr(scan_agent, 'run_scan')
+    exploit_ok = exploit_agent is not None and hasattr(exploit_agent, 'run_exploitation_plan')
     
     sys.stdout.write("  [*] Inicializando motor de reconocimiento (Recon Engine)............ ")
     sys.stdout.flush()
@@ -519,6 +559,10 @@ def main():
     sys.stdout.write("  [*] Inicializando motor de escaneo profundo (Scan Engine)........... ")
     sys.stdout.flush()
     print(f"{COLOR_SUCCESS}[  OK  ]{COLOR_RESET}" if scan_ok else f"{COLOR_ERROR}[ FAIL ]{COLOR_RESET}")
+    
+    sys.stdout.write("  [*] Inicializando motor de explotación (Exploit Engine)............. ")
+    sys.stdout.flush()
+    print(f"{COLOR_SUCCESS}[  OK  ]{COLOR_RESET}" if exploit_ok else f"{COLOR_YELLOW}[ WARN ]{COLOR_RESET}")
 
     sys.stdout.write("  [*] Sincronizando base de conocimiento IA........................... ")
     sys.stdout.flush()
@@ -529,7 +573,7 @@ def main():
     print(f"{COLOR_SUCCESS}[  OK  ]{COLOR_RESET}" if "database" in config_data and check_postgres_connection(config_data, silent=True) else f"{COLOR_ERROR}[ FAIL ]{COLOR_RESET}")
     print(" ─────────────────────────────────────────────────────────────────────────────\n")
     print('  [i] "QUE LA FUERZA DEL CONOCIMIENTO TE GUÍE."')
-    print(f"  [i] Comandos: 'flow' (ver fases) | 'recon <CIDR>' (Red completa) | 'scan <IP>' (Host directo)\n")
+    print(f"  [i] Comandos: 'flow' | 'recon <CIDR>' | 'scan <IP>' | 'exploit <IP>'\n")
     
     db_conn = setup_vector_database(config_data) if "database" in config_data else None
 
@@ -555,6 +599,9 @@ def main():
             elif comando.lower().startswith('scan '):
                 target = comando.split(' ', 1)[1].strip()
                 execute_autonomous_flow(target, config_data, db_conn, logs_dir, skip_recon=True)
+            elif comando.lower().startswith('exploit '):
+                target = comando.split(' ', 1)[1].strip()
+                execute_exploitation_phase(target, config_data, logs_dir)
             else:
                 print(f"[*] Evaluando objetivo de auditoría: {comando}")
                 ask_ollama(comando, config_data, db_conn)
