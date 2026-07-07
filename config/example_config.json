@@ -1,0 +1,20 @@
+{
+  "server": {
+    "host": "ollamaip",
+    "port": 11434,
+    "keep_alive_seconds": 0
+  },
+  "models": {
+    "orchestrator": "modelname",
+    "analyzer": "modelname",
+    "temperature_orch": 0.1,
+    "temperature_exploit": 0.0
+  },
+  "database": {
+    "host": "serverhost",
+    "port": 5432,
+    "user": "postgres",
+    "password": "youpassword",
+    "dbname": "dbname"
+  }
+}
