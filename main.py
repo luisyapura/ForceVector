@@ -4,30 +4,28 @@ import sys
 import json
 import requests
 import re
+import traceback
 from pathlib import Path
 
-# Intentar importar el conector de PostgreSQL
+# Añadir directorio actual al PATH para asegurar resolución del paquete 'agents'
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
+# Intentar importar dependencias core y Fases 1/2
 try:
     import psycopg2
 except ImportError:
     print("\033[91m[!] Error: Librería psycopg2 no encontrada. Ejecuta: pip install psycopg2-binary\033[0m")
     sys.exit(1)
 
-# Importar agentes de forma aislada respetando la estructura del paquete
 try:
     from agents import recon_agent
-except Exception:
-    recon_agent = None
-
-try:
     from agents import scan_agent
-except Exception:
+except Exception as e:
+    print(f"\033[91m[!] Error cargando agentes base: {e}\033[0m")
+    recon_agent = None
     scan_agent = None
-
-try:
-    from agents import exploit_agent
-except Exception:
-    exploit_agent = None
 
 # Constantes de color ANSI
 COLOR_NEON_GREEN = "\033[38;5;82m"
@@ -96,8 +94,8 @@ def generate_config(config_path: Path):
         "models": {
             "orchestrator": model_orch, 
             "analyzer": model_analy,
-            "temperature_orch": 0.1,    # Para Fases 1 a 3
-            "temperature_exploit": 0.0  # Para Fases 4 y 5 (Determinista)
+            "temperature_orch": 0.1,
+            "temperature_exploit": 0.0
         },
         "database": {"host": db_host, "port": int(db_port), "user": db_user, "password": db_pass, "dbname": db_name}
     }
@@ -139,7 +137,6 @@ def verify_and_configure_models(config_data, config_path: Path):
                 config_data["models"][role] = input(f"  > Nombre del modelo: ").strip()
                 updated = True
     
-    # Asegurar que existan las temperaturas si es un config viejo
     if "temperature_orch" not in config_data["models"]:
         config_data["models"]["temperature_orch"] = 0.1
         config_data["models"]["temperature_exploit"] = 0.0
@@ -192,7 +189,6 @@ def setup_vector_database(config_data):
 def direct_ollama_query(prompt: str, config_data: dict) -> str:
     host, port = config_data["server"]["host"], config_data["server"]["port"]
     model = config_data["models"].get("analyzer")
-    # Extracción dinámica de la temperatura
     temp = config_data.get("models", {}).get("temperature_orch", 0.1)
 
     url = f"http://{host}:{port}/api/generate"
@@ -228,20 +224,16 @@ def direct_ollama_query(prompt: str, config_data: dict) -> str:
 
 def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: Path, skip_recon: bool = False):
     """
-    Controlador del Flujo Operativo Fases 1 a 3.
+    Controlador del Flujo Operativo Autónomo Fases 1 a 3.
     """
-    if not skip_recon and (not recon_agent or not hasattr(recon_agent, 'run_recon')):
-        print(f"{COLOR_ERROR}[!] Error de Agente: El módulo 'recon_agent' no está cargado o le falta la función 'run_recon()'.{COLOR_RESET}")
-        return
-        
-    if not scan_agent or not hasattr(scan_agent, 'run_scan'):
-        print(f"{COLOR_ERROR}[!] Error de Agente: El módulo 'scan_agent' no está cargado o le falta la función 'run_scan()'.{COLOR_RESET}")
+    if not recon_agent or not scan_agent:
+        print(f"{COLOR_ERROR}[!] Módulos de Fases 1/2 no cargados.{COLOR_RESET}")
         return
 
     hosts_activos = []
         
     # ---------------------------------------------------------
-    # FASE 1: RECONOCIMIENTO (Descubrimiento y Estructura)
+    # FASE 1: RECONOCIMIENTO
     # ---------------------------------------------------------
     if not skip_recon:
         print(f"\n{COLOR_INFO}=== INICIANDO FASE 1: RECONOCIMIENTO (Descubrimiento) ==={COLOR_RESET}")
@@ -257,13 +249,13 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
             print(f"{COLOR_ERROR}[-] No se detectaron hosts activos. Abortando flujo.{COLOR_RESET}")
             return
             
-        print(f"{COLOR_SUCCESS}[+] Fase 1 completada. {len(hosts_activos)} hosts activos detectados. Estructura de logs base creada.{COLOR_RESET}")
+        print(f"{COLOR_SUCCESS}[+] Fase 1 completada. {len(hosts_activos)} hosts activos detectados.{COLOR_RESET}")
     else:
         print(f"\n{COLOR_INFO}[*] Omitiendo Fase 1 (Reconocimiento). Apuntando directamente al host: {target}{COLOR_RESET}")
         hosts_activos = [{"ip": target, "mac": "Desconocida (Escaneo Directo)"}]
     
     # ---------------------------------------------------------
-    # FASE 2: ESCANEO (Superficie, OS y Versiones)
+    # FASE 2: ESCANEO
     # ---------------------------------------------------------
     print(f"\n{COLOR_INFO}=== INICIANDO FASE 2: ESCANEO (Vulnerability Assessment) ==={COLOR_RESET}")
     
@@ -312,7 +304,7 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
             return
 
     # ---------------------------------------------------------
-    # FASE 3: MODELADO DE AMENAZAS (CICLO FOR ITERATIVO)
+    # FASE 3: MODELADO DE AMENAZAS
     # ---------------------------------------------------------
     print(f"\n{COLOR_INFO}=== INICIANDO FASE 3: MODELADO DE AMENAZAS (LLM Iterativo) ==={COLOR_RESET}")
     
@@ -340,7 +332,7 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
                     "REGLAS CRÍTICAS: Devuelve ÚNICA Y EXCLUSIVAMENTE formato JSON. "
                     "Correlaciona la versión con identificadores CVE reales.\n"
                     f"DATOS: {json.dumps(vec_data)}\n\n"
-                    "FORMATO JSON: {\"cve_identificados\": [\"CVE-XXXX\"], \"vectores_ataque\": \"Descripción...\", \"herramienta_sugerida\": \"comando\", \"categoria_vector\": \"rce/auth/web\"}"
+                    "FORMATO JSON: {\"cve_identificados\": [\"CVE-XXXX\"], \"vectores_ataque\": \"Descripción...\", \"herramienta_sugerida\": \"comando\", \"categoria_vector\": \"rce\"}"
                 )
                 
                 resultado_llm = direct_ollama_query(prompt_iterativo, config_data)
@@ -392,13 +384,12 @@ def execute_autonomous_flow(target: str, config_data: dict, db_conn, logs_path: 
 
 def execute_exploitation_phase(target_ip: str, config_data: dict, logs_path: Path):
     """
-    Fases 4 y 5: Carga el contexto del Threat Model de una IP específica, interactúa
-    con el Agente de Explotación (LLM) y presenta la validación humana (HITL).
+    Fases 4 y 5: Implementa carga perezosa y aislada (lazy loading) 
+    para proteger el arranque de dependencias erróneas.
     """
     print(f"\n{COLOR_INFO}=== INICIANDO FASES 4 Y 5: EXPLOTACIÓN SUPERVISADA (HITL) ==={COLOR_RESET}")
     print(f"{COLOR_INFO}[*] Recuperando contexto persistente para {target_ip}...{COLOR_RESET}")
     
-    # Buscar el JSON de forma recursiva en la carpeta de logs
     target_filename = f"threat_model_{target_ip.replace('.', '_')}.json"
     encontrados = list(logs_path.rglob(target_filename))
     
@@ -409,18 +400,43 @@ def execute_exploitation_phase(target_ip: str, config_data: dict, logs_path: Pat
     threat_model_path = encontrados[0]
     print(f"{COLOR_SUCCESS}[+] Contexto cargado exitosamente desde: {threat_model_path}{COLOR_RESET}")
     
-    if not exploit_agent or not hasattr(exploit_agent, 'run_exploitation_plan'):
-        print(f"\n{COLOR_YELLOW}[!] El módulo 'agents/exploit_agent.py' no está implementado o no tiene 'run_exploitation_plan'.{COLOR_RESET}")
-        print(f"{COLOR_YELLOW}[!] Abortando ejecución de la Fase 4. Por favor crea el módulo de explotación.{COLOR_RESET}")
+    try:
+        from agents import exploit_agent
+        exploit_agent.run_exploitation_plan(str(threat_model_path), config_data)
+    except Exception as e:
+        print(f"\n{COLOR_ERROR}[!] Error crítico al cargar o ejecutar el Agente de Explotación.{COLOR_RESET}")
+        print(f"{COLOR_YELLOW}[DEBUG] Traza del error para corregir tu código:\n{traceback.format_exc()}{COLOR_RESET}")
+
+def execute_report_phase(target_ip: str, base_dir: Path, logs_path: Path):
+    """
+    Fase 7: Generación de reporte profesional automatizado basado en evidencias.
+    Implementa lazy-loading de dependencias para no bloquear el script base.
+    """
+    print(f"\n{COLOR_INFO}=== INICIANDO FASE 7: GENERACIÓN DE REPORTE ({target_ip}) ==={COLOR_RESET}")
+    print(f"{COLOR_INFO}[*] Recuperando contexto persistente y evidencias...{COLOR_RESET}")
+    
+    target_filename = f"threat_model_{target_ip.replace('.', '_')}.json"
+    encontrados = list(logs_path.rglob(target_filename))
+    
+    if not encontrados:
+        print(f"{COLOR_ERROR}[-] Contexto no encontrado para {target_ip}. No hay datos auditados para documentar.{COLOR_RESET}")
         return
         
-    # Enviar al agente especialista
-    exploit_agent.run_exploitation_plan(str(threat_model_path), config_data)
+    threat_model_path = encontrados[0]
+    
+    try:
+        from agents import report_agent
+        report_agent.generate_pdf_report(str(base_dir), str(threat_model_path))
+    except ImportError as e:
+        print(f"{COLOR_ERROR}[!] Error: Módulo report_agent o dependencias (Jinja2/WeasyPrint) no encontradas.\nDetalle: {e}{COLOR_RESET}")
+        print(f"{COLOR_YELLOW}[i] Ejecuta: sudo apt update && sudo apt install -y python3-jinja2 python3-weasyprint{COLOR_RESET}")
+    except Exception as e:
+        print(f"\n{COLOR_ERROR}[!] Error crítico al generar el reporte: {e}{COLOR_RESET}")
+        print(f"{COLOR_YELLOW}[DEBUG] Traza:\n{traceback.format_exc()}{COLOR_RESET}")
 
 def ask_ollama(prompt: str, config_data: dict, db_conn=None, follow_up_task=None):
     host, port = config_data["server"]["host"], config_data["server"]["port"]
     model = config_data["models"].get("orchestrator")
-    # Extracción dinámica de la temperatura
     temp = config_data.get("models", {}).get("temperature_orch", 0.1)
     
     if not model:
@@ -433,8 +449,7 @@ def ask_ollama(prompt: str, config_data: dict, db_conn=None, follow_up_task=None
         "Eres el Orquestador de ForceVector, un sistema avanzado de IA para auditorías técnicas.\n"
         "REGLA CRÍTICA 1 (IDIOMA): TU ÚNICO IDIOMA ES EL ESPAÑOL.\n"
         "REGLA CRÍTICA 2 (BD): Tienes conexión directa a PostgreSQL. Las operaciones DROP, DELETE, TRUNCATE están denegadas.\n"
-        "REGLA CRÍTICA 3 (FORMATO): Si necesitas buscar datos, tu respuesta DEBE ser ÚNICA Y EXCLUSIVAMENTE el bloque ```sql y ```. "
-        "SIN SALUDOS. SOLO EL CÓDIGO SQL."
+        "REGLA CRÍTICA 3 (FORMATO): Si necesitas buscar datos, tu respuesta DEBE ser ÚNICA Y EXCLUSIVAMENTE el bloque ```sql y ```."
     )
 
     payload = {
@@ -493,7 +508,7 @@ def ask_ollama(prompt: str, config_data: dict, db_conn=None, follow_up_task=None
 
             payload["system"] = (
                 "Eres el Analista de ForceVector. Analiza resultados de base de datos y responde de forma técnica en ESPAÑOL NEUTRO. "
-                "No uses modismos. Limítate a interpretar los datos empíricos. Tu misión no es resumir, sino exhaustividad técnica."
+                "No uses modismos. Limítate a interpretar los datos empíricos."
             )
             
             if follow_up_task:
@@ -512,7 +527,7 @@ def ask_ollama(prompt: str, config_data: dict, db_conn=None, follow_up_task=None
                             data = json.loads(line)
                             chunk = data.get("response", "")
                             print(chunk, end="", flush=True)
-                            full_response += chunk
+                            full_response2 += chunk
                             if data.get("done"): print()
                         except json.JSONDecodeError: pass
             
@@ -548,9 +563,12 @@ def main():
     print_banner()
     print(" ─────────────────────────────────────────────────────────────────────────────")
     
-    recon_ok = recon_agent is not None and hasattr(recon_agent, 'run_recon')
-    scan_ok = scan_agent is not None and hasattr(scan_agent, 'run_scan')
-    exploit_ok = exploit_agent is not None and hasattr(exploit_agent, 'run_exploitation_plan')
+    # Comprobación de estado física (solo mira si el archivo existe en disco)
+    agents_dir = base_dir / "agents"
+    recon_ok = (agents_dir / "recon_agent.py").exists()
+    scan_ok = (agents_dir / "scan_agent.py").exists()
+    exploit_ok = (agents_dir / "exploit_agent.py").exists()
+    report_ok = (agents_dir / "report_agent.py").exists()
     
     sys.stdout.write("  [*] Inicializando motor de reconocimiento (Recon Engine)............ ")
     sys.stdout.flush()
@@ -564,6 +582,10 @@ def main():
     sys.stdout.flush()
     print(f"{COLOR_SUCCESS}[  OK  ]{COLOR_RESET}" if exploit_ok else f"{COLOR_YELLOW}[ WARN ]{COLOR_RESET}")
 
+    sys.stdout.write("  [*] Inicializando motor de reportes (Report Engine)................. ")
+    sys.stdout.flush()
+    print(f"{COLOR_SUCCESS}[  OK  ]{COLOR_RESET}" if report_ok else f"{COLOR_YELLOW}[ WARN ]{COLOR_RESET}")
+
     sys.stdout.write("  [*] Sincronizando base de conocimiento IA........................... ")
     sys.stdout.flush()
     print(f"{COLOR_SUCCESS}[  OK  ]{COLOR_RESET}" if check_ollama_connection(config_data, silent=True) else f"{COLOR_ERROR}[ FAIL ]{COLOR_RESET}")
@@ -573,7 +595,7 @@ def main():
     print(f"{COLOR_SUCCESS}[  OK  ]{COLOR_RESET}" if "database" in config_data and check_postgres_connection(config_data, silent=True) else f"{COLOR_ERROR}[ FAIL ]{COLOR_RESET}")
     print(" ─────────────────────────────────────────────────────────────────────────────\n")
     print('  [i] "QUE LA FUERZA DEL CONOCIMIENTO TE GUÍE."')
-    print(f"  [i] Comandos: 'flow' | 'recon <CIDR>' | 'scan <IP>' | 'exploit <IP>'\n")
+    print(f"  [i] Comandos: 'flow' | 'recon <CIDR>' | 'scan <IP>' | 'exploit <IP>' | 'report <IP>'\n")
     
     db_conn = setup_vector_database(config_data) if "database" in config_data else None
 
@@ -602,6 +624,9 @@ def main():
             elif comando.lower().startswith('exploit '):
                 target = comando.split(' ', 1)[1].strip()
                 execute_exploitation_phase(target, config_data, logs_dir)
+            elif comando.lower().startswith('report '):
+                target = comando.split(' ', 1)[1].strip()
+                execute_report_phase(target, base_dir, logs_dir)
             else:
                 print(f"[*] Evaluando objetivo de auditoría: {comando}")
                 ask_ollama(comando, config_data, db_conn)
