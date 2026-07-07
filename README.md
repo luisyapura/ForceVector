@@ -145,9 +145,6 @@ Esta aproximación busca mitigar:
 * Integración con:
 
   * CVE,
-  * CWE,
-  * CAPEC,
-  * MITRE ATT&CK,
   * Exploit-DB.
 
 * Priorización ofensiva basada en:
@@ -166,8 +163,7 @@ Uso de `PostgreSQL + pgvector` para:
 * almacenar telemetría ofensiva,
 * preservar estado entre agentes,
 * evitar re-procesamiento contextual,
-* compartir conocimiento táctico,
-* y reducir consumo de tokens.
+* compartir conocimiento táctico.
 
 ---
 
@@ -199,12 +195,10 @@ Las acciones de alto impacto requieren aprobación explícita:
 ## Inteligencia Artificial
 
 * Ollama
-* Qwen3-Coder
-* Mistral 7B Instruct
-* DeepSeek
+* Qwen3
 * Arquitecturas RAG
 * Chain-of-Thought Planning
-
+* PostgreSQL
 ---
 
 ## Seguridad Ofensiva
@@ -231,7 +225,6 @@ Las acciones de alto impacto requieren aprobación explícita:
 
 ## Infraestructura
 
-* Docker
 * Linux
 * Virtualización de laboratorios
 * Entornos aislados
@@ -372,20 +365,20 @@ Proyecto desarrollado como parte de una:
 
 ## Fase 2 — Núcleo Operativo
 
-* [ ] Integración PostgreSQL + pgvector
-* [ ] Motor RAG
-* [ ] Sistema de memoria contextual
-* [ ] APIs internas de agentes
+* [x] Integración PostgreSQL + pgvector
+* [x] Motor RAG
+* [x] Sistema de memoria contextual
+* [x] APIs internas de agentes
 
 ---
 
 ## Fase 3 — Agentes Especializados
 
-* [ ] Agente Recon
-* [ ] Agente Scan
-* [ ] Agente Auth
-* [ ] Agente Exploit
-* [ ] Agente Report
+* [x] Agente Recon
+* [x] Agente Scan
+* [x] Agente Auth
+* [x] Agente Exploit
+* [x] Agente Report
 
 ---
 
@@ -393,8 +386,8 @@ Proyecto desarrollado como parte de una:
 
 * [ ] Benchmarking
 * [ ] Comparativa contra pentesting tradicional
-* [ ] Validación MitL
-* [ ] Métricas de falsos positivos
+* [x] Validación MitL
+* [x] Métricas de falsos positivos
 
 ---
 
