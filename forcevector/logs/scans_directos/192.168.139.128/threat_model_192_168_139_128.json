@@ -1,0 +1,175 @@
+[
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "22",
+        "protocolo": "tcp",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "cve_identificados": [],
+        "vectores_ataque": "No se encontraron CVEs en la base de datos RAG que coincidan con la versi\u00f3n de OpenSSH 4.7p1 reportada. Las vulnerabilidades registradas en el conocimiento RAG corresponden a versiones anteriores de SSH (1.2.x) y no aplican directamente a esta versi\u00f3n.",
+        "herramienta_sugerida": "nmap -sV --script ssh-auth-methods --script-args sshauthguess --host 192.168.139.128",
+        "categoria_vector": "info"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "25",
+        "protocolo": "tcp",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "cve_identificados": [],
+        "vectores_ataque": "No se encontraron CVEs espec\u00edficos para Postfix smtpd en los datos proporcionados. Posible vector de ataque: Denial of Service (DoS) mediante comandos malformados en el servicio SMTP.",
+        "herramienta_sugerida": "nmap --script smtp-enum-users",
+        "categoria_vector": "dos"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "53",
+        "protocolo": "tcp",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "cve_identificados": [],
+        "vectores_ataque": "No se encontraron CVEs relacionados con ISC BIND 9.4.2 en la base de conocimiento proporcionada.",
+        "herramienta_sugerida": "nmap -sV --script vuln 192.168.139.128",
+        "categoria_vector": "n/a"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "111",
+        "protocolo": "tcp",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "cve_identificados": [],
+        "vectores_ataque": "El servicio rpcbind en el puerto 111/TCP podr\u00eda ser vulnerable a ataques de denegaci\u00f3n de servicio (DoS) mediante solicitudes RPC malformadas, similares a los reportados en CVE-2001-1124, CVE-2002-0039 y CVE-2003-1070. Sin embargo, no se encontraron CVE espec\u00edficos para la versi\u00f3n 2 de rpcbind en Linux 2.6.X en la base de conocimiento proporcionada.",
+        "herramienta_sugerida": "nmap -sV --script rpcinfo --port 111 192.168.139.128",
+        "categoria_vector": "dos"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "139",
+        "protocolo": "tcp",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "cve_identificados": [],
+        "vectores_ataque": "Conexi\u00f3n a servicio Samba (netbios-ssn) en puerto 139, utilizando protocolo SMB. La versi\u00f3n reportada (3.X-4.X) podr\u00eda estar expuesta a vulnerabilidades no documentadas en el conocimiento RAG proporcionado.",
+        "herramienta_sugerida": "nmap -sV --script smb-enum-shares,nbtstat --target 192.168.139.128",
+        "categoria_vector": "exposicion_servicio"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "445",
+        "protocolo": "tcp",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "cve_identificados": [],
+        "vectores_ataque": "Servicio Samba en puerto 445 expuesto, potencialmente vulnerable a ataques de tipo RCE si no se aplican parches espec\u00edficos (aunque no se encontraron CVEs en la base de datos consultada).",
+        "herramienta_sugerida": "nmap -p 445 --script smb-enum-shares, smb-os-info",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "2049",
+        "protocolo": "tcp",
+        "servicio": "nfs",
+        "version": "2-4 (RPC #100003)",
+        "cve_identificados": [
+            "CVE-2006-0043",
+            "CVE-2006-0555"
+        ],
+        "vectores_ataque": "Buffer overflow en la gesti\u00f3n de NFS (CVE-2006-0043) y denegaci\u00f3n de servicio por fallo en validaci\u00f3n de offsets (CVE-2006-0555).",
+        "herramienta_sugerida": "nmap --script nfs-showmount",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "2121",
+        "protocolo": "tcp",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "cve_identificados": [],
+        "vectores_ataque": "No se encontraron CVEs asociados a ProFTPD 1.3.1 en la base de conocimiento proporcionada. Sin embargo, la versi\u00f3n 1.3.1 podr\u00eda tener vulnerabilidades no documentadas en el RAG.",
+        "herramienta_sugerida": "nmap -sV --script vuln 192.168.139.128",
+        "categoria_vector": "info"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "3306",
+        "protocolo": "tcp",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "cve_identificados": [],
+        "vectores_ataque": "No se encontraron CVEs relacionados con la versi\u00f3n de MySQL 5.0.51a-3ubuntu5 en la base de conocimientos proporcionada.",
+        "herramienta_sugerida": "nmap -sV --script=mysql-vuln-db 192.168.139.128",
+        "categoria_vector": "exposure"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "5432",
+        "protocolo": "tcp",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "cve_identificados": [],
+        "vectores_ataque": "La versi\u00f3n PostgreSQL 8.3.0-8.3.7 no presenta coincidencias exactas con los CVE proporcionados en el conocimiento RAG. Sin embargo, se recomienda revisar vulnerabilidades similares en versiones anteriores, como DoS por consultas malformadas o inyecci\u00f3n de datos.",
+        "herramienta_sugerida": "nmap -sV --script=vuln 192.168.139.128",
+        "categoria_vector": "dos"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "53",
+        "protocolo": "udp",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: NOTIMP)",
+        "cve_identificados": [],
+        "vectores_ataque": "Servicio DNS en ISC BIND 9.4.2 expuesto en puerto 53/UDP. Vulnerabilidades potenciales incluyen DoS, spoofing o escalada de privilegios en servidores DNS mal configurados.",
+        "herramienta_sugerida": "nmap -sU -p 53 --script dns-vulnerabilities 192.168.139.128",
+        "categoria_vector": "dos"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "111",
+        "protocolo": "udp",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "cve_identificados": [],
+        "vectores_ataque": "No se encontraron CVEs correlacionados con la versi\u00f3n especificada (2) en los datos proporcionados.",
+        "herramienta_sugerida": "nmap -sU -p 111 --script rpcinfo --version 2",
+        "categoria_vector": "n/a"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "137",
+        "protocolo": "udp",
+        "servicio": "netbios-ns",
+        "version": "Microsoft Windows netbios-ns (workgroup: WORKGROUP)",
+        "cve_identificados": [],
+        "vectores_ataque": "Servicio NetBIOS-NS (port 137/UDP) expuesto en un sistema Linux con identificaci\u00f3n de versi\u00f3n compatible con Windows. Puede permitir enumeraci\u00f3n de redes o ataques basados en protocolos de red no seguros.",
+        "herramienta_sugerida": "nmap -sU -p 137 --script nbstat.nse 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "2049",
+        "protocolo": "udp",
+        "servicio": "nfs",
+        "version": "2-4 (RPC #100003)",
+        "cve_identificados": [
+            "CVE-2016-1237"
+        ],
+        "vectores_ataque": "Local users pueden aprovechar una vulnerabilidad en el m\u00f3dulo nfsd del kernel Linux para eludir las restricciones de permisos de archivos mediante la configuraci\u00f3n de POSIX ACL. Esto permite acceder a archivos que no deber\u00edan estar disponibles.",
+        "herramienta_sugerida": "uname -a && grep NFS /proc/sys/fs/nfs",
+        "categoria_vector": "elevation_of_privilege"
+    }
+]

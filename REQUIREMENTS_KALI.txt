@@ -1,0 +1,301 @@
+================================================================================
+  FORCEVECTOR v2.0 — REQUISITOS DE INSTALACIÓN EN KALI LINUX
+  Nodo Agente (VM VMware Workstation Pro)
+  Trabajo de Fin de Máster
+================================================================================
+
+DESCRIPCIÓN DEL NODO
+────────────────────
+Este nodo Kali Linux actúa como el agente ejecutor de ForceVector.
+Se conecta al Servidor Windows via REST API / WebSocket + JWT para recibir
+órdenes de reconocimiento, escaneo, explotación y post-explotación.
+Toda la lógica de IA (LLM) y base de datos reside en el Servidor Windows;
+el nodo Kali solo ejecuta las herramientas ofensivas de forma local.
+
+
+================================================================================
+1. SISTEMA OPERATIVO
+================================================================================
+
+  - Kali Linux 2024.x o superior (Rolling Release recomendado)
+  - Arquitectura: x86_64 (amd64)
+  - Entorno de virtualización: VMware Workstation Pro (recomendado)
+  - RAM mínima para la VM: 4 GB (recomendados 8 GB)
+  - Almacenamiento mínimo: 40 GB
+  - Conectividad de red con el Servidor Windows (LAN o WireGuard VPN)
+
+
+================================================================================
+2. HERRAMIENTAS DEL SISTEMA (APT)
+================================================================================
+
+Kali Linux ya incluye la mayoría por defecto. Verificar con:
+  sudo apt update && sudo apt upgrade -y
+
+Herramientas REQUERIDAS detectadas en el código fuente:
+
+  2.1 RECONOCIMIENTO Y ESCANEO (recon_agent.py / scan_agent.py)
+  ───────────────────────────────────────────────────────────────
+  - nmap                    → Ping sweep, escaneo TCP/UDP, detección OS/versiones
+    Comando de instalación: sudo apt install nmap -y
+    Uso en código: nmap -sn <CIDR>, nmap -sV -O -F -T4 <IP>, nmap -sU -sV -F -T4 <IP>
+
+  2.2 EXPLOTACIÓN (exploit_agent.py / agent_utils.py)
+  ─────────────────────────────────────────────────────
+  - metasploit-framework    → Framework de explotación principal
+    Comando: sudo apt install metasploit-framework -y
+    Binarios usados: msfconsole, msfrpcd
+    Ruta de módulos esperada: /usr/share/metasploit-framework/modules/exploits/
+
+  2.3 INTERFAZ GRÁFICA (agent_utils.py)
+  ──────────────────────────────────────
+  - x-terminal-emulator     → Apertura de sandboxes en ventanas externas
+    Comando: sudo apt install x-terminal-emulator -y
+    Nota: Requiere entorno gráfico (DISPLAY variable). Si no hay entorno
+    gráfico, el código hace fallback automático a ejecución inline con PTY.
+
+  2.4 EDICIÓN DE SCRIPTS (agent_utils.py)
+  ────────────────────────────────────────
+  - nano                    → Editor por defecto para modificar scripts .rc/.sh
+    Comando: sudo apt install nano -y
+    (también respeta la variable de entorno $EDITOR si está definida)
+
+  2.5 GENERACIÓN DE REPORTES PDF (report_agent.py)
+  ─────────────────────────────────────────────────
+  - weasyprint (dependencias del sistema)
+    Comando: sudo apt install libpango-1.0-0 libpangoft2-1.0-0 libffi-dev -y
+    Nota: WeasyPrint requiere estas librerías nativas para renderizar HTML a PDF.
+
+
+================================================================================
+3. PYTHON Y ENTORNO VIRTUAL
+================================================================================
+
+  - Python 3.11 o superior
+    Kali lo incluye por defecto: python3 --version
+    Alternativa: sudo apt install python3 python3-pip python3-venv -y
+
+  - pip (gestor de paquetes)
+    Comando: sudo apt install python3-pip -y
+
+  - Crear entorno virtual (RECOMENDADO):
+    python3 -m venv /opt/forcevector/venv
+    source /opt/forcevector/venv/bin/activate
+
+
+================================================================================
+4. DEPENDENCIAS PYTHON (pip install)
+================================================================================
+
+Detectadas por análisis directo del código fuente:
+
+  PAQUETE               | MÓDULO IMPORTADO     | ARCHIVO DE USO
+  ──────────────────────┼──────────────────────┼────────────────────────────────
+  requests              | requests             | functions/config.py
+                        |                      | functions/llm_client.py
+                        |                      | agents/agent_utils.py
+  ──────────────────────┼──────────────────────┼────────────────────────────────
+  psycopg2-binary       | psycopg2             | functions/database.py
+                        |                      | functions/llm_client.py
+  ──────────────────────┼──────────────────────┼────────────────────────────────
+  pymetasploit3         | pymetasploit3        | agents/agent_utils.py
+                        | .msfrpc.MsfRpcClient | agents/postexploit_agent.py
+                        |                      | agents/post_exploitation/agent.py
+  ──────────────────────┼──────────────────────┼────────────────────────────────
+  jinja2                | jinja2               | agents/report_agent.py
+                        | Environment          |
+                        | FileSystemLoader     |
+  ──────────────────────┼──────────────────────┼────────────────────────────────
+  weasyprint            | weasyprint           | agents/report_agent.py
+                        | HTML, CSS            |
+  ──────────────────────┼──────────────────────┼────────────────────────────────
+
+  INSTALACIÓN DE TODAS LAS DEPENDENCIAS:
+  ────────────────────────────────────────
+  pip install requests psycopg2-binary pymetasploit3 jinja2 weasyprint
+
+  ALTERNATIVA CON APT (para pymetasploit3):
+  ─────────────────────────────────────────
+  El propio código sugiere (postexploit_agent.py, línea 18):
+  sudo apt install python3-pymetasploit3
+
+
+================================================================================
+5. SERVICIOS REQUERIDOS EN EL SERVIDOR WINDOWS (REMOTOS)
+================================================================================
+
+El nodo Kali NO instala estos servicios; se conecta a ellos via red:
+
+  5.1 OLLAMA (LLM Backend)
+  ─────────────────────────
+  - Dirección configurada en config.json: host → 192.168.159.1, puerto → 11434
+  - Modelo en uso: qwen3:14b (orchestrator y analyzer)
+  - Temperatura orquestador: 0.1 | Temperatura exploit: 0.0
+  - URL de verificación: http://<server_ip>:11434/api/tags
+
+  5.2 POSTGRESQL (Base de Datos Vectorial)
+  ─────────────────────────────────────────
+  - Extensión requerida: pgvector (instalada en servidor Windows)
+  - Dirección: host → 192.168.159.1, puerto → 5432
+  - Base de datos: forcevector_cve
+  - Usuario: postgres
+  - Tabla creada automáticamente: agent_memory (vector 4096 dimensiones)
+
+  5.3 MSFRPC (Metasploit RPC Daemon — LOCAL en Kali)
+  ────────────────────────────────────────────────────
+  - El demonio msfrpcd corre LOCALMENTE en la máquina Kali
+  - Puerto por defecto: 55552
+  - Password por defecto: msf
+  - SSL: false
+  - El sistema lo inicia automáticamente si no está corriendo:
+    msfrpcd -P msf -p 55552 -a 127.0.0.1 -S
+  - Dirección de conexión Python: 127.0.0.1:55552
+
+
+================================================================================
+6. CONFIGURACIÓN DE RED
+================================================================================
+
+  - El nodo Kali debe tener acceso de red al Servidor Windows en los puertos:
+    * TCP 11434  → Ollama API (LLM)
+    * TCP 5432   → PostgreSQL
+    * TCP 55552  → MSFRPC (solo localhost en Kali)
+
+  - Verificar conectividad:
+    nc -zv 192.168.159.1 11434
+    nc -zv 192.168.159.1 5432
+
+  - Configuración VPN (opcional):
+    Si la VM no está en la misma LAN, usar WireGuard VPN para conectar
+    el nodo Kali con el Servidor Windows de forma segura.
+
+
+================================================================================
+7. ESTRUCTURA DE DIRECTORIOS EN KALI
+================================================================================
+
+El sistema crea automáticamente al iniciar (main.py — check_directory_structure):
+
+  ~/forcevector/
+  ├── config/
+  │   └── config.json         ← Configuración generada en primer arranque
+  ├── agents/
+  │   └── __init__.py
+  ├── logs/
+  │   └── sessions/           ← Logs de sesiones Metasploit (.txt)
+  │   └── tfm_llm_debug.log   ← Traza de inferencias LLM
+  │   └── tfm_hallucination_metrics.json  ← Métricas de alucinaciones
+  └── projects/
+      └── __init__.py
+
+  Directorio de instalación del framework:
+  /opt/forcevector/           ← Recomendado (según README)
+  o bien: ~/forcevector/      ← Base home del usuario actual
+
+
+================================================================================
+8. CONFIGURACIÓN INICIAL (PRIMER ARRANQUE)
+================================================================================
+
+  Al ejecutar main.py por primera vez SIN config.json, el sistema solicita:
+
+  a) IP del servidor Ollama       → Ej: 192.168.159.1
+  b) Puerto Ollama                → Por defecto: 11434
+  c) Tiempo Keep Alive            → Por defecto: 0
+  d) Modelo Orquestador           → Ej: qwen3:14b
+  e) Modelo Analizador            → Ej: qwen3:14b
+  f) Host PostgreSQL              → Por defecto: 127.0.0.1 (cambiar a IP servidor)
+  g) Puerto PostgreSQL            → Por defecto: 5432
+  h) Usuario PostgreSQL           → Por defecto: postgres
+  i) Contraseña PostgreSQL        → (introducir manualmente)
+  j) Nombre Base de Datos         → Por defecto: forcevector_db
+  k) Host MSFRPC                  → Por defecto: 127.0.0.1
+  l) Puerto MSFRPC                → Por defecto: 55552
+  m) Password MSFRPC              → Por defecto: msf
+
+  NOTA: El config.json generado se guarda en: ~/forcevector/config/config.json
+
+
+================================================================================
+9. PERMISOS Y PRIVILEGIOS
+================================================================================
+
+  - Se recomienda ejecutar con sudo para:
+    * Escaneo TCP con detección de OS (nmap -O requiere root)
+    * Escaneo UDP (nmap -sU requiere root)
+    * Inicio del demonio msfrpcd
+  
+  - Alternativa sin sudo para nmap:
+    sudo setcap cap_net_raw,cap_net_admin=eip $(which nmap)
+
+
+================================================================================
+10. PASOS DE INSTALACIÓN RESUMIDOS
+================================================================================
+
+  # 1. Actualizar el sistema
+  sudo apt update && sudo apt upgrade -y
+
+  # 2. Instalar herramientas del sistema
+  sudo apt install -y nmap metasploit-framework nano \
+    x-terminal-emulator libpango-1.0-0 libpangoft2-1.0-0 libffi-dev \
+    python3-pip python3-venv
+
+  # 3. Crear entorno virtual y activarlo
+  python3 -m venv /opt/forcevector/venv
+  source /opt/forcevector/venv/bin/activate
+
+  # 4. Instalar dependencias Python
+  pip install requests psycopg2-binary pymetasploit3 jinja2 weasyprint
+
+  # 5. Clonar / copiar el proyecto
+  cp -r /ruta/al/proyecto/forcevector /opt/forcevector/
+
+  # 6. Ejecutar el sistema
+  cd /opt/forcevector
+  python3 main.py
+
+
+================================================================================
+11. VERIFICACIÓN DE DEPENDENCIAS
+================================================================================
+
+  # Verificar nmap
+  nmap --version
+
+  # Verificar Metasploit
+  msfconsole --version
+
+  # Verificar Python y librerías
+  python3 -c "import requests, psycopg2, pymetasploit3, jinja2, weasyprint; print('OK')"
+
+  # Verificar conectividad con Ollama (servidor Windows)
+  curl http://192.168.159.1:11434/api/tags
+
+  # Verificar conectividad con PostgreSQL (servidor Windows)
+  psql -h 192.168.159.1 -U postgres -d forcevector_cve -c "\l"
+
+
+================================================================================
+NOTAS ADICIONALES
+================================================================================
+
+  - El módulo 'readline' (historial de comandos en la CLI) está disponible
+    de forma nativa en Linux; no requiere instalación adicional.
+
+  - El módulo 'pty' (pseudo-terminal para sandboxes) es nativo de Python 3
+    en Linux; no requiere instalación adicional.
+
+  - WeasyPrint puede requerir dependencias adicionales según la distribución:
+    sudo apt install -y libgdk-pixbuf2.0-dev libcairo2-dev
+
+  - Si msfrpcd falla al iniciarse, intentar manualmente:
+    sudo msfrpcd -P msf -p 55552 -a 127.0.0.1 -S -d
+
+  - Los modelos LLM configurados (qwen3:14b) requieren VRAM suficiente
+    en el Servidor Windows. Consultar README.md para alternativas.
+
+================================================================================
+  Generado automáticamente por revisión del código fuente de ForceVector v2.0
+  Fecha: Julio 2026
+================================================================================

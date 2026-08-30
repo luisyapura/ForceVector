@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe de Auditoría Técnica - ForceVector</title>
+    <style>
+        /* Configuraciones Base y Paginación (WeasyPrint) */
+        @page {
+            size: A4;
+            margin: 2.5cm 2cm;
+            @top-right {
+                content: "Clasificación: ESTRICTAMENTE CONFIDENCIAL";
+                font-family: 'Helvetica', sans-serif;
+                font-size: 8pt;
+                color: #7f8c8d;
+            }
+            @bottom-left {
+                content: "ForceVector - Evaluación de Seguridad Ofensiva";
+                font-family: 'Helvetica', sans-serif;
+                font-size: 8pt;
+                color: #7f8c8d;
+            }
+            @bottom-right {
+                content: "Página " counter(page) " de " counter(pages);
+                font-family: 'Helvetica', sans-serif;
+                font-size: 8pt;
+                color: #7f8c8d;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #333;
+            font-size: 10pt;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-break { page-break-before: always; }
+
+        /* --- Portada --- */
+        .cover {
+            height: 100vh;
+            padding-top: 80px;
+        }
+        .cover-logo {
+            max-width: 250px;
+            margin-bottom: 60px;
+        }
+        .cover-title {
+            font-size: 28pt;
+            color: #1a252f;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 4px solid #c0392b;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .cover-subtitle {
+            font-size: 16pt;
+            color: #7f8c8d;
+            font-weight: 300;
+            margin-bottom: 100px;
+        }
+        .cover-info {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12pt;
+        }
+        .cover-info td {
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .cover-info td:first-child {
+            font-weight: bold;
+            color: #2c3e50;
+            width: 35%;
+        }
+
+        /* --- Encabezados y Tipografía --- */
+        h1 {
+            color: #1a252f;
+            font-size: 18pt;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        h2 { color: #2c3e50; font-size: 14pt; margin-top: 25px; margin-bottom: 15px; }
+        p { margin-bottom: 15px; text-align: justify; }
+
+        /* --- Tablas Resumen --- */
+        table.summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            page-break-inside: auto;
+        }
+        .summary-table tr { page-break-inside: avoid; page-break-after: auto; }
+        .summary-table th, .summary-table td {
+            border: 1px solid #bdc3c7;
+            padding: 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        .summary-table th {
+            background-color: #2c3e50;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 10pt;
+            text-transform: uppercase;
+        }
+        .summary-table tr:nth-child(even) { background-color: #f8f9fa; }
+
+        .cve-badge {
+            display: inline-block;
+            background-color: #c0392b;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 8.5pt;
+            margin: 2px;
+            white-space: nowrap;
+        }
+
+        /* --- Fichas de Hallazgos (Findings) --- */
+        .finding-card {
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+        .finding-header {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 12px 15px;
+            font-size: 12pt;
+            font-weight: bold;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+        .finding-attributes {
+            display: table;
+            width: 100%;
+            border-bottom: 1px solid #bdc3c7;
+            background-color: #fcfcfc;
+        }
+        .finding-attr-cell {
+            display: table-cell;
+            padding: 10px 15px;
+            border-right: 1px solid #bdc3c7;
+            width: 50%;
+        }
+        .finding-attr-cell:last-child { border-right: none; }
+        .attr-label { font-size: 9pt; color: #7f8c8d; text-transform: uppercase; margin-bottom: 4px; display: block; }
+        .attr-value { font-weight: bold; color: #2c3e50; font-size: 11pt; }
+        
+        .risk-critical { color: #c0392b; }
+        .risk-high { color: #e67e22; }
+        .risk-medium { color: #f1c40f; }
+        
+        .finding-body { padding: 15px; }
+        .finding-section-title {
+            color: #2c3e50;
+            font-size: 10.5pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px dotted #bdc3c7;
+            padding-bottom: 4px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .evidence-block {
+            background-color: #f4f6f7;
+            border: 1px solid #d5dbdb;
+            border-left: 4px solid #34495e;
+            padding: 12px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 8.5pt;
+            color: #2c3e50;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PORTADA -->
+    <div class="cover">
+        <img src="file://{{ logo_path }}" alt="ForceVector Logo" class="cover-logo" onerror="this.style.display='none'">
+        <div class="cover-title">Informe de Auditoría Técnica</div>
+        <div class="cover-subtitle">Evaluación de Seguridad Ofensiva (Red Teaming)</div>
+        
+        <table class="cover-info">
+            <tr>
+                <td>Fecha de Emisión:</td>
+                <td>{{ date }}</td>
+            </tr>
+            <tr>
+                <td>Clasificación de Documento:</td>
+                <td style="color: #c0392b; font-weight: bold;">ESTRICTAMENTE CONFIDENCIAL</td>
+            </tr>
+            <tr>
+                <td>Preparado por:</td>
+                <td>ForceVector Autonomous Security Framework</td>
+            </tr>
+            <tr>
+                <td>Tipo de Evaluación:</td>
+                <td>Caja Negra / Caja Gris - Explotación Activa</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 1. RESUMEN EJECUTIVO -->
+    <h1>1. Resumen Ejecutivo</h1>
+    <h2>1.1 Objetivo del Documento</h2>
+    <p>El presente informe detalla los resultados técnicos y estratégicos de la auditoría de seguridad realizada sobre la infraestructura objetivo. La evaluación tuvo como premisa identificar vulnerabilidades en los activos expuestos, validar el riesgo mediante explotación controlada (Penetration Testing) y proveer directrices de mitigación para fortalecer la postura de seguridad de la organización.</p>
+    
+    <h2>1.2 Conclusión Ejecutiva</h2>
+    <p>Durante la evaluación técnica, se identificaron vulnerabilidades que comprometen de manera directa la confidencialidad, integridad y disponibilidad de los sistemas evaluados. La fase de explotación autónoma y supervisada logró materializar accesos no autorizados en la infraestructura.</p>
+    <p>Se ha procesado un total de <strong>{{ total_vectores }} vectores de ataque</strong> identificados en la fase de modelado de amenazas. El nivel de riesgo global actual de la infraestructura expuesta requiere acciones de remediación inmediatas por parte del equipo de operaciones de TI.</p>
+
+    <!-- 2. SUPERFICIE DE ATAQUE -->
+    <div class="page-break"></div>
+    <h1>2. Mapeo de Superficie de Ataque</h1>
+    <p>La siguiente matriz documenta los servicios expuestos y las vulnerabilidades públicas (Common Vulnerabilities and Exposures - CVE) correlacionadas durante la fase de reconocimiento y análisis de huellas (Fingerprinting).</p>
+    
+    <table class="summary-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">Activo y Puerto</th>
+                <th style="width: 35%;">Servicio / Versión</th>
+                <th style="width: 40%;">Vulnerabilidades Correlacionadas (CVE)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vector in threat_model %}
+            <tr>
+                <td><strong>{{ vector.ip }}</strong><br>TCP/UDP {{ vector.puerto }}</td>
+                <td>{{ vector.servicio | upper }}<br><span style="font-size: 9pt; color: #7f8c8d;">{{ vector.version }}</span></td>
+                <td>
+                    {% for cve in vector.cve_identificados %}
+                        <span class="cve-badge">{{ cve }}</span>
+                    {% else %}
+                        <span style="font-style: italic; color: #95a5a6;">Vulnerabilidades de configuración o sin CVE asignado.</span>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" style="text-align: center;">No se registraron vectores en el modelo de amenazas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- 3. DETALLE DE HALLAZGOS -->
+    <div class="page-break"></div>
+    <h1>3. Detalle de Hallazgos Técnicos</h1>
+    <p>Esta sección documenta de manera estructurada los compromisos de sistema materializados durante la fase de post-explotación. Cada hallazgo representa un vector de ataque que fue analizado y validado exitosamente por el motor LLM y las evidencias forenses obtenidas.</p>
+
+    {% for session in sessions %}
+    <div class="finding-card">
+        <!-- Cabecera del Hallazgo (Generada dinámicamente) -->
+        <div class="finding-header">
+            Hallazgo #{{ loop.index }}: {{ session.titulo | default('Compromiso de Infraestructura Activa') }}
+        </div>
+        
+        <!-- Atributos Dinámicos -->
+        <div class="finding-attributes">
+            <div class="finding-attr-cell">
+                <span class="attr-label">Nivel de Riesgo (Estimado)</span>
+                <span class="attr-value risk-critical">{{ session.severidad | default('CRÍTICO (Acceso Confirmado)') }}</span>
+            </div>
+            <div class="finding-attr-cell">
+                <span class="attr-label">Referencia de Evidencia</span>
+                <span class="attr-value">{{ session.filename }}</span>
+            </div>
+        </div>
+        
+        <!-- Cuerpo del Hallazgo Dinámico -->
+        <div class="finding-body">
+            <div class="finding-section-title">Descripción de la Vulnerabilidad</div>
+            <p style="font-size: 9.5pt; margin-top: 0;">
+                {{ session.descripcion | default('Vulnerabilidad identificada en el servicio analizado que permite la interacción no autorizada con el sistema.') }}
+            </p>
+            
+            <div class="finding-section-title">Impacto de Negocio</div>
+            <p style="font-size: 9.5pt; margin-top: 0;">
+                {{ session.impacto | default('Compromiso del host. Un atacante podría alterar, destruir o exfiltrar información, o utilizar el sistema para movimiento lateral.') }}
+            </p>
+            
+            <div class="finding-section-title">Evidencia Técnica Obtenida</div>
+            <p style="font-size: 9.5pt; margin-top: 0; color: #7f8c8d;">El siguiente extracto forense demuestra el acceso interactivo y la confirmación de privilegios de ejecución en el sistema auditado:</p>
+            <div class="evidence-block">{{ session.content[:1500] }}{% if session.content|length > 1500 %}... [Evidencia truncada por legibilidad. Refiérase a los anexos forenses para el registro completo]{% endif %}</div>
+            
+            <div class="finding-section-title">Recomendaciones de Mitigación</div>
+            <ul style="font-size: 9.5pt; margin-top: 0; padding-left: 20px;">
+                {% if session.recomendaciones %}
+                    {% for rec in session.recomendaciones %}
+                    <li>{{ rec }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>Analizar y aplicar los parches de seguridad requeridos por el servicio afectado.</li>
+                    <li>Revisar las configuraciones de exposición a la red interna/externa (Firewalling).</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {% else %}
+    <p style="font-style: italic; color: #7f8c8d;">No se registraron evidencias de explotación (sesiones interactivas) durante la evaluación actual.</p>
+    {% endfor %}
+
+</body>
+</html>

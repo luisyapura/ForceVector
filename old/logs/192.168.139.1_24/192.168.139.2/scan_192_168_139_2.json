@@ -1,0 +1,20 @@
+{
+    "ip": "192.168.139.2",
+    "os": "VMware Player virtual NAT device (90%), Microsoft Windows XP SP3 or Windows 7 or Windows Server 2012 (86%)",
+    "ports": [
+        {
+            "portid": "53",
+            "protocol": "tcp",
+            "state": "open",
+            "service": "tcpwrapped",
+            "version": "No especificada"
+        },
+        {
+            "portid": "53",
+            "protocol": "udp",
+            "state": "open",
+            "service": "domain",
+            "version": "(generic dns response: SERVFAIL)"
+        }
+    ]
+}

@@ -1,0 +1,217 @@
+[
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "22",
+        "protocolo": "tcp",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "cve_identificados": [
+            "CVE-2010-4499",
+            "CVE-2011-1521"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en OpenSSH 4.7p1 que permiten ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante paquetes malformados o fallos en la validaci\u00f3n de protocolo SSH.",
+        "herramienta_sugerida": "nmap --script ssh-authentication,sshv1 -p 22 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "25",
+        "protocolo": "tcp",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "cve_identificados": [
+            "CVE-2006-0106",
+            "CVE-2007-0387",
+            "CVE-2008-0153"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en Postfix smtpd para ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante env\u00edo de correos malformados o manipulaci\u00f3n de par\u00e1metros de conexi\u00f3n.",
+        "herramienta_sugerida": "nmap --script smtp-vuln-postfix -p 25 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "53",
+        "protocolo": "tcp",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "cve_identificados": [
+            "CVE-2008-2375",
+            "CVE-2008-2376",
+            "CVE-2007-4825"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en ISC BIND 9.4.2 que permiten ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante consultas DNS malformadas o sobrecarga de servidores DNS.",
+        "herramienta_sugerida": "nmap --script bind-dig-enum -p 53 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "111",
+        "protocolo": "tcp",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "cve_identificados": [
+            "CVE-2010-3081",
+            "CVE-2011-1487",
+            "CVE-2011-1488"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en el servicio RPC (Remote Procedure Call) en sistemas Linux 2.6.X, permitiendo ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante el puerto 111 (rpcbind).",
+        "herramienta_sugerida": "nmap --script rpcinfo -p 111 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "139",
+        "protocolo": "tcp",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "cve_identificados": [
+            "CVE-2017-2183",
+            "CVE-2019-12734"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en Samba smbd 3.X-4.X que permiten ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante solicitudes malformadas en el protocolo SMB en el puerto 139.",
+        "herramienta_sugerida": "nmap --script smb-vuln-cve2017-2183,smb-vuln-cve2019-12734 -p 139 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "445",
+        "protocolo": "tcp",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "cve_identificados": [
+            "CVE-2017-2168",
+            "CVE-2017-2169",
+            "CVE-2017-7495"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en Samba que permiten ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante peticiones SMB malformadas o buffer overflow en protocolos NTLMSSP.",
+        "herramienta_sugerida": "nmap --script smb-vuln-cve2017-2168,smb-vuln-cve2017-2169,smb-vuln-cve2017-7495 -p 445 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "2049",
+        "protocolo": "tcp",
+        "servicio": "nfs",
+        "version": "2-4 (RPC #100003)",
+        "cve_identificados": [
+            "CVE-2019-11135",
+            "CVE-2017-16995",
+            "CVE-2018-1177"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en NFSv2/v3/v4 mediante RPC (Remote Procedure Call) para ejecutar c\u00f3digo remoto (RCE) al aprovechar fallos de buffer overflow o manejo inseguro de solicitudes de montaje.",
+        "herramienta_sugerida": "nmap --script nfs-showmount --script-args nfs-showmount.action=mount",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "2121",
+        "protocolo": "tcp",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "cve_identificados": [
+            "CVE-2008-5560"
+        ],
+        "vectores_ataque": "Exploit de desbordamiento de b\u00fafer en ProFTPD 1.3.1 al procesar solicitudes malformadas, permitiendo ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante ataques de tipo buffer overflow en el servicio FTP.",
+        "herramienta_sugerida": "nmap --script=ftp-proftpd-vuln -p 2121 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "3306",
+        "protocolo": "tcp",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "cve_identificados": [
+            "CVE-2009-3566",
+            "CVE-2010-0248"
+        ],
+        "vectores_ataque": "Exploit de buffer overflow en el servicio MySQL 5.0.51a mediante conexi\u00f3n TCP al puerto 3306, permitiendo ejecuci\u00f3n remota de c\u00f3digo (RCE) o escalada de privilegios. La versi\u00f3n vulnerable no incluye parches para corregir vulnerabilidades cr\u00edticas reportadas en 2009-2010.",
+        "herramienta_sugerida": "nmap --script mysql-vuln-db -p 3306 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "5432",
+        "protocolo": "tcp",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "cve_identificados": [
+            "CVE-2012-2694",
+            "CVE-2012-2695"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en PostgreSQL 8.3.0-8.3.7 que permiten ejecuci\u00f3n de c\u00f3digo remoto (RCE) mediante consultas malformadas o manejo inseguro de datos.",
+        "herramienta_sugerida": "nmap --script=pgsql-version,pgsql-vuln-db -p 5432 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "53",
+        "protocolo": "udp",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "cve_identificados": [
+            "CVE-2008-5060",
+            "CVE-2010-3079"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en ISC BIND 9.4.2 que permiten ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante consultas DNS malformadas o sobrecargas de buffer en el protocolo UDP.",
+        "herramienta_sugerida": "nmap -sU -p53 --script vuln 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "111",
+        "protocolo": "udp",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "cve_identificados": [
+            "CVE-2015-3306",
+            "CVE-2017-16995"
+        ],
+        "vectores_ataque": "Exploit de RPCBIND en versi\u00f3n 2 mediante UDP en puerto 111, permitiendo ejecuci\u00f3n remota de c\u00f3digo (RCE) al aprovechar vulnerabilidades en el manejo de solicitudes RPC no autenticadas.",
+        "herramienta_sugerida": "nmap --script rpcbind-enum -p 111 192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "137",
+        "protocolo": "udp",
+        "servicio": "netbios-ns",
+        "version": "Microsoft Windows netbios-ns (workgroup: WORKGROUP)",
+        "cve_identificados": [
+            "CVE-2018-0886",
+            "CVE-2019-0727"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en el servicio NetBIOS-NS (UDP) para ejecuci\u00f3n remota de c\u00f3digo (RCE) mediante inyecci\u00f3n de datos malformados o buffer overflow en la capa de red.",
+        "herramienta_sugerida": "nmap --script nbstat --script-args nbstat.target=192.168.139.128",
+        "categoria_vector": "rce"
+    },
+    {
+        "ip": "192.168.139.128",
+        "os": "Linux 2.6.X",
+        "puerto": "2049",
+        "protocolo": "udp",
+        "servicio": "nfs",
+        "version": "2-4 (RPC #100003)",
+        "cve_identificados": [
+            "CVE-2009-0033",
+            "CVE-2008-0001",
+            "CVE-2007-2447"
+        ],
+        "vectores_ataque": "Exploit de vulnerabilidades en NFSv2-4 (RPC #100003) en Linux 2.6.X, permitiendo RCE o DoS mediante peticiones malformadas en UDP puerto 2049.",
+        "herramienta_sugerida": "nmap --script nfs-ls --script-args nfsvers=3",
+        "categoria_vector": "rce"
+    }
+]

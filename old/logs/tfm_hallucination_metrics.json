@@ -1,0 +1,2362 @@
+[
+    {
+        "timestamp": "2026-07-06 10:39:10",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-06 10:39:17",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-06 10:39:25",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-06 10:39:34",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_rce"
+    },
+    {
+        "timestamp": "2026-07-06 10:39:57",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/usermap_script"
+    },
+    {
+        "timestamp": "2026-07-06 10:40:09",
+        "ip": "192.168.139.128",
+        "puerto": "2049",
+        "servicio": "nfs",
+        "version": "2-4 (RPC #100003)",
+        "fake_module_generated": "auxiliary/scanner/nfs/nfs_showmount"
+    },
+    {
+        "timestamp": "2026-07-06 10:40:19",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-06 10:40:25",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_auth_bypass"
+    },
+    {
+        "timestamp": "2026-07-06 10:40:32",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/multi/db/postgres_payload"
+    },
+    {
+        "timestamp": "2026-07-06 10:40:39",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: NOTIMP)",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-06 10:40:47",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-06 10:46:31",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-06 10:46:38",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-06 10:46:46",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-06 10:46:55",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_rce"
+    },
+    {
+        "timestamp": "2026-07-06 10:47:18",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/usermap_script"
+    },
+    {
+        "timestamp": "2026-07-06 10:47:30",
+        "ip": "192.168.139.128",
+        "puerto": "2049",
+        "servicio": "nfs",
+        "version": "2-4 (RPC #100003)",
+        "fake_module_generated": "auxiliary/scanner/nfs/nfs_showmount"
+    },
+    {
+        "timestamp": "2026-07-06 10:47:40",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-06 10:47:46",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_auth_bypass"
+    },
+    {
+        "timestamp": "2026-07-06 10:47:53",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/multi/db/postgres_payload"
+    },
+    {
+        "timestamp": "2026-07-06 10:48:00",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: NOTIMP)",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-06 10:48:08",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-06 11:38:18",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-06 11:38:25",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-06 11:38:32",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_bo"
+    },
+    {
+        "timestamp": "2026-07-06 11:39:34",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/smb/samba_eternalromance"
+    },
+    {
+        "timestamp": "2026-07-06 11:39:41",
+        "ip": "192.168.139.128",
+        "puerto": "2049",
+        "servicio": "nfs",
+        "version": "2-4 (RPC #100003)",
+        "fake_module_generated": "exploit/linux/nfs/nfsd_symlink"
+    },
+    {
+        "timestamp": "2026-07-06 11:41:05",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: NOTIMP)",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-06 11:41:15",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000_2015_7468"
+    },
+    {
+        "timestamp": "2026-07-06 11:48:03",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-06 11:48:11",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-06 11:48:18",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_boom"
+    },
+    {
+        "timestamp": "2026-07-06 12:08:10",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-06 12:08:18",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-06 12:08:25",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_boom"
+    },
+    {
+        "timestamp": "2026-07-09 08:06:12",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/unix/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-09 08:06:21",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 08:06:31",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 08:06:38",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 08:22:45",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/unix/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-09 08:22:54",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 08:23:03",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 08:23:10",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 08:53:52",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_rce"
+    },
+    {
+        "timestamp": "2026-07-09 08:54:13",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/multi/misc/bind_9_x86_64_linux"
+    },
+    {
+        "timestamp": "2026-07-09 08:54:22",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind_rce"
+    },
+    {
+        "timestamp": "2026-07-09 08:54:29",
+        "ip": "192.168.139.128",
+        "puerto": "139",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 08:58:38",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_rce"
+    },
+    {
+        "timestamp": "2026-07-09 08:58:46",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 08:58:54",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_x86_64_linux"
+    },
+    {
+        "timestamp": "2026-07-09 08:59:04",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind_rce"
+    },
+    {
+        "timestamp": "2026-07-09 08:59:11",
+        "ip": "192.168.139.128",
+        "puerto": "139",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 08:59:49",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/multi/ftp/proftpd_1_3_1_modcopy"
+    },
+    {
+        "timestamp": "2026-07-09 08:59:57",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:00:26",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_drain"
+    },
+    {
+        "timestamp": "2026-07-09 09:00:56",
+        "ip": "192.168.139.128",
+        "puerto": "137",
+        "servicio": "netbios-ns",
+        "version": "Microsoft Windows netbios-ns (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/udp/netbios_ns"
+    },
+    {
+        "timestamp": "2026-07-09 09:02:12",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/multi/ssh/openssh_preauth"
+    },
+    {
+        "timestamp": "2026-07-09 09:02:20",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 09:02:27",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:02:33",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 09:09:02",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/unix/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-09 09:09:11",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 09:09:20",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:09:27",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 09:15:06",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/unix/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-09 09:15:15",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 09:15:25",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:15:32",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 09:22:51",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:23:03",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 09:23:11",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:23:46",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:24:25",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1_debuffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:24:32",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5"
+    },
+    {
+        "timestamp": "2026-07-09 09:25:05",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:25:34",
+        "ip": "192.168.139.128",
+        "puerto": "137",
+        "servicio": "netbios-ns",
+        "version": "Microsoft Windows netbios-ns (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/misc/netbios_ns_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:30:31",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/multi/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-09 09:30:43",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 09:30:55",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:32:39",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5"
+    },
+    {
+        "timestamp": "2026-07-09 09:33:17",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:33:51",
+        "ip": "192.168.139.128",
+        "puerto": "137",
+        "servicio": "netbios-ns",
+        "version": "Microsoft Windows netbios-ns (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/misc/netbios_ns"
+    },
+    {
+        "timestamp": "2026-07-09 09:39:35",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:39:44",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 09:39:52",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:40:00",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 09:40:24",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/smb/samba_relay"
+    },
+    {
+        "timestamp": "2026-07-09 09:41:22",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-09 09:41:32",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5_0day"
+    },
+    {
+        "timestamp": "2026-07-09 09:41:58",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_drain"
+    },
+    {
+        "timestamp": "2026-07-09 09:45:37",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:45:48",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 09:45:58",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:46:03",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 09:49:11",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:49:22",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 09:49:31",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:49:37",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 09:50:26",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:50:37",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 09:50:46",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:50:52",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 09:53:26",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 09:53:37",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 09:53:46",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 09:53:52",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 10:00:24",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 10:00:33",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 10:00:42",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 10:00:50",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 10:01:13",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/smb/samba_relay"
+    },
+    {
+        "timestamp": "2026-07-09 10:03:22",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-09 10:03:31",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5_0day"
+    },
+    {
+        "timestamp": "2026-07-09 10:04:07",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_drain"
+    },
+    {
+        "timestamp": "2026-07-09 10:08:29",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 10:08:41",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 10:08:50",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 10:08:56",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 10:21:17",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 10:24:34",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-09 10:24:44",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5_0day"
+    },
+    {
+        "timestamp": "2026-07-09 10:25:18",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_drain"
+    },
+    {
+        "timestamp": "2026-07-09 13:36:31",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 13:36:41",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 13:36:49",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 13:36:57",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 13:37:20",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/smb/samba_relay"
+    },
+    {
+        "timestamp": "2026-07-09 13:38:04",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-09 13:38:14",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5_0day"
+    },
+    {
+        "timestamp": "2026-07-09 13:38:48",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_drain"
+    },
+    {
+        "timestamp": "2026-07-09 13:45:12",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 13:45:21",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_pipe_command_injection"
+    },
+    {
+        "timestamp": "2026-07-09 13:45:29",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 13:45:37",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind"
+    },
+    {
+        "timestamp": "2026-07-09 13:46:01",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/smb/samba_relay"
+    },
+    {
+        "timestamp": "2026-07-09 13:49:25",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-09 13:49:34",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5_0day"
+    },
+    {
+        "timestamp": "2026-07-09 13:57:09",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 13:57:21",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 13:57:30",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpc/rpcbind_rce"
+    },
+    {
+        "timestamp": "2026-07-09 14:41:40",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploits/linux/ssh/openssh_preauth_rce"
+    },
+    {
+        "timestamp": "2026-07-09 14:41:51",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 14:42:01",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 14:42:09",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_111"
+    },
+    {
+        "timestamp": "2026-07-09 14:52:22",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploits/linux/ssh/openssh_preauth_rce"
+    },
+    {
+        "timestamp": "2026-07-09 14:52:33",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 14:52:43",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 14:52:51",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_111"
+    },
+    {
+        "timestamp": "2026-07-09 15:04:01",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/multi/misc/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 15:04:11",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 15:04:18",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_111"
+    },
+    {
+        "timestamp": "2026-07-09 15:25:14",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/multi/misc/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 15:25:24",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 15:25:32",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_111"
+    },
+    {
+        "timestamp": "2026-07-09 15:26:19",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/lsacl"
+    },
+    {
+        "timestamp": "2026-07-09 15:26:35",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/multi/ftp/proftpd_1_3_1_ftp_bounce"
+    },
+    {
+        "timestamp": "2026-07-09 15:26:42",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5"
+    },
+    {
+        "timestamp": "2026-07-09 15:26:59",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_format_string"
+    },
+    {
+        "timestamp": "2026-07-09 15:27:36",
+        "ip": "192.168.139.128",
+        "puerto": "137",
+        "servicio": "netbios-ns",
+        "version": "Microsoft Windows netbios-ns (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/udp/netbios_ns"
+    },
+    {
+        "timestamp": "2026-07-09 15:30:18",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/unix/ssh/openssh_preauth_rce"
+    },
+    {
+        "timestamp": "2026-07-09 15:30:26",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/multi/misc/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 15:30:33",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 15:30:40",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_111"
+    },
+    {
+        "timestamp": "2026-07-09 15:31:01",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 15:31:48",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploits/linux/mysql/mysql_5_0_51a_3ubuntu5"
+    },
+    {
+        "timestamp": "2026-07-09 15:32:27",
+        "ip": "192.168.139.128",
+        "puerto": "137",
+        "servicio": "netbios-ns",
+        "version": "Microsoft Windows netbios-ns (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/udp/netbios_ns"
+    },
+    {
+        "timestamp": "2026-07-09 15:33:29",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploits/linux/ssh/openssh_preauth_rce"
+    },
+    {
+        "timestamp": "2026-07-09 15:33:40",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 15:33:50",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 15:33:58",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_111"
+    },
+    {
+        "timestamp": "2026-07-09 15:34:41",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/lsacl"
+    },
+    {
+        "timestamp": "2026-07-09 15:35:26",
+        "ip": "192.168.139.128",
+        "puerto": "3306",
+        "servicio": "mysql",
+        "version": "MySQL 5.0.51a-3ubuntu5",
+        "fake_module_generated": "exploit/linux/mysql/mysql_5_0_51a_3ubuntu5"
+    },
+    {
+        "timestamp": "2026-07-09 15:36:04",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/linux/dns/bind_9_x_format_string"
+    },
+    {
+        "timestamp": "2026-07-09 15:36:38",
+        "ip": "192.168.139.128",
+        "puerto": "137",
+        "servicio": "netbios-ns",
+        "version": "Microsoft Windows netbios-ns (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/udp/netbios_ns"
+    },
+    {
+        "timestamp": "2026-07-09 17:14:44",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploits/linux/ssh/openssh_preauth_rce"
+    },
+    {
+        "timestamp": "2026-07-09 17:14:55",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 17:15:05",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 17:15:13",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_111"
+    },
+    {
+        "timestamp": "2026-07-09 17:16:29",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 17:16:39",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 17:16:46",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 17:16:54",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/unix/rpcbind/rpcbind_111"
+    },
+    {
+        "timestamp": "2026-07-09 17:17:19",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/lsacl"
+    },
+    {
+        "timestamp": "2026-07-09 17:24:36",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 17:24:43",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 17:24:53",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-09 17:25:03",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-09 17:30:48",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 17:30:54",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 17:31:05",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-09 17:31:14",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-09 17:33:30",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 17:33:41",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_4_2_x86_64"
+    },
+    {
+        "timestamp": "2026-07-09 17:33:52",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-09 17:34:14",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/multi/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 17:35:51",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-09 17:36:12",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/unix/pgsql/postgres_payload"
+    },
+    {
+        "timestamp": "2026-07-09 17:36:21",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 17:44:36",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-09 17:44:43",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 17:44:53",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-09 17:45:03",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-09 17:49:39",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 17:49:50",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_4_2_x86_64"
+    },
+    {
+        "timestamp": "2026-07-09 17:50:01",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-09 17:50:23",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/multi/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 17:54:13",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 17:54:24",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_4_2_x86_64"
+    },
+    {
+        "timestamp": "2026-07-09 17:54:35",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-09 17:54:55",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/lsa_trans_names"
+    },
+    {
+        "timestamp": "2026-07-09 17:56:35",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-09 17:56:56",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/unix/pgsql/postgres_payload"
+    },
+    {
+        "timestamp": "2026-07-09 17:57:04",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 18:02:32",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-09 18:02:43",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_4_2_x86_64"
+    },
+    {
+        "timestamp": "2026-07-09 18:02:54",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-09 18:03:16",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/multi/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-09 18:04:08",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-09 18:04:29",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/unix/pgsql/postgres_payload"
+    },
+    {
+        "timestamp": "2026-07-09 18:04:40",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 05:06:17",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 05:06:23",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 05:06:34",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-10 05:06:43",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 06:30:28",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 06:30:35",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 06:30:45",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-10 06:30:55",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 06:34:49",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/multi/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 06:50:57",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-10 06:51:18",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/unix/pgsql/postgresql_payload_injection"
+    },
+    {
+        "timestamp": "2026-07-10 06:51:28",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 06:54:54",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/unix/ssh/openssh_moduli"
+    },
+    {
+        "timestamp": "2026-07-10 06:55:04",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 06:55:12",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 06:56:15",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/smb/ms17_010_eternalblue"
+    },
+    {
+        "timestamp": "2026-07-10 06:59:24",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-10 07:00:58",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 07:03:01",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 07:03:06",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/multi/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 07:03:14",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_dns_ptr"
+    },
+    {
+        "timestamp": "2026-07-10 07:03:22",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/unix/rpc/cve_2010_3081"
+    },
+    {
+        "timestamp": "2026-07-10 07:03:44",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/smb/ms17_010_eternalblue"
+    },
+    {
+        "timestamp": "2026-07-10 07:04:02",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-10 07:05:04",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 07:07:42",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 07:07:51",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 07:07:58",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_dns_ptr"
+    },
+    {
+        "timestamp": "2026-07-10 07:08:06",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/unix/rpc/cve_2010_3081"
+    },
+    {
+        "timestamp": "2026-07-10 07:08:28",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/smb/ms17_010_eternalblue"
+    },
+    {
+        "timestamp": "2026-07-10 07:08:54",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-10 07:09:44",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 07:15:46",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 07:15:53",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 07:16:03",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-10 07:16:13",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 07:17:35",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/multi/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 07:18:40",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-10 07:19:01",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/unix/pgsql/postgres_payload"
+    },
+    {
+        "timestamp": "2026-07-10 07:19:09",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 07:25:12",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 07:25:22",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_4_2_x86_64"
+    },
+    {
+        "timestamp": "2026-07-10 07:25:34",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 07:25:53",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/lsa_trans_names"
+    },
+    {
+        "timestamp": "2026-07-10 07:27:11",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-10 07:27:32",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/unix/pgsql/postgres_payload"
+    },
+    {
+        "timestamp": "2026-07-10 07:27:40",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 07:34:38",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 07:34:45",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 07:34:55",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-10 07:35:05",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 09:34:44",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 09:34:51",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 09:35:02",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-10 09:35:11",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 09:35:48",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/multi/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 09:50:26",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 09:50:33",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 09:50:43",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-10 09:50:53",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 09:54:21",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 09:54:32",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_4_2_x86_64"
+    },
+    {
+        "timestamp": "2026-07-10 09:54:43",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 09:55:05",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/multi/samba/remote_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 09:58:33",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 09:58:44",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/linux/dns/bind9_4_2_x86_64"
+    },
+    {
+        "timestamp": "2026-07-10 09:58:55",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploit/linux/rpcbind/rpcbind_100000"
+    },
+    {
+        "timestamp": "2026-07-10 09:59:14",
+        "ip": "192.168.139.128",
+        "puerto": "445",
+        "servicio": "netbios-ssn",
+        "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+        "fake_module_generated": "exploit/linux/samba/lsa_trans_names"
+    },
+    {
+        "timestamp": "2026-07-10 10:00:23",
+        "ip": "192.168.139.128",
+        "puerto": "2121",
+        "servicio": "ftp",
+        "version": "ProFTPD 1.3.1",
+        "fake_module_generated": "exploit/unix/ftp/proftpd_1_3_1a"
+    },
+    {
+        "timestamp": "2026-07-10 10:00:43",
+        "ip": "192.168.139.128",
+        "puerto": "5432",
+        "servicio": "postgresql",
+        "version": "PostgreSQL DB 8.3.0 - 8.3.7",
+        "fake_module_generated": "exploit/unix/pgsql/postgres_payload"
+    },
+    {
+        "timestamp": "2026-07-10 10:00:52",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2 (generic dns response: no error)",
+        "fake_module_generated": "exploit/unix/dns/bind_9_x_code_execution"
+    },
+    {
+        "timestamp": "2026-07-10 10:09:16",
+        "ip": "192.168.139.128",
+        "puerto": "22",
+        "servicio": "ssh",
+        "version": "OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)",
+        "fake_module_generated": "exploit/linux/ssh/openssh_preauth_buffer_overflow"
+    },
+    {
+        "timestamp": "2026-07-10 10:09:22",
+        "ip": "192.168.139.128",
+        "puerto": "25",
+        "servicio": "smtp",
+        "version": "Postfix smtpd",
+        "fake_module_generated": "exploit/linux/smtp/postfix_code_exec"
+    },
+    {
+        "timestamp": "2026-07-10 10:09:33",
+        "ip": "192.168.139.128",
+        "puerto": "53",
+        "servicio": "domain",
+        "version": "ISC BIND 9.4.2",
+        "fake_module_generated": "exploit/unix/dns/bind9_referral_loop"
+    },
+    {
+        "timestamp": "2026-07-10 10:09:42",
+        "ip": "192.168.139.128",
+        "puerto": "111",
+        "servicio": "rpcbind",
+        "version": "2 (RPC #100000)",
+        "fake_module_generated": "exploits/linux/rpcbind/rpcbind_100000"
+    }
+]
