@@ -29,10 +29,11 @@ Framework Multiagente de Pentesting Ético Basado en Inteligencia Artificial
 </p>
 
 ---
+# ForceVector — Framework Pentesting Basado en IA
 
-# 🧠 Descripción General
+## 🧠 Descripción General
 
-**ForceVector** es un framework experimental de pentesting ético asistido por Inteligencia Artificial diseñado para automatizar parcialmente auditorías ofensivas sobre infraestructuras empresariales modernas.
+ForceVector es un framework experimental de pentesting ético asistido por Inteligencia Artificial diseñado para automatizar parcialmente auditorías ofensivas sobre infraestructuras empresariales modernas.
 
 El proyecto nace como parte de una investigación académica enfocada en las limitaciones estructurales del pentesting tradicional y en la necesidad de desarrollar arquitecturas híbridas capaces de combinar:
 
@@ -41,39 +42,33 @@ El proyecto nace como parte de una investigación académica enfocada en las lim
 * memoria persistente vectorial,
 * y automatización ofensiva supervisada.
 
-A diferencia de los escáneres convencionales basados únicamente en firmas estáticas, **ForceVector** busca aproximarse al razonamiento táctico de un operador Red Team humano, permitiendo:
+A diferencia de los escáneres convencionales basados únicamente en firmas estáticas, ForceVector busca aproximarse al razonamiento táctico de un operador Red Team humano, permitiendo:
 
 * correlacionar CVEs,
 * inferir rutas de ataque,
 * priorizar vectores críticos,
 * y reducir la carga cognitiva asociada al análisis ofensivo manual.
 
----
+## ⚡ Objetivos del Proyecto
 
-# ⚡ Objetivos del Proyecto
-
-## Objetivo General
+### Objetivo General
 
 Diseñar y validar una arquitectura multiagente basada en IA capaz de ejecutar pruebas de intrusión semiautónomas sobre redes empresariales bajo un enfoque controlado y éticamente supervisado.
 
----
-
-## Objetivos Específicos
+### Objetivos Específicos
 
 * Automatizar tareas de reconocimiento y enumeración.
-* Implementar memoria semántica persistente mediante `pgvector`.
-* Correlacionar vulnerabilidades utilizando bases CVE y Exploit-DB.
+* Implementar memoria semántica persistente mediante pgvector.
+* Correlacionar vulnerabilidades utilizando la base de datos local de CVEs.
 * Reducir alucinaciones operativas mediante grounding técnico.
 * Integrar agentes especializados por dominio funcional.
-* Incorporar esquemas de supervisión `Man-in-the-Loop (MitL)`.
+* Incorporar esquemas de supervisión Man-in-the-Loop (MitL).
 * Permitir planificación táctica basada en contexto.
 * Mantener cumplimiento operativo y control de alcance.
 
----
+## 🏗️ Arquitectura Conceptual
 
-# 🏗️ Arquitectura Conceptual
-
-La arquitectura de **ForceVector** se basa en un modelo jerárquico híbrido dividido en:
+La arquitectura de ForceVector se basa en un modelo jerárquico híbrido dividido en:
 
 * plano semántico de planificación,
 * plano táctico de ejecución,
@@ -101,24 +96,22 @@ La arquitectura de **ForceVector** se basa en un modelo jerárquico híbrido div
                                             |
                      +----------------------+----------------------+
                      |                                             |
-          +----------v----------+                      +-----------v-----------+
-          | Explotación         |                      | Generación de Reporte |
-          | Metasploit/sqlmap   |                      | Evidencias y Riesgo   |
-          +---------------------+                      +-----------------------+
+          +----------v----------+                     +-----------v-----------+
+          | Explotación         |                     | Generación de Reporte |
+          | Metasploit/sqlmap   |                     | Evidencias y Riesgo   |
+          +---------------------+                     +-----------------------+
 ```
 
----
-
-# 🧩 Filosofía Arquitectónica
+## 🧩 Filosofía Arquitectónica
 
 El proyecto se fundamenta en una separación explícita entre:
 
-| Capa                    | Responsabilidad                                   |
-| ----------------------- | ------------------------------------------------- |
-| **Plano Semántico**     | Razonamiento, correlación y planificación táctica |
-| **Plano Táctico**       | Ejecución controlada de acciones ofensivas        |
-| **Memoria Persistente** | Compartición contextual entre agentes             |
-| **MitL**                | Supervisión humana de acciones críticas           |
+| Capa                | Responsabilidad                                   |
+| ------------------- | ------------------------------------------------- |
+| Plano Semántico     | Razonamiento, correlación y planificación táctica |
+| Plano Táctico       | Ejecución controlada de acciones ofensivas        |
+| Memoria Persistente | Compartición contextual entre agentes             |
+| MitL                | Supervisión humana de acciones críticas           |
 
 Esta aproximación busca mitigar:
 
@@ -127,47 +120,36 @@ Esta aproximación busca mitigar:
 * pérdida de persistencia lógica,
 * y alucinaciones ofensivas.
 
----
+## 🔍 Capacidades Principales
 
-# 🔍 Capacidades Principales
-
-## Reconocimiento Inteligente
+### Reconocimiento Inteligente
 
 * Descubrimiento de hosts.
 * Fingerprinting activo y pasivo.
 * Enumeración de servicios.
 * Detección contextual de superficie de ataque.
 
----
+### Correlación Semántica de Vulnerabilidades
 
-## Correlación Semántica de Vulnerabilidades
+Integración directa con base de datos CVE local.
 
-* Integración con:
+Priorización ofensiva basada en:
 
-  * CVE,
-  * Exploit-DB.
+* criticidad,
+* exposición,
+* transitividad,
+* y contexto topológico.
 
-* Priorización ofensiva basada en:
+### Memoria Vectorial Persistente
 
-  * criticidad,
-  * exposición,
-  * transitividad,
-  * y contexto topológico.
-
----
-
-## Memoria Vectorial Persistente
-
-Uso de `PostgreSQL + pgvector` para:
+Uso de PostgreSQL + pgvector para:
 
 * almacenar telemetría ofensiva,
 * preservar estado entre agentes,
 * evitar re-procesamiento contextual,
 * compartir conocimiento táctico.
 
----
-
-## Arquitectura Multiagente
+### Arquitectura Multiagente
 
 Agentes especializados para:
 
@@ -177,9 +159,7 @@ Agentes especializados para:
 * autenticación,
 * y generación de reportes.
 
----
-
-## Supervisión Humana (MitL)
+### Supervisión Humana (MitL)
 
 Las acciones de alto impacto requieren aprobación explícita:
 
@@ -188,59 +168,50 @@ Las acciones de alto impacto requieren aprobación explícita:
 * post-explotación,
 * ejecución de payloads.
 
----
+## 🧪 Tecnologías
 
-# 🧪 Tecnologías
-
-## Inteligencia Artificial
+### Inteligencia Artificial
 
 * Ollama
 * Qwen3
 * Arquitecturas RAG
 * Chain-of-Thought Planning
-* PostgreSQL
----
 
-## Seguridad Ofensiva
+### Seguridad Ofensiva
 
 * Nmap
 * Scapy
-* Metasploit
+* Metasploit Framework (MSF RPC)
 * sqlmap
 * Hashcat
 * Nessus
 * OpenVAS
 
----
-
-## Backend y Datos
+### Backend y Datos
 
 * Python
 * PostgreSQL
 * pgvector
 * SQLAlchemy
-* FastAPI *(planificado)*
+* FastAPI (planificado)
 
----
+### Infraestructura
 
-## Infraestructura
-
-* Linux
+* Linux (Kali Linux para ejecución táctica)
+* Windows Server (Para bases de datos de conocimiento y LLM)
 * Virtualización de laboratorios
 * Entornos aislados
 * GPUs locales para inferencia
 
----
+## 🗄️ Memoria Semántica y RAG
 
-# 🗄️ Memoria Semántica y RAG
-
-Uno de los pilares fundamentales de **ForceVector** es la eliminación del intercambio lineal de contexto entre agentes.
+Uno de los pilares fundamentales de ForceVector es la eliminación del intercambio lineal de contexto entre agentes.
 
 En lugar de transmitir grandes volúmenes de texto entre modelos, el sistema:
 
-1. transforma resultados ofensivos en embeddings,
-2. almacena información estructurada en `pgvector`,
-3. y recupera únicamente el contexto relevante en tiempo real.
+* transforma resultados ofensivos en embeddings,
+* almacena información estructurada en pgvector,
+* y recupera únicamente el contexto relevante en tiempo real.
 
 Esto permite:
 
@@ -249,9 +220,7 @@ Esto permite:
 * estabilizar razonamiento multiagente,
 * y mantener persistencia táctica.
 
----
-
-# 🧠 Motivación Técnica
+## 🧠 Motivación Técnica
 
 El proyecto surge como respuesta a múltiples limitaciones observadas en el estado del arte actual:
 
@@ -262,7 +231,7 @@ El proyecto surge como respuesta a múltiples limitaciones observadas en el esta
 * pérdida de contexto en arquitecturas ReAct,
 * y baja trazabilidad de decisiones ofensivas.
 
-**ForceVector** propone una arquitectura híbrida local orientada a:
+ForceVector propone una arquitectura híbrida local orientada a:
 
 * eficiencia,
 * persistencia,
@@ -270,9 +239,7 @@ El proyecto surge como respuesta a múltiples limitaciones observadas en el esta
 * escalabilidad,
 * y control operacional.
 
----
-
-# ⚙️ Flujo Operativo
+## ⚙️ Flujo Operativo
 
 | Fase                 | Automatización |
 | -------------------- | -------------- |
@@ -284,9 +251,7 @@ El proyecto surge como respuesta a múltiples limitaciones observadas en el esta
 | Post-explotación     | Supervisada    |
 | Reporte              | Autónoma       |
 
----
-
-# 📊 Objetivos de Validación
+## 📊 Objetivos de Validación
 
 El framework será validado mediante:
 
@@ -295,38 +260,38 @@ El framework será validado mediante:
 * benchmarking ofensivo,
 * y comparación frente a enfoques tradicionales.
 
----
-
-## Benchmarks Objetivo
+### Benchmarks Objetivo
 
 * AutoPenBench
 * AI-Pentest-Benchmark
 * Metasploitable
 * VulnNetLabs
 
----
+## 🚧 Estado Actual
 
-# 🚧 Estado Actual
+* * Investigación arquitectónica completada
 
-```diff
-+ Investigación arquitectónica completada
-+ Diseño conceptual multiagente
-+ Definición del modelo de memoria vectorial
-+ Evaluación del estado del arte
-+ Selección de stack tecnológico
+* * Diseño conceptual multiagente
 
-! Implementación modular en progreso
-! Integración de agentes especializados
-! Desarrollo del motor RAG
+* * Definición del modelo de memoria vectorial
 
-- Pipeline ofensivo completo
-- Benchmarks automatizados
-- Sistema MitL operativo
-```
+* * Evaluación del estado del arte
 
----
+* * Selección de stack tecnológico
 
-# 🛡️ Seguridad y Uso Ético
+* ! Implementación modular en progreso
+
+* ! Integración de agentes especializados
+
+* ! Desarrollo del motor RAG
+
+* * Pipeline ofensivo completo
+
+* * Benchmarks automatizados
+
+* * Sistema MitL operativo
+
+## 🛡️ Seguridad y Uso Ético
 
 Este proyecto está orientado exclusivamente a:
 
@@ -335,44 +300,39 @@ Este proyecto está orientado exclusivamente a:
 * auditorías autorizadas,
 * y desarrollo defensivo.
 
-## Restricciones
+### Restricciones
 
-* No está diseñado para uso malicioso.
-* No debe utilizarse sobre infraestructuras sin autorización explícita.
-* El usuario final es responsable del cumplimiento legal y ético.
+No está diseñado para uso malicioso.
 
----
+No debe utilizarse sobre infraestructuras sin autorización explícita.
 
-# 📚 Contexto Académico
+El usuario final es responsable del cumplimiento legal y ético.
+
+## 📚 Contexto Académico
 
 Proyecto desarrollado como parte de una:
 
-> **Tesis de Máster en Ciberseguridad**
-> enfocada en automatización ofensiva inteligente, arquitecturas multiagente y memoria vectorial aplicada al pentesting.
+**Tesis de Máster en Ciberseguridad**
 
----
+enfocada en automatización ofensiva inteligente, arquitecturas multiagente y memoria vectorial aplicada al pentesting.
 
-# 📌 Roadmap
+## 📌 Roadmap
 
-## Fase 1 — Investigación
+### Fase 1 — Investigación
 
 * [x] Estado del arte
 * [x] Diseño conceptual
 * [x] Arquitectura inicial
 * [x] Selección de modelos IA
 
----
-
-## Fase 2 — Núcleo Operativo
+### Fase 2 — Núcleo Operativo
 
 * [x] Integración PostgreSQL + pgvector
 * [x] Motor RAG
 * [x] Sistema de memoria contextual
 * [x] APIs internas de agentes
 
----
-
-## Fase 3 — Agentes Especializados
+### Fase 3 — Agentes Especializados
 
 * [x] Agente Recon
 * [x] Agente Scan
@@ -380,18 +340,14 @@ Proyecto desarrollado como parte de una:
 * [x] Agente Exploit
 * [x] Agente Report
 
----
-
-## Fase 4 — Validación
+### Fase 4 — Validación
 
 * [ ] Benchmarking
 * [ ] Comparativa contra pentesting tradicional
 * [x] Validación MitL
 * [x] Métricas de falsos positivos
 
----
-
-# 👨‍💻 Autor
+## 👨‍💻 Autor
 
 **Luis Yapura**
 
@@ -402,9 +358,7 @@ Investigación y desarrollo en:
 * Arquitecturas multiagente
 * Memoria vectorial y RAG
 
----
-
-# 📄 Licencia
+## 📄 Licencia
 
 Actualmente el proyecto permanece bajo una licencia privada y en fase de investigación académica.
 
@@ -413,10 +367,3 @@ No se autoriza:
 * redistribución,
 * explotación comercial,
 * ni despliegue operativo sin autorización explícita.
-
----
-
-<p align="center">
-  <strong>ForceVector</strong><br>
-  Framework Inteligente de Pentesting Basado en IA
-</p>
