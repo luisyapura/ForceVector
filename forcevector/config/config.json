@@ -14,7 +14,7 @@
         "host": "192.168.159.1",
         "port": 5432,
         "user": "postgres",
-        "password": "155007287+Cid$",
+        "password": "Ingresa TU CONTRASE:A",
         "dbname": "forcevector_cve"
     },
     "msfrpc": {
